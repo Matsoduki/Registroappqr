@@ -89,6 +89,13 @@ export class MisDatosPage {
     this.mensajeError = null;
   }
 
+  irAMisDatos() {
+    if (this.router.url !== '/mis-datos') {
+      this.router.navigate(['/mis-datos']);
+    }
+  }
+
+
   cerrarSesion() {
     this.router.navigate(['/ingreso'], {
       state: { usuario: this.usuario }
