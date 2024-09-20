@@ -4,7 +4,7 @@
   }
   
   .welcome-title {
-    animation: slide-in 1s ease-in-out forwards, slide-out 1s ease-in-out 4s forwards; // Animación
+    animation: slide-in 1s ease-in-out forwards; // Solo la animación de entrada
     font-size: 2em;
     color: #3880ff; // Color corporativo
   }
@@ -17,22 +17,11 @@
   
   @keyframes slide-in {
     from {
-      transform: translateX(-100%);
+      transform: translateX(-50%); // Desde la izquierda
       opacity: 0;
     }
     to {
-      transform: translateX(0);
+      transform: translateX(0); // A la posición central
       opacity: 1;
-    }
-  }
-  
-  @keyframes slide-out {
-    from {
-      transform: translateX(0);
-      opacity: 1;
-    }
-    to {
-      transform: translateX(100%);
-      opacity: 0;
     }
   }
