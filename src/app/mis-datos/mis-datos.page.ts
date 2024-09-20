@@ -81,9 +81,10 @@ export class MisDatosPage {
       this.mensajeExito = null;
       return;
     }
-
+  
     // Actualiza el usuario en el servicio
     this.usuarioService.updateUsuario(this.usuario);
+    
     this.mensajeExito = 'Datos actualizados correctamente!';
     this.mensajeError = null;
   }

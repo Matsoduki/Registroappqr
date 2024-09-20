@@ -17,6 +17,8 @@ export class UsuarioService {
     const index = this.usuarios.findIndex(usuario => usuario.username === updatedUsuario.username);
     if (index !== -1) {
       this.usuarios[index] = updatedUsuario; // Actualiza el usuario en la lista
+    } else {
+      console.error('Usuario no encontrado para actualizar:', updatedUsuario.username);
     }
   }
 
