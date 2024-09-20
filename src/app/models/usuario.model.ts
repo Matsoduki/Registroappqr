@@ -15,7 +15,7 @@ export class Usuario {
 
   static getListaUsuarios(): Usuario[] {
     return [
-      new Usuario('atorres', 'atorres@duocuc.cl', '1234', '¿Cuál es tu animal favorito?', 'gato', 'Ana', 'Torres', new NivelEducacional(6, 'Educación Superior'), new Date(2000, 0, 1)),
+      new Usuario('atorres', 'atorres@duocuc.cl', '1234', '¿Cuál es tu animal favorito?', 'gato', 'Ana', 'Torres', new NivelEducacional(3, 'Educación Superior'), new Date(2000, 0, 1))
       // Agrega más usuarios según sea necesario
     ];
   }

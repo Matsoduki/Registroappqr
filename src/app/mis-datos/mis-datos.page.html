@@ -1,11 +1,10 @@
-<ion-header>
+<ion-header></ion-header>
   <ion-toolbar>
     <ion-title>Mis Datos Personales</ion-title>
     <ion-buttons slot="end">
       <ion-button (click)="cerrarSesion()">Cerrar Sesión</ion-button>
     </ion-buttons>
   </ion-toolbar>
-</ion-header>
 
 <ion-content class="ion-padding">
   <form *ngIf="usuario" (ngSubmit)="actualizarDatos()">
@@ -13,7 +12,7 @@
 
     <ion-item>
       <ion-label position="stacked">Usuario</ion-label>
-      <ion-input [(ngModel)]="usuario.username" name="username" required ></ion-input>
+      <ion-input [(ngModel)]="usuario.username" name="username" required readonly></ion-input>
     </ion-item>
 
     <ion-item>
@@ -32,6 +31,30 @@
     </ion-item>
 
     <ion-item>
+      <ion-label position="stacked">Pregunta Secreta</ion-label>
+      <ion-input [(ngModel)]="usuario.pregunta" name="pregunta" required></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="stacked">Respuesta Secreta</ion-label>
+      <ion-input [(ngModel)]="usuario.respuesta" name="respuesta" required></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="stacked">Nivel Educacional</ion-label>
+      <ion-select [(ngModel)]="usuario.nivel" name="nivel" required>
+        <ion-select-option *ngFor="let nivel of nivelesEducacionales" [value]="nivel">
+          {{ nivel.nombre }}
+        </ion-select-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="stacked">Fecha de Nacimiento</ion-label>
+      <p>{{ usuario.fechaNacimiento | date: 'longDate' }}</p>
+    </ion-item>
+
+    <ion-item>
       <ion-label position="stacked">Contraseña</ion-label>
       <ion-input type="password" [(ngModel)]="usuario.password" name="password" required></ion-input>
     </ion-item>
@@ -40,6 +63,7 @@
       <ion-label position="stacked">Repetir Contraseña</ion-label>
       <ion-input type="password" [(ngModel)]="repetirPassword" name="repetirPassword" required></ion-input>
     </ion-item>
+
 
     <ion-button expand="full" type="submit">Actualizar</ion-button>
   </form>

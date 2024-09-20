@@ -1,3 +1,3 @@
 export class NivelEducacional {
-    constructor(public id: number, public nombre: string) {}
-  }
+  constructor(public id: number, public nombre: string) {}
+}
