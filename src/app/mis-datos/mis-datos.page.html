@@ -1,13 +1,50 @@
-<ion-header [translucent]="true">
+<ion-header>
   <ion-toolbar>
-    <ion-title>mis-datos</ion-title>
+    <ion-title>Mis Datos Personales</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="cerrarSesion()">Cerrar Sesión</ion-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">mis-datos</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content class="ion-padding">
+  <form *ngIf="usuario" (ngSubmit)="actualizarDatos()">
+    <h2>Cuenta</h2>
+
+    <ion-item>
+      <ion-label position="stacked">Usuario</ion-label>
+      <ion-input [(ngModel)]="usuario.username" name="username" required ></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="stacked">Nombre</ion-label>
+      <ion-input [(ngModel)]="usuario.nombre" name="nombre" required></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="stacked">Apellidos</ion-label>
+      <ion-input [(ngModel)]="usuario.apellido" name="apellido" required></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="stacked">Correo</ion-label>
+      <ion-input type="email" [(ngModel)]="usuario.email" name="email" required></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="stacked">Contraseña</ion-label>
+      <ion-input type="password" [(ngModel)]="usuario.password" name="password" required></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="stacked">Repetir Contraseña</ion-label>
+      <ion-input type="password" [(ngModel)]="repetirPassword" name="repetirPassword" required></ion-input>
+    </ion-item>
+
+    <ion-button expand="full" type="submit">Actualizar</ion-button>
+  </form>
+
+  <p class="success-message" *ngIf="mensajeExito">{{ mensajeExito }}</p>
+  <p class="error-message" *ngIf="mensajeError">{{ mensajeError }}</p>
+  <p *ngIf="!usuario">Cargando datos del usuario...</p>
 </ion-content>

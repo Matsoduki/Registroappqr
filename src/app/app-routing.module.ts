@@ -41,7 +41,7 @@ const routes: Routes = [
   },
   {
     path: 'mis-datos',
-    loadChildren: () => import('./mis-datos/mis-datos.module').then( m => m.MisDatosPageModule)
+    loadChildren: () => import('./mis-datos/mis-datos.module').then(m => m.MisDatosPageModule)
   },
 ];
 
