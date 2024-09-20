@@ -1,0 +1,26 @@
+<ion-header></ion-header>
+  <ion-toolbar>
+    <ion-title>Inicio</ion-title>
+  </ion-toolbar>
+
+
+<ion-content class="ion-padding">
+  <div class="welcome-container">
+    <h1 class="welcome-title" *ngIf="username">¡Bienvenido, {{ username }}!</h1>
+    <p class="instruction-text">Escanea el código QR para registrar tu asistencia a clases</p>
+  </div>
+</ion-content>
+
+<ion-tabs>
+  <ion-tab-bar>
+    <ion-tab-button routerLink="/inicio" tab="inicio">
+      <ion-label>Inicio</ion-label>
+    </ion-tab-button>
+    <ion-tab-button routerLink="/mi-clase" tab="mi-clase">
+      <ion-label>Mi Clase</ion-label>
+    </ion-tab-button>
+    <ion-tab-button routerLink="/mis-datos" tab="mis-datos">
+      <ion-label>Mis Datos</ion-label>
+    </ion-tab-button>
+  </ion-tab-bar>
+</ion-tabs>

@@ -1,0 +1,30 @@
+<ion-header></ion-header>
+  <ion-toolbar>
+    <ion-title>Recuperar Contrasena</ion-title> <!-- Cambiado "Contraseña" a "Contrasena" -->
+  </ion-toolbar>
+
+
+<ion-content class="ion-padding">
+  <h2>Paso 1: Ingresa tu correo</h2>
+  
+  <ion-item>
+    <ion-label position="stacked">Correo Electronico</ion-label> <!-- Cambiado "Electrónico" a "Electronico" -->
+    <ion-input type="email" [(ngModel)]="email" placeholder="Ingresa tu correo"></ion-input>
+  </ion-item>
+
+  <ion-button expand="full" (click)="recuperarContrasena()" color="primary">
+    Recuperar Contrasena
+  </ion-button>
+  
+  <ion-row>
+    <ion-col>
+      <ion-button routerLink="/ingreso" fill="clear" color="medium">
+        Iniciar Sesion <!-- Cambiado "Sesión" a "Sesion" -->
+      </ion-button>
+    </ion-col>
+  </ion-row>
+
+  <div *ngIf="errorMessage" class="error-message">
+    <ion-text color="danger">{{ errorMessage }}</ion-text>
+  </div>
+</ion-content>
