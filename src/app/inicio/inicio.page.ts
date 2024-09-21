@@ -69,7 +69,8 @@ export class InicioPage {
   mostrarDatosQROrdenados(datosQR: string) {
     const asistencia = JSON.parse(datosQR);
     console.log('Datos de asistencia:', asistencia);
-    // Aquí podrías navegar a la página de mi-clase, pasando los datos de asistencia.
+    
+    // Navegar a la página de mi-clase, pasando los datos de asistencia.
     this.router.navigate(['/mi-clase'], {
       state: { asistencia }
     });

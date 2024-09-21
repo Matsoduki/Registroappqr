@@ -1,15 +1,60 @@
-<ion-header [translucent]="true">
+<ion-header>
   <ion-toolbar>
-    <ion-title>mi-clase</ion-title>
+    <ion-title>Mi Clase</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">mi-clase</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content class="ion-padding">
+  <ion-card *ngIf="asistencia">
+    <ion-card-header>
+      <ion-card-title>Detalles de Asistencia</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <table class="minimal-table">
+        <tbody>
+          <tr>
+            <th>Bloque Inicio</th>
+            <td>{{ asistencia.bloqueInicio }}</td>
+          </tr>
+          <tr>
+            <th>Bloque Término</th>
+            <td>{{ asistencia.bloqueTermino }}</td>
+          </tr>
+          <tr>
+            <th>Día</th>
+            <td>{{ asistencia.dia }}</td>
+          </tr>
+          <tr>
+            <th>Hora Inicio</th>
+            <td>{{ asistencia.horaInicio }}</td>
+          </tr>
+          <tr>
+            <th>Hora Fin</th>
+            <td>{{ asistencia.horaFin }}</td>
+          </tr>
+          <tr>
+            <th>ID Asignatura</th>
+            <td>{{ asistencia.idAsignatura }}</td>
+          </tr>
+          <tr>
+            <th>Nombre Asignatura</th>
+            <td>{{ asistencia.nombreAsignatura }}</td>
+          </tr>
+          <tr>
+            <th>Nombre Profesor</th>
+            <td>{{ asistencia.nombreProfesor }}</td>
+          </tr>
+          <tr>
+            <th>Sección</th>
+            <td>{{ asistencia.seccion }}</td>
+          </tr>
+          <tr>
+            <th>Sede</th>
+            <td>{{ asistencia.sede }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </ion-card-content>
+  </ion-card>
+  <ion-note *ngIf="!asistencia">No se encontraron datos de asistencia.</ion-note>
 </ion-content>
-
-

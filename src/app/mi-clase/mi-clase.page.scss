@@ -1,0 +1,25 @@
+.minimal-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    font-size: 1em;
+    font-family: Arial, sans-serif;
+  
+    th {
+      text-align: left;
+      padding: 10px;
+      background-color: transparent; // Sin color de fondo
+      color: #333; // Color del texto
+      border-bottom: 2px solid #ddd; // Línea inferior
+    }
+  
+    td {
+      padding: 10px;
+      border-bottom: 1px solid #eee; // Línea inferior más ligera
+      color: #555; // Color del texto
+    }
+  
+    tr:nth-of-type(even) {
+      background-color: rgba(0, 0, 0, 0.05); // Color muy suave para filas alternas
+    }
+  }
