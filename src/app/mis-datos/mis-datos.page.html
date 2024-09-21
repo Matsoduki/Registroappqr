@@ -8,19 +8,7 @@
 
 
 <ion-content class="ion-padding">
-  <ion-tabs>
-    <ion-tab-bar slot="top">
-      <ion-tab-button routerLink="/inicio" tab="inicio">
-        <ion-label>Inicio</ion-label>
-      </ion-tab-button>
-      <ion-tab-button routerLink="/mi-clase" tab="mi-clase">
-        <ion-label>Mi Clase</ion-label>
-      </ion-tab-button>
-      <ion-tab-button routerLink="/mis-datos" tab="mis-datos" [routerLinkActive]="['active']">
-        <ion-label>Mis Datos</ion-label>
-      </ion-tab-button>
-    </ion-tab-bar>
-  </ion-tabs>
+ 
 
   <form *ngIf="usuario" (ngSubmit)="actualizarDatos()">
     <h2>Cuenta</h2>
@@ -86,3 +74,18 @@
   <p class="error-message" *ngIf="mensajeError">{{ mensajeError }}</p>
   <p *ngIf="!usuario">Cargando datos del usuario...</p>
 </ion-content>
+
+
+<ion-footer>
+  <ion-tab-bar>
+    <ion-tab-button routerLink="/inicio" tab="inicio">
+      <ion-label>Inicio</ion-label>
+    </ion-tab-button>
+    <ion-tab-button routerLink="/mi-clase" tab="mi-clase">
+      <ion-label>Mi Clase</ion-label>
+    </ion-tab-button>
+    <ion-tab-button (click)="irAMisDatos()" tab="mis-datos">
+      <ion-label>Mis Datos</ion-label>
+    </ion-tab-button>
+  </ion-tab-bar>
+</ion-footer>
