@@ -1,12 +1,23 @@
 <ion-header></ion-header>
-  <ion-toolbar>
-    <ion-title>Inicio</ion-title>
-  </ion-toolbar>
+<ion-toolbar>
+  <ion-title>Inicio</ion-title>
+</ion-toolbar>
 
 <ion-content class="ion-padding">
   <div class="welcome-container">
     <h1 class="welcome-title" *ngIf="usuario">¡Bienvenido/a, {{ usuario.nombre }} {{ usuario.apellido }}!</h1>
     <p class="instruction-text">Escanea el código QR para registrar tu asistencia a clases</p>
+    
+    <!-- Botón para iniciar escaneo de QR -->
+    <ion-button expand="full" (click)="comenzarEscaneo()">
+      <ion-icon name="camera"></ion-icon>
+      <ion-label>Escanear QR</ion-label>
+    </ion-button>
+
+    <div *ngIf="escaneando">
+      <video #video autoplay></video>
+      <canvas #canvas style="display: none;"></canvas>
+    </div>
   </div>
 </ion-content>
 
