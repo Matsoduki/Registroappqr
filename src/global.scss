@@ -9,6 +9,8 @@
  * https://ionicframework.com/docs/layout/global-stylesheets
  */
 
+@import "theme/variables.scss";
+
 /* Core CSS required for Ionic components to work properly */
 @import "@ionic/angular/css/core.css";
 
@@ -35,3 +37,129 @@
 /* @import "@ionic/angular/css/palettes/dark.always.css"; */
 /* @import "@ionic/angular/css/palettes/dark.class.css"; */
 @import "@ionic/angular/css/palettes/dark.system.css";
+
+.lato-thin {
+  font-family: "Lato", sans-serif;
+  font-weight: 100;
+  font-style: normal;
+}
+
+.lato-light {
+  font-family: "Lato", sans-serif;
+  font-weight: 300;
+  font-style: normal;
+}
+
+.lato-regular {
+	font-family: "Lato", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.lato-bold {
+	font-family: "Lato", sans-serif;
+	font-weight: 700;
+	font-style: normal;
+}
+
+.lato-black {
+	font-family: "Lato", sans-serif;
+	font-weight: 900;
+	font-style: normal;
+}
+
+.lato-thin-italic {
+	font-family: "Lato", sans-serif;
+	font-weight: 100;
+	font-style: italic;
+}
+
+.lato-light-italic {
+	font-family: "Lato", sans-serif;
+	font-weight: 300;
+	font-style: italic;
+}
+
+.lato-regular-italic {
+	font-family: "Lato", sans-serif;
+	font-weight: 400;
+	font-style: italic;
+}
+
+.lato-bold-italic {
+	font-family: "Lato", sans-serif;
+	font-weight: 700;
+	font-style: italic;
+}
+
+.lato-black-italic {
+	font-family: "Lato", sans-serif;
+	font-weight: 900;
+	font-style: italic;
+}
+
+.centrar {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 100%;
+}
+
+.enmarcar {
+	max-width: 600px;
+	width: 100%;
+	margin: auto;
+	border-radius: 10px;
+	padding: 20px;
+	border: 1px solid gray;
+}
+
+ion-toolbar.navbar1 ion-buttons {
+	display: flex;
+	justify-content: center;
+	gap: 30px;
+}
+
+ion-toolbar.navbar1 ion-button .icon-text {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+ion-toolbar.navbar1 ion-icon {
+	font-size: 24px;
+	margin-bottom: 4px;
+}
+
+ion-toolbar.navbar1 ion-label {
+	font-size: 12px;
+}
+
+.button1 {
+  --background: #F1B634;
+  font-weight: bold;
+}
+
+.link1 {
+	text-decoration: underline;
+	font-weight: bold;
+}
+
+.link-box {
+	background-color: rgba(26, 26, 26, 0.5);
+	padding: 5px;
+	border-radius: 5px;
+}
+
+.logoHeader {
+	--border-radius: 0px;
+	height: 40px;
+	width: auto;
+	position: absolute;
+	z-index: 1;
+	top: 10%;
+}
+
+.body-text {
+	color: #1A1A1A;
+}

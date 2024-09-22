@@ -1,10 +1,22 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>Error</ion-title>
-  </ion-toolbar>
-</ion-header>
-
-<ion-content class="ion-padding">
-  <h2>Respuesta incorrecta. Intenta nuevamente.</h2>
-  <ion-button routerLink="/correo" expand="full">Volver a Intentar</ion-button>
+<ion-content [fullscreen]="true" class="ion-padding-horizontal ion-text-center">
+  <div class="background"></div>
+  <div class="centrar">
+    <div>
+      <img src="../../assets/img/logoBlanco.png" style="width: 75%;">
+      <h1 class="ion-padding-bottom">Sistema de Asistencia DUOC</h1>
+      <ion-card>
+        <ion-card-header style="color: white;">
+          <span class="image-text">¡Lo sentimos pero <br> los datos ingresados <br> no son correctos!</span>
+        </ion-card-header>
+        <ion-card-content class="ion-padding-bottom">
+          <img src="../../assets/img/incorrecto.png" class="rounded-image">
+        </ion-card-content>
+      </ion-card>
+      <ion-row>
+        <ion-col>
+          <ion-button #ingresar routerLink="/ingreso" fill="clear" class="link1 link-box">Iniciar Sesión</ion-button>
+        </ion-col>
+      </ion-row>
+    </div>
+  </div>
 </ion-content>

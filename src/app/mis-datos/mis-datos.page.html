@@ -1,10 +1,11 @@
-<ion-header></ion-header>
+<ion-header>
   <ion-toolbar>
-    <ion-title>Mis Datos Personales</ion-title>
-    <ion-buttons slot="end">
-      <ion-button (click)="cerrarSesion()">Cerrar Sesión</ion-button>
-    </ion-buttons>
+    <img src="../../assets/img/logoHeader.png" class="logoHeader">
+    <ion-title #titulo>
+      Sistema de Asistencia DUOC
+    </ion-title>
   </ion-toolbar>
+</ion-header>
 
 
 <ion-content class="ion-padding">
@@ -79,13 +80,16 @@
 <ion-footer>
   <ion-tab-bar>
     <ion-tab-button routerLink="/inicio" tab="inicio">
-      <ion-label>Inicio</ion-label>
+      <ion-icon name="home-outline" style="color: white;"></ion-icon>
+      <ion-label style="color: white;">Inicio</ion-label>
     </ion-tab-button>
     <ion-tab-button routerLink="/mi-clase" tab="mi-clase">
-      <ion-label>Mi Clase</ion-label>
+      <ion-icon name="school-outline" style="color: white;"></ion-icon>
+      <ion-label style="color: white;">Mi Clase</ion-label>
     </ion-tab-button>
     <ion-tab-button (click)="irAMisDatos()" tab="mis-datos">
-      <ion-label>Mis Datos</ion-label>
+      <ion-icon name="person-outline" style="color: white;"></ion-icon>
+      <ion-label style="color: white;">Mis Datos</ion-label>
     </ion-tab-button>
   </ion-tab-bar>
 </ion-footer>

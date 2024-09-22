@@ -1,10 +1,13 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>Mi Clase</ion-title>
+    <img src="../../assets/img/logoHeader.png" class="logoHeader">
+    <ion-title #titulo>
+      Sistema de Asistencia DUOC
+    </ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content class="ion-padding">
+<ion-content [fullscreen]="true" class="ion-padding-horizontal ion-text-center">
   <ion-card *ngIf="asistencia">
     <ion-card-header>
       <ion-card-title>Detalles de Asistencia</ion-card-title>
@@ -57,4 +60,25 @@
     </ion-card-content>
   </ion-card>
   <ion-note *ngIf="!asistencia">No se encontraron datos de asistencia.</ion-note>
+
+  <ion-button #recuperar (click)="cerrarSesion()" fill="clear" class="link1 cerrar-sesion">
+    Cerrar Sesión
+  </ion-button>
 </ion-content>
+
+<ion-footer>
+  <ion-tab-bar>
+    <ion-tab-button routerLink="/inicio" tab="inicio">
+      <ion-icon name="home-outline" style="color: white;"></ion-icon>
+      <ion-label style="color: white;">Inicio</ion-label>
+    </ion-tab-button>
+    <ion-tab-button routerLink="/mi-clase" tab="mi-clase">
+      <ion-icon name="school-outline" style="color: white;"></ion-icon>
+      <ion-label style="color: white;">Mi Clase</ion-label>
+    </ion-tab-button>
+    <ion-tab-button (click)="irAMisDatos()" tab="mis-datos">
+      <ion-icon name="person-outline" style="color: white;"></ion-icon>
+      <ion-label style="color: white;">Mis Datos</ion-label>
+    </ion-tab-button>
+  </ion-tab-bar>
+</ion-footer>

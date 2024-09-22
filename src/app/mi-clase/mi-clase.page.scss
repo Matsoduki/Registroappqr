@@ -1,25 +1,78 @@
+ion-toolbar {
+  --background: #1A1A1A;
+  overflow: visible;
+  position: relative;
+}
+
+ion-toolbar ion-title {
+  color: white;
+  position: absolute;
+  top: 30%;
+}
+
+ion-footer {
+  --background: #1A1A1A;
+}
+
+ion-content {
+  --background: #FFFFFF;
+  display: flex;
+  justify-content: center; /* Centra verticalmente */
+  align-items: center; /* Centra horizontalmente */
+  text-align: center;
+  height: 100%; /* Asegura que ocupe todo el espacio */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.cerrar-sesion {
+  margin-top: 60px; /* Añade espacio adicional arriba del botón de "Cerrar Sesión" */
+}
+
 .minimal-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin: 20px 0;
-    font-size: 1em;
-    font-family: Arial, sans-serif;
-  
+  width: 100%;
+  border-collapse: collapse; /* Asegura que los bordes no se dupliquen */
+  margin-bottom: 20px;
+
+  th, td {
+    text-align: left;
+    padding: 12px 15px; /* Espaciado entre el texto y las celdas */
+    border-bottom: 1px solid #ddd; /* Línea separadora */
+  }
+
+  th {
+    background-color: #f4f4f4; /* Fondo suave para los encabezados */
+    font-weight: bold;
+    color: #333; /* Color del texto */
+  }
+
+  td {
+    color: #555; /* Color del texto en las celdas */
+  }
+
+  tr:last-child td {
+    border-bottom: none; /* Eliminar el borde de la última fila */
+  }
+
+  /* Cambiar el texto de la segunda columna a blanco con fondo #F1B634 */
+  td:nth-child(2) {
+    color: #fff; /* Texto blanco en la segunda columna */
+    background-color: #F1B634; /* Fondo amarillo */
+  }
+
+  /* Estilos adicionales para dispositivos pequeños */
+  @media (max-width: 768px) {
+    th, td {
+      font-size: 14px; /* Tamaño de fuente más pequeño para dispositivos móviles */
+    }
+
     th {
-      text-align: left;
-      padding: 10px;
-      background-color: transparent; // Sin color de fondo
-      color: #333; // Color del texto
-      border-bottom: 2px solid #ddd; // Línea inferior
+      padding: 10px 12px;
     }
-  
+
     td {
-      padding: 10px;
-      border-bottom: 1px solid #eee; // Línea inferior más ligera
-      color: #555; // Color del texto
-    }
-  
-    tr:nth-of-type(even) {
-      background-color: rgba(0, 0, 0, 0.05); // Color muy suave para filas alternas
+      padding: 10px 12px;
     }
   }
+}
