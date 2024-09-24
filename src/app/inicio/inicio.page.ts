@@ -105,10 +105,10 @@ export class InicioPage implements AfterViewInit {
   mostrarDatosQROrdenados(datosQR: string) {
     const asistencia = JSON.parse(datosQR);
     console.log('Datos de asistencia:', asistencia);
-    
+
     // Navegar a la página de mi-clase, pasando los datos de asistencia.
     this.router.navigate(['/mi-clase'], {
-      state: { asistencia }
+      state: { asistencia, usuario: this.usuario }
     });
   }
 

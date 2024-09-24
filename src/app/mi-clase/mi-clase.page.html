@@ -59,7 +59,10 @@
       </table>
     </ion-card-content>
   </ion-card>
-  <ion-note *ngIf="!asistencia">No se encontraron datos de asistencia.</ion-note>
+
+  <div *ngIf="!asistencia">
+    <h1 *ngIf="!asistencia" class="body-text ion-padding-top">No se encontraron datos de asistencia.</h1>
+  </div>
 
   <ion-button #recuperar (click)="cerrarSesion()" fill="clear" class="link1 cerrar-sesion">
     Cerrar Sesión

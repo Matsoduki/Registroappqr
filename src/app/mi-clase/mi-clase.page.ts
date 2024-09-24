@@ -1,6 +1,7 @@
 import { AfterViewInit, Component, ElementRef, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
-import { Asistencia } from '../interfaces/asistencia';  // Ajusta la ruta según sea necesario
+import { Asistencia } from '../interfaces/asistencia';
+import { ToastController } from '@ionic/angular';
 import { AnimationController } from '@ionic/angular';
 import { Usuario } from '../models/usuario.model';
 
@@ -15,7 +16,11 @@ export class MiClasePage implements AfterViewInit {
 
   @ViewChild('titulo', { read: ElementRef }) itemTitulo!: ElementRef;
 
-  constructor(private router: Router, private animationController: AnimationController) {
+  constructor(
+    private router: Router,
+    private animationCtrl: AnimationController,
+    private toastCtrl: ToastController
+  ) {
     const navigation = this.router.getCurrentNavigation();
     this.asistencia = navigation?.extras.state?.['asistencia'];
     this.usuario = navigation?.extras.state ? navigation.extras.state['usuario'] : null;
@@ -30,7 +35,7 @@ export class MiClasePage implements AfterViewInit {
   }
 
   animarTituloIzqDer() {
-    this.animationController
+    this.animationCtrl
       .create()
       .addElement(this.itemTitulo.nativeElement)
       .iterations(Infinity)
@@ -46,7 +51,7 @@ export class MiClasePage implements AfterViewInit {
       state: { usuario: this.usuario }
     });
   }
-  
+
   cerrarSesion() {
     this.router.navigate(['/ingreso'], {
       state: { usuario: this.usuario }
