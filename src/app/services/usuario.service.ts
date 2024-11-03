@@ -8,9 +8,21 @@ import { DatabaseService } from './database.service'; // Importa el servicio de 
 })
 export class UsuarioService {
   constructor(private databaseService: DatabaseService) {
-    // Ya no es necesario inicializar la base de datos aquí
+    this.initDatabase(); // Inicializa la base de datos en el constructor
   }
 
+  private async initDatabase() {
+    try {
+      await this.databaseService.initDatabase(); // Inicializa la base de datos
+      console.log('Base de datos inicializada correctamente');
+      await this.inicializarNivelesEducacionales();
+      await this.inicializarUsuarios();
+    } catch (error) {
+      console.error('Error al inicializar la base de datos:', error);
+    }
+  }
+
+  // Resto del código de inicialización y CRUD...
   private async inicializarNivelesEducacionales() {
     const niveles = [
       new NivelEducacional(1, 1, 'Educación Básica'),

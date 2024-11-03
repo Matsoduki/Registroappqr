@@ -38,14 +38,12 @@ export class MisDatosPage implements AfterViewInit {
       this.router.navigate(['/inicio']);
     }
 
-    // Asegúrate de que el nivel educacional sea un objeto válido
     if (this.usuario.nivel) {
       this.usuario.nivel = this.nivelesEducacionales.find(nivel => nivel.id === this.usuario.nivel.id) || this.nivelesEducacionales[0];
     } else {
       this.usuario.nivel = this.nivelesEducacionales[0]; // Valor por defecto
     }
 
-    // Inicializar el texto de fecha de nacimiento
     if (this.usuario.fechaNacimiento) {
       this.fechaNacimientoTexto = this.usuario.fechaNacimiento.toISOString().split('T')[0]; // Formato ISO
     }
@@ -62,7 +60,7 @@ export class MisDatosPage implements AfterViewInit {
         {
           name: 'fechaNacimiento',
           type: 'date',
-          value: this.fechaNacimientoTexto, // Mostrar la fecha de nacimiento por defecto
+          value: this.fechaNacimientoTexto,
         },
       ],
       buttons: [
@@ -84,31 +82,27 @@ export class MisDatosPage implements AfterViewInit {
   }
 
   async actualizarDatos() {
-    // Verificar que las contraseñas coincidan
     if (this.usuario.password !== this.repetirPassword) {
-        const mensajeError = 'Las contraseñas no coinciden.';
-        await this.mostrarAlerta('Error', mensajeError);
-        return;
+      const mensajeError = 'Las contraseñas no coinciden.';
+      await this.mostrarAlerta('Error', mensajeError);
+      return;
     }
 
-    // Verifica que el usuario tenga un ID
     if (!this.usuario.id) {
-        await this.mostrarAlerta('Error', 'No se pudo encontrar el ID del usuario.');
-        return;
+      await this.mostrarAlerta('Error', 'No se pudo encontrar el ID del usuario.');
+      return;
     }
 
-    // Actualiza el usuario en el servicio
     try {
-        await this.usuarioService.updateUsuario(this.usuario);
-        const mensajeExito = 'Datos actualizados correctamente!';
-        await this.mostrarAlerta('Éxito', mensajeExito);
+      await this.usuarioService.updateUsuario(this.usuario);
+      const mensajeExito = 'Datos actualizados correctamente!';
+      await this.mostrarAlerta('Éxito', mensajeExito);
     } catch (error) {
-        const mensajeError = (error as Error).message || 'Error desconocido';
-        await this.mostrarAlerta('Error', 'No se pudo actualizar el usuario: ' + mensajeError);
+      const mensajeError = (error as Error).message || 'Error desconocido';
+      await this.mostrarAlerta('Error', 'No se pudo actualizar el usuario: ' + mensajeError);
     }
   }
 
-  // Función para mostrar alertas
   async mostrarAlerta(titulo: string, mensaje: string) {
     const alert = await this.alertController.create({
       header: titulo,
