@@ -1,0 +1,27 @@
+<ion-content [fullscreen]="true" class="ion-padding-horizontal ion-text-center">
+  <div class="background"></div>
+  <div class="centrar">
+    <div>
+      <img src="../../assets/img/logoBlanco.png" style="width: 75%;">
+      <h1 class="ion-padding-bottom">Sistema de Asistencia DUOC</h1>
+      <ion-card>
+        <ion-card-header style="color: white;">
+          <h1>Recuperar Contraseña</h1>
+          <h4>Paso 1: Ingresa tu correo</h4>
+        </ion-card-header>
+        <ion-card-content class="ion-padding-vertical">
+          <ion-item>
+            <ion-input [(ngModel)]="email" type="email" label="Correo Electrónico" labelPlacement="floating" fill="outline" placeholder="Ingresa tu correo" required></ion-input>
+          </ion-item>
+        </ion-card-content>
+  
+        <ion-button type="submit" class="ion-padding-vertical button1" (click)="recuperarContrasena()">Recuperar contraseña</ion-button>
+      </ion-card>
+      <ion-row>
+        <ion-col>
+          <ion-button #ingresar routerLink="/ingreso" fill="clear" class="link1 link-box">Iniciar Sesión</ion-button>
+        </ion-col>
+      </ion-row>
+    </div>
+  </div>
+</ion-content>

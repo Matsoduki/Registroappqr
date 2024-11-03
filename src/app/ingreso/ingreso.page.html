@@ -1,0 +1,31 @@
+<ion-content [fullscreen]="true" class="ion-padding-horizontal ion-text-center">
+  <div class="background"></div>
+  <div class="centrar">
+    <div>
+      <form (ngSubmit)="login()">
+
+        <img src="../../assets/img/logoBlanco.png" style="width: 75%;">
+        <h1 class="ion-padding-bottom">Sistema de Asistencia DUOC</h1>
+        <ion-card>
+          <ion-card-content class="ion-padding-vertical">
+            <ion-item>
+              <ion-input [(ngModel)]="username" type="text" name="username" label="Usuario" labelPlacement="floating" fill="outline" placeholder="Ingresa tu usuario" required></ion-input>
+            </ion-item>
+
+            <ion-item>
+              <ion-input [(ngModel)]="password" type="password" name="password" label="Contraseña" labelPlacement="floating" fill="outline" placeholder="Ingresa tu contraseña" required></ion-input>
+            </ion-item>
+          </ion-card-content>
+    
+          <ion-button type="submit" class="ion-padding-vertical button1">Iniciar Sesión</ion-button>
+        </ion-card>
+      </form>
+    
+      <ion-row>
+        <ion-col>
+          <ion-button #recuperar routerLink="/correo" fill="clear" class="link1 link-box">Recuperar Contraseña</ion-button>
+        </ion-col>
+      </ion-row>
+    </div>
+  </div>
+</ion-content>

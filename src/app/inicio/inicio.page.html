@@ -1,0 +1,60 @@
+<ion-header>
+  <ion-toolbar>
+    <img src="../../assets/img/logoHeader.png" class="logoHeader">
+    <ion-title #titulo>
+      Sistema de Asistencia DUOC
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="ion-padding-horizontal ion-text-center">
+  <div class="container">
+    <h1 *ngIf="usuario" class="body-text">
+      ¡Bienvenido/a, {{ usuario.nombre }} {{ usuario.apellido }}!
+    </h1>
+    <p class="body-text">
+      Escanea el código QR para registrar tu asistencia a clases
+    </p>
+
+    <div *ngIf="escaneando">
+      <video #video autoplay class="video-frame"></video>
+      <canvas #canvas style="display: none;"></canvas>
+    </div>
+
+    <div *ngIf="!escaneando">
+      <img src="../../../assets/img/noCamera.png" class="video-frame">
+    </div>
+
+    <ion-button *ngIf="!escaneando" expand="full" (click)="comenzarEscaneo()" class="button1">
+      <ion-icon slot="start" name="camera"></ion-icon>
+      <ion-label>Escanear QR</ion-label>
+    </ion-button>
+
+    <ion-button *ngIf="escaneando" expand="full" (click)="detenerEscaneo()" class="button1">
+      <ion-icon slot="start" name="stop-circle-outline"></ion-icon>
+      <ion-label>Detener Escaneo</ion-label>
+    </ion-button>
+
+    <!-- Separación para el botón de cerrar sesión -->
+    <ion-button #recuperar (click)="cerrarSesion()" fill="clear" class="link1 cerrar-sesion">
+      Cerrar Sesión
+    </ion-button>
+  </div>
+</ion-content>
+
+<ion-footer>
+  <ion-tab-bar>
+    <ion-tab-button routerLink="/inicio" tab="inicio">
+      <ion-icon name="home-outline" style="color: white;"></ion-icon>
+      <ion-label style="color: white;">Inicio</ion-label>
+    </ion-tab-button>
+    <ion-tab-button routerLink="/mi-clase" tab="mi-clase">
+      <ion-icon name="school-outline" style="color: white;"></ion-icon>
+      <ion-label style="color: white;">Mi Clase</ion-label>
+    </ion-tab-button>
+    <ion-tab-button (click)="irAMisDatos()" tab="mis-datos">
+      <ion-icon name="person-outline" style="color: white;"></ion-icon>
+      <ion-label style="color: white;">Mis Datos</ion-label>
+    </ion-tab-button>
+  </ion-tab-bar>
+</ion-footer>

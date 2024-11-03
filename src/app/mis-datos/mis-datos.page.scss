@@ -1,0 +1,100 @@
+ion-toolbar {
+  --background: #1A1A1A;
+  overflow: visible;
+  position: relative;
+}
+
+ion-toolbar ion-title {
+  color: white;
+  position: absolute;
+  top: 30%;
+}
+
+ion-footer {
+  --background: #1A1A1A;
+}
+
+ion-content {
+  --background: #FFFFFF;
+  display: flex;
+  flex-direction: column; /* Mantener los elementos en columna */
+  justify-content: flex-start; /* Alinea al inicio */
+  align-items: center; /* Centra horizontalmente */
+  height: 100%; /* Asegura que ocupe todo el espacio */
+  padding: 16px; /* Añadir un poco de padding alrededor */
+}
+
+.cerrar-sesion {
+  margin-top: 60px; /* Añade espacio adicional arriba del botón de "Cerrar Sesión" */
+}
+
+ion-item {
+  --padding-start: 5px;
+  --padding-end: 5px; /* Asegúrate de que este padding exista */
+  --padding-top: 5px;
+  --padding-bottom: 5px; /* Consistencia en el padding */
+  margin-bottom: 10px; /* Espacio entre los ion-items */
+  min-height: 70px; /* Asegura espacio para el label flotante */
+  overflow: visible; /* Asegura que el contenido no se corte */
+}
+
+ion-input {
+  --inner-padding-start: 12px;
+  overflow: visible; /* Asegura que el label no se corte */
+}
+
+ion-label {
+  color: var(--ion-color-medium);
+  font-size: 14px;
+  font-weight: 500;
+  white-space: nowrap;
+  overflow: visible; /* Asegura que no se corte si flota */
+}
+
+.custom-input {
+  padding: 10px;
+  border: 1px solid var(--ion-color-light-shade);
+  border-radius: 5px;
+  font-size: 16px;
+  width: 100%;
+  box-sizing: border-box;
+  outline: none;
+}
+
+.custom-input:focus {
+  border-color: var(--ion-color-primary); /* Color del borde cuando está en foco */
+  box-shadow: 0 0 0 2px rgba(66, 133, 244, 0.2); /* Simula el efecto de enfoque de Ionic */
+}
+
+ion-item {
+  --inner-padding-end: 8px; /* Ajustar el padding para que los íconos se alineen mejor */
+  --highlight-color-focused: var(--ion-color-primary);
+}
+
+.cerrar-sesion {
+  background-color: transparent; /* Fondo transparente */
+  color: #007bff; /* Color del texto */
+  font-size: 16px; /* Tamaño de fuente */
+  padding: 10px 20px; /* Espaciado interno */
+  border: 2px solid #007bff; /* Contorno azul */
+  border-radius: 5px; /* Bordes redondeados */
+  transition: background-color 0.3s, color 0.3s; /* Transiciones suaves */
+}
+
+.cerrar-sesion:hover {
+  background-color: #007bff; /* Color de fondo azul al pasar el mouse */
+  color: white; /* Color del texto al pasar el mouse */
+}
+
+.centered-button {
+  display: block; /* Hace que el botón sea un bloque */
+  margin: 20px auto; /* Margen superior e inferior de 20px y centrado automático */
+  width: 80%; /* Ajusta el ancho del botón si es necesario */
+  max-width: 400px; /* Ancho máximo del botón */
+}
+
+.button-container {
+  display: flex; /* Usar flexbox */
+  justify-content: center; /* Centrar horizontalmente */
+  margin: 20px 0; /* Espacio arriba y abajo del botón */
+}

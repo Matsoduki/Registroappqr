@@ -1,0 +1,96 @@
+<ion-header></ion-header>
+<ion-toolbar>
+  <img src="../../assets/img/logoHeader.png" class="logoHeader">
+  <ion-title #titulo>
+    Sistema de Asistencia DUOC
+  </ion-title>
+</ion-toolbar>
+
+<ion-content [fullscreen]="true" class="ion-padding-horizontal ion-text-center">
+  <form *ngIf="usuario" (ngSubmit)="actualizarDatos()">
+    <ion-card>
+      <ion-card-header style="color: white;">
+        <h1 style="margin: 0;">Mis Datos Personales</h1>
+      </ion-card-header>
+      <ion-card-content>
+
+        <ion-item class="form-item">
+          <ion-input [(ngModel)]="usuario.username" type="text" name="username" label="Usuario" labelPlacement="floating" fill="outline" required readonly></ion-input>
+        </ion-item>
+
+        <ion-item class="form-item">
+          <ion-input [(ngModel)]="usuario.nombre" type="text" name="nombre" label="Nombre" labelPlacement="floating" fill="outline" required></ion-input>
+        </ion-item>
+
+        <ion-item class="form-item">
+          <ion-input [(ngModel)]="usuario.apellido" type="text" name="apellido" label="Apellido" labelPlacement="floating" fill="outline" required></ion-input>
+        </ion-item>
+
+        <ion-item class="form-item">
+          <ion-input [(ngModel)]="usuario.email" type="email" name="email" label="Correo" labelPlacement="floating" fill="outline" required></ion-input>
+        </ion-item>
+
+        <ion-item class="form-item">
+          <ion-input [(ngModel)]="usuario.pregunta" type="text" name="pregunta" label="Pregunta Secreta" labelPlacement="floating" fill="outline" required></ion-input>
+        </ion-item>
+
+        <ion-item class="form-item">
+          <ion-input [(ngModel)]="usuario.respuesta" type="text" name="respuesta" label="Respuesta Secreta" labelPlacement="floating" fill="outline" required></ion-input>
+        </ion-item>
+
+        <ion-item class="form-item">
+          <ion-select [(ngModel)]="usuario.nivel" name="nivel" label="Nivel Educacional" labelPlacement="floating" fill="outline" required>
+            <ion-select-option *ngFor="let nivel of nivelesEducacionales" [value]="nivel">
+              {{ nivel.nombre }}
+            </ion-select-option>
+          </ion-select>
+        </ion-item>
+
+        <ion-item class="form-item">
+          <ion-label position="floating">Fecha de Nacimiento</ion-label>
+          <ion-input 
+            [(ngModel)]="fechaNacimientoTexto" 
+            name="fechaNacimiento" 
+            required 
+            readonly 
+            placeholder="Selecciona una fecha" 
+            fill="outline">
+            <ion-icon name="calendar" slot="end" (click)="abrirSelectorFecha()" style="cursor: pointer;"></ion-icon>
+          </ion-input>
+        </ion-item>
+
+        <ion-datetime [(ngModel)]="fechaNacimientoTexto" name="fechaNacimiento" required style="display: none;"></ion-datetime>
+
+        <ion-item class="form-item">
+          <ion-input [(ngModel)]="usuario.password" type="password" name="password" label="Contraseña" labelPlacement="floating" fill="outline" required></ion-input>
+        </ion-item>
+
+        <ion-item class="form-item">
+          <ion-input [(ngModel)]="repetirPassword" type="password" name="repetirPassword" label="Repetir Contraseña" labelPlacement="floating" fill="outline" required></ion-input>
+        </ion-item>
+
+      </ion-card-content>
+      
+      <ion-button type="submit" class="ion-padding-vertical button1">Actualizar</ion-button>
+    </ion-card>
+  </form>
+
+  <p *ngIf="!usuario">Cargando datos del usuario...</p>
+</ion-content>
+
+<ion-footer>
+  <ion-tab-bar>
+    <ion-tab-button routerLink="/inicio" tab="inicio">
+      <ion-icon name="home-outline" style="color: white;"></ion-icon>
+      <ion-label style="color: white;">Inicio</ion-label>
+    </ion-tab-button>
+    <ion-tab-button routerLink="/mi-clase" tab="mi-clase">
+      <ion-icon name="school-outline" style="color: white;"></ion-icon>
+      <ion-label style="color: white;">Mi Clase</ion-label>
+    </ion-tab-button>
+    <ion-tab-button (click)="irAMisDatos()" tab="mis-datos">
+      <ion-icon name="person-outline" style="color: white;"></ion-icon>
+      <ion-label style="color: white;">Mis Datos</ion-label>
+    </ion-tab-button>
+  </ion-tab-bar>
+</ion-footer>
