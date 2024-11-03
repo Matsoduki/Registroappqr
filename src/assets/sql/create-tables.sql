@@ -8,7 +8,8 @@ CREATE TABLE IF NOT EXISTS usuarios (
   nombre TEXT NOT NULL,
   apellido TEXT NOT NULL,
   nivel_educacional_id INTEGER NOT NULL,
-  fecha_nacimiento TEXT NOT NULL
+  fecha_nacimiento TEXT NOT NULL,
+  FOREIGN KEY (nivel_educacional_id) REFERENCES nivel_educacional(id)
 );
 
 CREATE TABLE IF NOT EXISTS nivel_educacional (

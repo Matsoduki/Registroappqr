@@ -11,7 +11,7 @@ export class Usuario {
     public nombre: string,
     public apellido: string,
     public nivel: NivelEducacional,
-    public fechaNacimiento: Date
+    public fechaNacimiento: Date // Cambiado de Text a Date
   ) {}
 
   static getListaUsuarios(): Usuario[] {
