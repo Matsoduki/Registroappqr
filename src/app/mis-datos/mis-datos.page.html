@@ -1,10 +1,11 @@
-<ion-header></ion-header>
-<ion-toolbar>
-  <img src="../../assets/img/logoHeader.png" class="logoHeader">
-  <ion-title #titulo>
-    Sistema de Asistencia DUOC
-  </ion-title>
-</ion-toolbar>
+<ion-header>
+  <ion-toolbar>
+    <img src="../../assets/img/logoHeader.png" class="logoHeader">
+    <ion-title #titulo>
+      Sistema de Asistencia DUOC
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
 
 <ion-content [fullscreen]="true" class="ion-padding-horizontal ion-text-center">
   <form *ngIf="usuario" (ngSubmit)="actualizarDatos()">
@@ -41,7 +42,7 @@
         <ion-item class="form-item">
           <ion-select [(ngModel)]="usuario.nivel" name="nivel" label="Nivel Educacional" labelPlacement="floating" fill="outline" required>
             <ion-select-option *ngFor="let nivel of nivelesEducacionales" [value]="nivel">
-              {{ nivel.nombre }}
+              {{ nivel.descripcion }} <!-- Cambiado 'nivel.nombre' a 'nivel.descripcion' -->
             </ion-select-option>
           </ion-select>
         </ion-item>

@@ -16,9 +16,9 @@ export class Usuario {
 
   static getListaUsuarios(): Usuario[] {
     return [
-      new Usuario(null, 'atorres', 'atorres@duocuc.cl', '1234', '¿Cuál es tu animal favorito?', 'gato', 'Ana', 'Torres', new NivelEducacional(3, 3, 'Educación Superior'), new Date(2000, 0, 1)),
-      new Usuario(null, 'jperez', 'jperez@duocuc.cl', '5678', '¿Cuál es tu postre favorito?', 'panqueques', 'Juan', 'Pérez', new NivelEducacional(3, 3, 'Educación Superior'), new Date(2000, 1, 1)),
-      new Usuario(null, 'cmujica', 'cmujica@duocuc.cl', '0987', '¿Cuál es tu vehículo favorito?', 'moto', 'Carla', 'Mujica', new NivelEducacional(4, 4, 'Postgrado'), new Date(2000, 2, 1))
+      new Usuario(1, 'atorres', 'atorres@duocuc.cl', '1234', '¿Cuál es tu animal favorito?', 'gato', 'Ana', 'Torres', new NivelEducacional(3, 3, 'Educación Superior'), new Date(2000, 0, 1)),
+      new Usuario(2, 'jperez', 'jperez@duocuc.cl', '5678', '¿Cuál es tu postre favorito?', 'panqueques', 'Juan', 'Pérez', new NivelEducacional(3, 3, 'Educación Superior'), new Date(2000, 1, 1)),
+      new Usuario(3, 'cmujica', 'cmujica@duocuc.cl', '0987', '¿Cuál es tu vehículo favorito?', 'moto', 'Carla', 'Mujica', new NivelEducacional(4, 4, 'Postgrado'), new Date(2000, 2, 1))
     ];
   }
 }

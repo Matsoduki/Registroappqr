@@ -16,10 +16,10 @@ export class MisDatosPage implements AfterViewInit {
   fechaNacimientoTexto: string = '';
   
   nivelesEducacionales: NivelEducacional[] = [
-    new NivelEducacional(1, 'Educación Básica'),
-    new NivelEducacional(2, 'Educación Media'),
-    new NivelEducacional(3, 'Educación Superior'),
-    new NivelEducacional(4, 'Postgrado')
+    new NivelEducacional(1, 1, 'Educación Básica'),
+    new NivelEducacional(2, 2, 'Educación Media'),
+    new NivelEducacional(3, 3, 'Educación Superior'),
+    new NivelEducacional(4, 4, 'Postgrado')
   ];
 
   @ViewChild('titulo', { read: ElementRef }) itemTitulo!: ElementRef;
@@ -86,16 +86,26 @@ export class MisDatosPage implements AfterViewInit {
   async actualizarDatos() {
     // Verificar que las contraseñas coincidan
     if (this.usuario.password !== this.repetirPassword) {
-      const mensajeError = 'Las contraseñas no coinciden.';
-      await this.mostrarAlerta('Error', mensajeError);
-      return;
+        const mensajeError = 'Las contraseñas no coinciden.';
+        await this.mostrarAlerta('Error', mensajeError);
+        return;
+    }
+
+    // Verifica que el usuario tenga un ID
+    if (!this.usuario.id) {
+        await this.mostrarAlerta('Error', 'No se pudo encontrar el ID del usuario.');
+        return;
     }
 
     // Actualiza el usuario en el servicio
-    this.usuarioService.updateUsuario(this.usuario);
-    
-    const mensajeExito = 'Datos actualizados correctamente!';
-    await this.mostrarAlerta('Éxito', mensajeExito);
+    try {
+        await this.usuarioService.updateUsuario(this.usuario);
+        const mensajeExito = 'Datos actualizados correctamente!';
+        await this.mostrarAlerta('Éxito', mensajeExito);
+    } catch (error) {
+        const mensajeError = (error as Error).message || 'Error desconocido';
+        await this.mostrarAlerta('Error', 'No se pudo actualizar el usuario: ' + mensajeError);
+    }
   }
 
   // Función para mostrar alertas

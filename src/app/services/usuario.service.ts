@@ -125,7 +125,12 @@ export class UsuarioService {
   }
 
   public async updateUsuario(usuario: Usuario): Promise<void> {
+    if (!usuario.id) {
+        throw new Error('El ID del usuario no puede ser nulo');
+    }
+
     const nivelId = usuario.nivel.id; // Asegúrate de que 'nivel' tenga la propiedad 'id'
+    
     await this.database.executeSql(`
       UPDATE usuarios SET 
         email = ?, 
@@ -148,7 +153,7 @@ export class UsuarioService {
       usuario.fechaNacimiento.toISOString(), 
       usuario.id
     ]);
-  }
+}
   
 }
 
