@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { CapacitorSQLite, SQLiteConnection, SQLiteDBConnection } from '@capacitor-community/sqlite';
-import { Usuario } from '../models/usuario.model';
+
 
 @Injectable({
   providedIn: 'root',

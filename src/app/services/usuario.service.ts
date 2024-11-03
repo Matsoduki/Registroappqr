@@ -1,63 +1,17 @@
 import { Injectable } from '@angular/core';
 import { Usuario } from '../models/usuario.model';
 import { NivelEducacional } from '../models/nivel-educacional.model';
-import { DatabaseService } from './database.service'; // Importa el servicio de base de datos
+import { DatabaseInitializerService } from './database-initializer.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class UsuarioService {
-  constructor(private databaseService: DatabaseService) {
-    this.initDatabase(); // Inicializa la base de datos en el constructor
-  }
-
-  private async initDatabase() {
-    try {
-      await this.databaseService.initDatabase(); // Inicializa la base de datos
-      console.log('Base de datos inicializada correctamente');
-      await this.inicializarNivelesEducacionales();
-      await this.inicializarUsuarios();
-    } catch (error) {
-      console.error('Error al inicializar la base de datos:', error);
-    }
-  }
-
-  // Resto del código de inicialización y CRUD...
-  private async inicializarNivelesEducacionales() {
-    const niveles = [
-      new NivelEducacional(1, 1, 'Educación Básica'),
-      new NivelEducacional(2, 2, 'Educación Media'),
-      new NivelEducacional(3, 3, 'Educación Superior'),
-      new NivelEducacional(4, 4, 'Postgrado')
-    ];
-
-    for (const nivel of niveles) {
-      const result = await this.databaseService.execute(`
-        SELECT * FROM nivel_educacional WHERE nivel = ?
-      `, [nivel.nivel]);
-
-      if (result && result.rows && result.rows.length === 0) {
-        await this.databaseService.execute(`
-          INSERT INTO nivel_educacional (nivel, descripcion) VALUES (?, ?)
-        `, [nivel.nivel, nivel.descripcion]);
-      }
-    }
-  }
-
-  private async inicializarUsuarios() {
-    const usuarios = await this.getListaUsuarios();
-    if (usuarios.length === 0) {
-      const usuariosIniciales = Usuario.getListaUsuarios();
-
-      for (const usuario of usuariosIniciales) {
-        await this.guardarUsuario(usuario);
-      }
-    }
-  }
+  constructor(private databaseInitializer: DatabaseInitializerService) {}
 
   public async guardarUsuario(usuario: Usuario): Promise<void> {
     const nivel = await this.getNivelEducacionalId(usuario.nivel);
-    await this.databaseService.execute(`
+    await this.databaseInitializer.getDatabaseService().execute(`
       INSERT INTO usuarios (
         username, email, password, pregunta, respuesta, nombre, apellido, nivel_educacional_id, fecha_nacimiento
       ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
@@ -70,13 +24,13 @@ export class UsuarioService {
       usuario.nombre,
       usuario.apellido,
       nivel.id,
-      usuario.fechaNacimiento.toISOString()
+      usuario.fechaNacimiento.toISOString(),
     ]);
   }
 
   public async getListaUsuarios(): Promise<Usuario[]> {
     const usuarios: Usuario[] = [];
-    const result = await this.databaseService.execute(`
+    const result = await this.databaseInitializer.getDatabaseService().execute(`
       SELECT
         u.id, u.username, u.email, u.password, u.pregunta, u.respuesta, u.nombre, u.apellido,
         ne.nivel, ne.descripcion, u.fecha_nacimiento
@@ -97,7 +51,7 @@ export class UsuarioService {
           row.nombre,
           row.apellido,
           new NivelEducacional(row.id, row.nivel, row.descripcion),
-          new Date(row.fecha_nacimiento)
+          new Date(row.fecha_nacimiento),
         );
         usuarios.push(usuario);
       }
@@ -107,7 +61,7 @@ export class UsuarioService {
   }
 
   private async getNivelEducacionalId(nivel: NivelEducacional): Promise<NivelEducacional> {
-    const result = await this.databaseService.execute(`
+    const result = await this.databaseInitializer.getDatabaseService().execute(`
       SELECT * FROM nivel_educacional WHERE nivel = ?
     `, [nivel.nivel]);
 
@@ -126,7 +80,7 @@ export class UsuarioService {
 
     const nivelId = usuario.nivel.id;
 
-    await this.databaseService.execute(`
+    await this.databaseInitializer.getDatabaseService().execute(`
       UPDATE usuarios SET 
         email = ?, 
         password = ?, 
@@ -146,7 +100,7 @@ export class UsuarioService {
       usuario.apellido,
       nivelId,
       usuario.fechaNacimiento.toISOString(),
-      usuario.id
+      usuario.id,
     ]);
   }
 }

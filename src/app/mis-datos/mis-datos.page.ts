@@ -82,22 +82,26 @@ export class MisDatosPage implements AfterViewInit {
   }
 
   async actualizarDatos() {
-    if (this.usuario.password !== this.repetirPassword) {
-      const mensajeError = 'Las contraseñas no coinciden.';
-      await this.mostrarAlerta('Error', mensajeError);
+    if (!this.usuario) {
+      await this.mostrarAlerta('Error', 'No se encontraron datos del usuario.');
       return;
     }
-
+  
+    if (this.usuario.password !== this.repetirPassword) {
+      await this.mostrarAlerta('Error', 'Las contraseñas no coinciden.');
+      return;
+    }
+  
     if (!this.usuario.id) {
       await this.mostrarAlerta('Error', 'No se pudo encontrar el ID del usuario.');
       return;
     }
-
+  
     try {
       await this.usuarioService.updateUsuario(this.usuario);
-      const mensajeExito = 'Datos actualizados correctamente!';
-      await this.mostrarAlerta('Éxito', mensajeExito);
+      await this.mostrarAlerta('Éxito', 'Datos actualizados correctamente!');
     } catch (error) {
+      console.error('Error al actualizar usuario:', error);
       const mensajeError = (error as Error).message || 'Error desconocido';
       await this.mostrarAlerta('Error', 'No se pudo actualizar el usuario: ' + mensajeError);
     }
