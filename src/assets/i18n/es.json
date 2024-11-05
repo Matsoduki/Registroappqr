@@ -27,6 +27,7 @@
     "HomePage.Button.Scan": "Escanear",
     "HomePage.Button.Dinosaur": "Dinosaurio",
     "HomePage.Button.Forum": "Foro",
+    "HomePage.Button.MisDatos": "Mis Datos",
 
     "ThemePage.Label.ColorTheme": "Tema de color:",
     "ThemePage.Color.Light": "Claro",

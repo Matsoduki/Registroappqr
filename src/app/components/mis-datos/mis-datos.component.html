@@ -1,0 +1,66 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>Mis Datos</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  
+  <div>
+    <h3> Bienvenido(a) {{ usuario.nombre }} {{ usuario.apellido }} </h3>
+  </div>
+
+  <ion-item>
+    <ion-input label="Correo" labelPlacement="floating" [(ngModel)]="usuario.correo"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-input type="password" label="Contraseña" labelPlacement="floating" [(ngModel)]="usuario.password"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-input label="Pregunta secreta" labelPlacement="floating" [(ngModel)]="usuario.fraseSecreta"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-input label="Respuesta secreta" labelPlacement="floating" [(ngModel)]="usuario.respuestaSecreta"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-input label="Nombre" labelPlacement="floating" [(ngModel)]="usuario.nombre"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-input label="Apellido" labelPlacement="floating" [(ngModel)]="usuario.apellido"></ion-input> <!-- Corregido a apellido -->
+  </ion-item>
+
+  <ion-item>
+    <ion-select [(ngModel)]="usuario.nivelEducacional.id" 
+                (ionChange)="actualizarNivelEducacional($event)" 
+                label="Educación" 
+                position="floating">
+      <ion-select-option *ngFor="let nivelEducacional of listaNivelesEducacionales" 
+                        [value]="nivelEducacional.id">
+        {{ nivelEducacional.nombre }}
+      </ion-select-option>
+    </ion-select>
+  </ion-item>
+
+  <ion-item>
+    <ion-input 
+      label="Fecha de Nacimiento" 
+      labelPlacement="floating" 
+      type="date" 
+      [(ngModel)]="usuario.fechaDeNacimiento" 
+      (ionChange)="onFechaNacimientoChange($event)">
+    </ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-input label="Dirección" labelPlacement="floating" [(ngModel)]="usuario.direccion"></ion-input>
+  </ion-item>
+
+  <ion-button expand="full" (click)="guardarUsuario()">
+    Guardar
+  </ion-button>
+</ion-content>

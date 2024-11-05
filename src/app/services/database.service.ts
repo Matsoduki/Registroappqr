@@ -228,7 +228,14 @@ export class DatabaseService {
     try {
       const q = 'SELECT * FROM USUARIO WHERE username=? AND password=?;';
       const rows = (await this.db.query(q, [username, password])).values;
-      return rows? this.rowToUser(rows[0]) : undefined;
+  
+      if (rows && rows.length > 0) {
+        return this.rowToUser(rows[0]);
+      } else {
+        // Si no hay coincidencia, devuelve undefined
+        console.warn(`No se encontró un usuario con username: ${username}`);
+        return undefined;
+      }
     } catch (error) {
       showAlertError('DataBaseService.findUser', error);
       return undefined;
@@ -260,21 +267,22 @@ export class DatabaseService {
   private rowToUser(row: any): Usuario {
     try {
       const user = new Usuario();
-      user.username = row.username;
-      user.correo = row.email;
-      user.password = row.password;
-      user.fraseSecreta = row.secretQuestion;
-      user.respuestaSecreta = row.secretAnswer;
-      user.nombre = row.firstName;
-      user.apellido = row.lastName;
-      user.nivelEducacional = NivelEducacional.buscarNivel(row.educationalLevel) || new NivelEducacional();
-      user.fechaDeNacimiento = convertStringToDate(row.fechaDeNacimiento);
-      user.direccion = row.direccion;
+      if (row) {
+        user.username = row.username || '';
+        user.correo = row.correo || '';
+        user.password = row.password || '';
+        user.fraseSecreta = row.fraseSecreta || '';
+        user.respuestaSecreta = row.respuestaSecreta || '';
+        user.nombre = row.nombre || '';
+        user.apellido = row.apellido || '';
+        user.nivelEducacional = NivelEducacional.buscarNivel(row.nivelEducacional) || new NivelEducacional();
+        user.fechaDeNacimiento = convertStringToDate(row.fechaDeNacimiento || '');
+        user.direccion = row.direccion || '';
+      }
       return user;
     } catch (error) {
       showAlertError('DataBaseService.rowToUser', error);
       return new Usuario();
     }
   }
-
 }

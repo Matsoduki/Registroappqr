@@ -8,19 +8,19 @@
     *ngIf="selectedComponent === 'qrwebscanner'" 
     (scanned)="webQrScanned($event)"
     (stopped)="webQrStopped()">
-  </app-qrwebscanner >
+  </app-qrwebscanner>
   
   <app-welcome 
     *ngIf="selectedComponent === 'welcome'">
   </app-welcome>
 
-  <app-dinosaur 
-    *ngIf="selectedComponent === 'dinosaur'">
-  </app-dinosaur>
-
   <app-forum 
     *ngIf="selectedComponent === 'forum'">
   </app-forum>
+
+  <app-mis-datos 
+    *ngIf="selectedComponent === 'mis-datos'"> <!-- Asegúrate de que esté aquí -->
+  </app-mis-datos>
 
 </ion-content>
 

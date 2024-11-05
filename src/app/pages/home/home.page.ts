@@ -1,7 +1,7 @@
 import { Component, ViewChild } from '@angular/core';
 import { DinosaurComponent } from 'src/app/components/dinosaur/dinosaur.component';
 import { AuthService } from 'src/app/services/auth.service';
-import { IonContent } from '@ionic/angular/standalone'
+import { IonContent } from '@ionic/angular/standalone';
 import { TranslateModule } from '@ngx-translate/core';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
@@ -13,6 +13,7 @@ import { Capacitor } from '@capacitor/core';
 import { ScannerService } from 'src/app/services/scanner.service';
 import { WelcomeComponent } from 'src/app/components/welcome/welcome.component';
 import { ForumComponent } from 'src/app/components/forum/forum.component';
+import { MisDatosComponent } from 'src/app/components/mis-datos/mis-datos.component';// Asegúrate de que la ruta sea correcta
 
 @Component({
   selector: 'app-home',
@@ -20,14 +21,20 @@ import { ForumComponent } from 'src/app/components/forum/forum.component';
   styleUrls: ['home.page.scss'],
   standalone: true,
   imports: [
-      CommonModule, FormsModule, TranslateModule, IonContent
-    , HeaderComponent, FooterComponent
-    , WelcomeComponent, QrWebScannerComponent, DinosaurComponent
-    , ForumComponent
+    CommonModule,
+    FormsModule,
+    TranslateModule,
+    IonContent,
+    HeaderComponent,
+    FooterComponent,
+    WelcomeComponent,
+    QrWebScannerComponent,
+    DinosaurComponent,
+    ForumComponent,
+    MisDatosComponent // Asegúrate de agregar este componente
   ]
 })
 export class HomePage {
-  
   @ViewChild(FooterComponent) footer!: FooterComponent;
   selectedComponent = 'welcome';
 
@@ -38,15 +45,28 @@ export class HomePage {
   }
 
   async headerClick(button: string) {
+    try {
+      switch (button) {
+        case 'testqr':
+          this.showDinoComponent(Dinosaur.jsonDinoExample);
+          break;
 
-    if (button === 'testqr')
-      this.showDinoComponent(Dinosaur.jsonDinoExample);
+        case 'scan':
+          if (Capacitor.getPlatform() === 'web') {
+            this.selectedComponent = 'qrwebscanner';
+          } else {
+            const scannedData = await this.scanner.scan();
+            this.showDinoComponent(scannedData);
+          }
+          break;
 
-    if (button === 'scan' && Capacitor.getPlatform() === 'web')
-      this.selectedComponent = 'qrwebscanner';
-
-    if (button === 'scan' && Capacitor.getPlatform() !== 'web')
-        this.showDinoComponent(await this.scanner.scan());
+        default:
+          console.warn(`Botón no manejado: ${button}`);
+          break;
+      }
+    } catch (error) {
+      console.error('Error al manejar el clic en el encabezado:', error);
+    }
   }
 
   webQrScanned(qr: string) {
@@ -58,23 +78,24 @@ export class HomePage {
   }
 
   showDinoComponent(qr: string) {
-
     if (Dinosaur.isValidDinosaurQrCode(qr)) {
       this.auth.qrCodeData.next(qr);
       this.changeComponent('dinosaur');
-      return;
+    } else {
+      this.changeComponent('welcome');
     }
-    
-    this.changeComponent('welcome');
   }
 
   footerClick(button: string) {
-    this.selectedComponent = button;
+    if (button === 'mis-datos') { // Asegúrate de que este botón maneje correctamente
+      this.selectedComponent = 'mis-datos';
+    } else {
+      this.selectedComponent = button;
+    }
   }
 
   changeComponent(name: string) {
     this.selectedComponent = name;
     this.footer.selectedButton = name;
   }
-
 }

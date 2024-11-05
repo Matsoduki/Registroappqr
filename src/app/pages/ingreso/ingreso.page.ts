@@ -9,6 +9,7 @@ import { Router } from '@angular/router';
 import { colorWandOutline } from 'ionicons/icons';
 import { addIcons } from 'ionicons';
 import { AuthService } from 'src/app/services/auth.service';
+import { ToastController } from '@ionic/angular'; // Importar para mostrar mensajes
 
 @Component({
   selector: 'app-ingreso',
@@ -33,10 +34,11 @@ export class IngresoPage implements ViewWillEnter {
   constructor(
     private router: Router,
     private translate: TranslateService,
-    private authService: AuthService
+    private authService: AuthService,
+    private toastController: ToastController // Inyectar ToastController
   ) {
-    this.correo = 'atorres';
-    this.password = '1234';
+    this.correo = '';
+    this.password = '';
     addIcons({ colorWandOutline });
   }
 
@@ -48,8 +50,28 @@ export class IngresoPage implements ViewWillEnter {
     this.router.navigate(['/temas']);
   }
 
-  login() {
-    this.authService.login(this.correo, this.password);
+  async login() {
+    if (this.correo && this.password) {
+      try {
+        const result = await this.authService.login(this.correo, this.password);
+        if (result) {
+          // Redirigir a la página principal o dashboard
+          this.router.navigate(['/home']);
+        } else {
+          this.showToast('Inicio de sesión fallido. Verifica tus credenciales.');
+        }
+      } catch (error) {
+        if (error instanceof TypeError) {
+          this.showToast('Error de tipo. Revisa tu conexión o datos.');
+        } else if (error instanceof RangeError) {
+          this.showToast('Error de rango. Intenta con otros datos.');
+        } else {
+          this.showToast('Error al iniciar sesión. Intenta de nuevo más tarde.');
+        }
+      }
+    } else {
+      this.showToast('Por favor, completa todos los campos.');
+    }
   }
 
   passwordRecovery() {
@@ -57,6 +79,15 @@ export class IngresoPage implements ViewWillEnter {
   }
 
   map() {
-    
+    // Implementa la funcionalidad del mapa aquí
+  }
+
+  private async showToast(message: string) {
+    const toast = await this.toastController.create({
+      message: message,
+      duration: 2000,
+      position: 'top'
+    });
+    toast.present();
   }
 }
