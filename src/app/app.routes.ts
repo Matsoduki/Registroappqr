@@ -18,10 +18,6 @@ export const routes: Routes = [
     loadComponent: () => import('./pages/map/map.page').then( m => m.MapPage),
   },
   {
-    path: 'theme',
-    loadComponent: () => import('./pages/theme/theme.page').then( m => m.ThemePage)
-  },
-  {
     path: 'home',
     loadComponent: () => import('./pages/home/home.page').then( m => m.HomePage),
     canActivate: [homeGuard]
@@ -32,10 +28,15 @@ export const routes: Routes = [
   },
   {
     path: 'correo',
-    loadComponent: () => import('./pages/correo/correo.page').then( m => m.CorreoPage)
+    loadComponent: () => import('./pages/correo/correo.page').then( m => m.CorreoPage),
+    canActivate: [loginGuard]
   },
   {
     path: 'temas',
     loadComponent: () => import('./pages/temas/temas.page').then( m => m.TemasPage)
+  },
+  {
+    path: 'pregunta',
+    loadComponent: () => import('./pages/pregunta/pregunta.page').then( m => m.PreguntaPage)
   }
 ];

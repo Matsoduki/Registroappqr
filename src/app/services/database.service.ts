@@ -32,7 +32,7 @@ export class DatabaseService {
     'Nombre de su mejor amigo',
     'juanito',
     'Alberto', 
-    'Valenzuela Nuñze',
+    'Valenzuela Nuñez',
     NivelEducacional.buscarNivel(5)!,
     new Date(2000, 1, 10),
     'La Pintana',

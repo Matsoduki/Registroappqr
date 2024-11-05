@@ -34,7 +34,8 @@ export class CorreoPage implements AfterViewInit {
     private navCtrl: NavController,
     private toastCtrl: ToastController,
     private animationCtrl: AnimationController,
-    private databaseService: DatabaseService
+    private databaseService: DatabaseService,
+    private router: Router
   ) {}
 
   ngAfterViewInit() {
@@ -43,49 +44,47 @@ export class CorreoPage implements AfterViewInit {
   
   async recuperarPassword() {
     console.log('Correo ingresado:', this.correo); // Debugging
-    
+
     try {
-      // Utiliza DatabaseService para buscar el usuario por correo
-      const usuarioValido = await this.databaseService.findUserByCorreo(this.correo);
-  
-      if (usuarioValido) {
-        console.log('Usuario encontrado:', usuarioValido); // Debugging
-        this.navCtrl.navigateForward('/pregunta', {
-          state: { username: usuarioValido.username }
-        });
-      } else {
-        this.errorMessage = 'Correo electrónico no encontrado.'; // Mensaje de error
-        console.log(this.errorMessage); // Debugging
-  
-        const toast = await this.toastCtrl.create({
-          message: 'Credenciales incorrectas. Por favor, inténtelo de nuevo.',
-          duration: 2000,
-          color: 'danger',
-          buttons: [
-            {
-              text: 'X',
-              role: 'cancel'
-            }
-          ]
-        });
-        toast.present();
-      }
+        // Utiliza DatabaseService para buscar el usuario por correo
+        const usuarioValido = await this.databaseService.findUserByCorreo(this.correo);
+
+        if (usuarioValido) {
+            console.log('Usuario encontrado:', usuarioValido); // Debugging
+            this.navCtrl.navigateForward('/pregunta', {
+                state: { username: usuarioValido.username }
+            });
+        } else {
+            // Manejo de caso cuando el usuario es undefined
+            this.errorMessage = 'Correo electrónico no encontrado.'; // Mensaje de error
+            console.log(this.errorMessage); // Debugging
+
+            // Mostrar un toast para el error
+            await this.mostrarToast('Credenciales incorrectas. Por favor, inténtelo de nuevo.');
+        }
     } catch (error) {
-      console.error('Error al recuperar el usuario:', error);
-      const toast = await this.toastCtrl.create({
-        message: 'Ocurrió un error al buscar el usuario. Por favor, inténtelo de nuevo.',
+        console.error('Error al recuperar el usuario:', error);
+        // Mostrar un toast para el error de búsqueda
+        await this.mostrarToast('Ocurrió un error al buscar el usuario. Por favor, inténtelo de nuevo.');
+    }
+}
+
+// Función auxiliar para mostrar toasts
+private async mostrarToast(mensaje: string) {
+    const toast = await this.toastCtrl.create({
+        message: mensaje,
         duration: 2000,
         color: 'danger',
         buttons: [
-          {
-            text: 'X',
-            role: 'cancel'
-          }
+            {
+                text: 'X',
+                role: 'cancel'
+            }
         ]
-      });
-      toast.present();
-    }
-  }
+    });
+    await toast.present();
+}
+
 
   animIngresarCont() {
     this.animationCtrl
@@ -100,5 +99,9 @@ export class CorreoPage implements AfterViewInit {
       ])
       .easing('ease-in-out')
       .play();
-  }  
+  }
+
+  ingreso() {
+    this.router.navigate(['/ingreso']);
+  }
 }

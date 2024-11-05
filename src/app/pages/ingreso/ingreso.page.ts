@@ -78,8 +78,8 @@ export class IngresoPage implements ViewWillEnter {
     this.router.navigate(['/correo']);
   }
 
-  map() {
-    this.router.navigate(['/map']); // Redirigir a la página del mapa
+  miruta() {
+    this.router.navigate(['/map']);
   }
 
   private async showToast(message: string) {
