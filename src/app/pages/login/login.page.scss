@@ -1,0 +1,37 @@
+.login-container {
+    border: 2px solid gray;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    --background: transparent;
+    -webkit-transform: translateX(-50%) translateY(-70%);
+    -moz-transform: translateX(-50%) translateY(-70%);
+    -ms-transform: translateX(-50%) translateY(-70%);
+    transform: translateX(-50%) translateY(-70%);
+}
+
+@media screen and (orientation: portrait) {
+    .login-container {
+        width: 300px;
+    }
+}
+
+@media screen and (orientation: landscape) {
+    .login-container {
+        width: 480px;
+        padding-top: 20px;
+        padding-bottom: 10px;
+    }
+
+    .float-left-landscape {
+        float: left;
+    }
+
+    .float-right-landscape {
+        float: right;
+    }
+}
+
+.transparent-input {
+    opacity: 90% !important;
+}

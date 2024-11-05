@@ -1,0 +1,26 @@
+<ion-footer>
+  <ion-toolbar color="primary" style="padding-bottom: 4px">
+    <ion-segment 
+      value="welcome" 
+      (ionChange)="sendClickEvent($event)"
+      [(ngModel)]="selectedButton"
+    >
+      <ion-segment-button value="welcome">
+        <ion-icon name="home-outline"></ion-icon>
+        {{ "HomePage.Button.Wellcome" | translate }}
+      </ion-segment-button>
+      
+      <ion-segment-button #dinoButton value="dinosaur">
+        <ion-icon name="paw-outline"></ion-icon>
+        {{ "HomePage.Button.Dinosaur" | translate }}
+      </ion-segment-button>
+      
+      <ion-segment-button value="forum">
+        <ion-icon name="pencil-outline"></ion-icon>
+        {{ "HomePage.Button.Forum" | translate }}
+      </ion-segment-button>
+
+    </ion-segment>
+
+  </ion-toolbar>
+</ion-footer>

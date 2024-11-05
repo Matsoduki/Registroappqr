@@ -1,0 +1,67 @@
+{
+    "AppName": "Sistema de Asistencia DuocUC",
+    "AuthorText": "Rakinon tamiñ:",
+    "Author": "Cristián Gómez Vega",
+    "Language": "Dugün",
+    "Language.English": "English",
+    "Language.Spanish": "Español",
+    "Language.Mapudungun": "Mapudungun",
+    
+    "Start.StartNewExperience": "Eymi müley kiñe küpan trawün",
+
+    "Login.Title.Login": "Wüñolün",
+    "Login.Label.Email": "E-mail",
+    "Login.Placeholder.Email": "Eymi mülen teu e-mail",
+    "Login.Label.Password": "Rakinmapu",
+    "Login.Placeholder.Password": "Eymi mülen teu rakinmapu",
+    "Login.Button.Login": "Wüñolün",
+    "Login.Button.Signin": "Trawünme",
+    "Login.Button.ForgotPassword": "Ñi rakinmapu elañmafi",
+    "Login.Button.DarkMode": "Pewma külen müleyin",
+
+    "WelcomePage.Title.Wellcome": "¡Tüfachi mülenmi Angry-Dinosaurs!",
+
+    "HomePage.Button.Wellcome": "Wüña",
+    "HomePage.Button.Scan": "Wütran",
+    "HomePage.Button.Dinosaur": "Tüfachi Chod",
+    "HomePage.Button.Forum": "Trapu",
+
+    "ThemePage.Label.ColorTheme": "Dugün de kolor:",
+    "ThemePage.Color.Light": "Külfün",
+    "ThemePage.Color.Dark": "Pewma",
+    "ThemePage.Color.Green": "Karü",
+    "ThemePage.Color.Red": "Kelü",
+    "ThemePage.Color.Facebook": "Facebook",
+    "ThemePage.Color.Instagram": "Instagram",
+    "ThemePage.Color.Duoc": "DUOC",
+    
+    "ThemePage.Button.Primary": "Tüfachi Kutral",
+    "ThemePage.Button.Secondary": "Epü Kutral",
+    "ThemePage.Button.Tertiary": "Küla Kutral",
+    "ThemePage.Button.Success": "Kutral Mew",
+    "ThemePage.Button.Warning": "Kutral Kuifi",
+    "ThemePage.Button.Danger": "Kutral Püñeñ",
+    "ThemePage.Button.Light": "Kutral Külfün",
+    "ThemePage.Button.Dark": "Kutral Pewma",
+    "ThemePage.Button.Home": "Wüña",
+    "ThemePage.Button.Logout": "Tuway",
+
+    "ThemePage.Card.Title": "Tüfachi Rakin Tarjeta",
+    "ThemePage.Card.Subtitle": "Epü Rakin Tarjeta",
+    "ThemePage.Card.Content": "Tüfachi mülen rakin tarjetan. Eymü tayüwme kolores tami tarjeta ka mülen rakin.",
+    
+    "ThemePage.List.Title": "Listan",
+    "ThemePage.List.Item1": "Kiñe Wigkaz Ñi Listan",
+    "ThemePage.List.Item2": "Epü Wigkaz Ñi Listan",
+    "ThemePage.List.Item3": "Küla Wigkaz Ñi Listan",
+    
+    "ThemePage.Calendar.Title": "Küdaw Tüfachi",
+    
+    "ThemePage.Form.Title": "Trawün ka Eymi Ingresun",
+    "ThemePage.Form.NameLabel": "Wüñam",
+    "ThemePage.Form.NamePlaceholder": "Eymi mülen teu wüñam",
+    "ThemePage.Form.DescriptionLabel": "Püllün",
+    "ThemePage.Form.DescriptionPlaceholder": "Eymi mülen ta püllün...",
+    "ThemePage.Form.ToggleLabel": "Külfünon notificaciones",
+    "ThemePage.Form.CheckboxLabel": "Amun nien küme alka müleyfi"
+}

@@ -1,0 +1,25 @@
+<ion-header>
+  <ion-toolbar color="primary">
+
+    <ion-title>
+      <h3 class="glow-text margin-top-6"> {{ 'AppName' | translate }} </h3>
+    </ion-title>
+
+    <div slot="end">
+
+      <ion-button (click)="sendClickEvent('testqr')" size="small" >
+        <ion-icon name="qr-code-outline" color="light"></ion-icon>
+        &nbsp;Test
+      </ion-button>
+
+      <ion-button (click)="sendClickEvent('scan')" size="small" fill="clear">
+        <ion-icon name="qr-code-outline" color="light"></ion-icon>
+      </ion-button>
+
+      <ion-button (click)="logout()" size="small" fill="clear">
+        <ion-icon name="log-out-outline" color="light"></ion-icon>
+      </ion-button>
+
+    </div>
+  </ion-toolbar>
+</ion-header>

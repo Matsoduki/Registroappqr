@@ -1,0 +1,12 @@
+{
+    "configurations": [
+        {
+        "type": "android-webview",
+        "request": "attach",
+        "name": "Attach to Android WebView",
+        "application": "io.aionic.starter",
+        "webRoot": "${workspaceFolder}"
+        }
+    ]
+}
+

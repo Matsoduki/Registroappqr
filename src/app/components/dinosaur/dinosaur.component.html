@@ -1,0 +1,46 @@
+<ion-content>
+
+  <div class="background-image" *ngIf="dino"></div>
+
+  <ion-grid fixed *ngIf="dino" class="dino-content">
+    <ion-row>
+      <ion-col size="5">Name</ion-col>
+      <ion-col size="7">{{ dino.name }}</ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col size="5">Length</ion-col>
+      <ion-col size="7">{{ dino.length }}</ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col size="5">Height</ion-col>
+      <ion-col size="7">{{ dino.height }}</ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col size="5">Weight</ion-col>
+      <ion-col size="7">{{ dino.weight }}</ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col size="5">Diet</ion-col>
+      <ion-col size="7">{{ dino.diet }}</ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col size="5">Period</ion-col>
+      <ion-col size="7">{{ dino.period }}</ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col size="5">Extinction</ion-col>
+      <ion-col size="7">{{ dino.extinction }}</ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col size="5">Found</ion-col>
+      <ion-col size="7">{{ dino.found }}</ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <div *ngIf="!dino" class="center-frame">
+    <div class="picture-frame ion-text-center">
+      <img class="you-must-scan" src="/assets/images/you-must-scan.png">
+    </div>
+  </div>
+
+</ion-content>

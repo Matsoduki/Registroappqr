@@ -1,0 +1,87 @@
+<ion-header>
+  <ion-toolbar>
+    <img src="../../assets/img/logoHeader.png" class="logoHeader">
+    <ion-title #titulo>
+      Sistema de Asistencia DUOC
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="ion-padding-horizontal ion-text-center">
+  <ion-card *ngIf="asistencia">
+    <ion-card-header>
+      <ion-card-title>Detalles de Asistencia</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <table class="minimal-table">
+        <tbody>
+          <tr>
+            <th>Bloque Inicio</th>
+            <td>{{ asistencia.bloqueInicio }}</td>
+          </tr>
+          <tr>
+            <th>Bloque Término</th>
+            <td>{{ asistencia.bloqueTermino }}</td>
+          </tr>
+          <tr>
+            <th>Día</th>
+            <td>{{ asistencia.dia }}</td>
+          </tr>
+          <tr>
+            <th>Hora Inicio</th>
+            <td>{{ asistencia.horaInicio }}</td>
+          </tr>
+          <tr>
+            <th>Hora Fin</th>
+            <td>{{ asistencia.horaFin }}</td>
+          </tr>
+          <tr>
+            <th>ID Asignatura</th>
+            <td>{{ asistencia.idAsignatura }}</td>
+          </tr>
+          <tr>
+            <th>Nombre Asignatura</th>
+            <td>{{ asistencia.nombreAsignatura }}</td>
+          </tr>
+          <tr>
+            <th>Nombre Profesor</th>
+            <td>{{ asistencia.nombreProfesor }}</td>
+          </tr>
+          <tr>
+            <th>Sección</th>
+            <td>{{ asistencia.seccion }}</td>
+          </tr>
+          <tr>
+            <th>Sede</th>
+            <td>{{ asistencia.sede }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </ion-card-content>
+  </ion-card>
+
+  <div *ngIf="!asistencia">
+    <h1 *ngIf="!asistencia" class="body-text ion-padding-top">No se encontraron datos de asistencia.</h1>
+  </div>
+
+  <ion-button #recuperar (click)="cerrarSesion()" fill="clear" class="link1 cerrar-sesion">
+    Cerrar Sesión
+  </ion-button>
+</ion-content>
+
+<ion-footer>
+  <ion-tab-bar>
+    <ion-tab-button routerLink="/inicio" tab="inicio">
+      <ion-icon name="home-outline" style="color: white;"></ion-icon>
+      <ion-label style="color: white;">Inicio</ion-label>
+    </ion-tab-button>
+    <ion-tab-button routerLink="/mi-clase" tab="mi-clase">
+      <ion-icon name="school-outline" style="color: white;"></ion-icon>
+      <ion-label style="color: white;">Mi Clase</ion-label>
+    </ion-tab-button>
+    <ion-tab-button (click)="irAMisDatos()" tab="mis-datos">
+      <ion-icon name="person-outline" style="color: white;"></ion-icon>
+      <ion-label style="color: white;">Mis Datos</ion-label>
+    </ion-tab-button>
+  </ion-tab-bar>
+</ion-footer>

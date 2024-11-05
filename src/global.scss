@@ -34,4 +34,250 @@
 
 /* @import "@ionic/angular/css/palettes/dark.always.css"; */
 /* @import "@ionic/angular/css/palettes/dark.class.css"; */
-@import "@ionic/angular/css/palettes/dark.system.css";
+@import '@ionic/angular/css/palettes/dark.system.css';
+
+
+
+// CGV-INI: CSS
+// Estilos CSS globales para centrar controles gráficos en la pantalla.
+// Como son globales, se pueden usar en cualquier página
+
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap');
+@import url('https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.css');
+
+
+* {
+  font-family: 'Lato', sans-serif; // Fuente de letra por defecto
+}
+
+h1 {
+  font-size: 2.6875rem !important; /* Tamaño del título principal */
+  font-weight: 500 !important;    /* Peso Bold */
+}
+
+h2 {
+  font-size: 2.1rem !important;    /* Tamaño de los subtítulos y textos grandes */
+  font-weight: 500 !important;    /* Peso Bold */
+}
+
+h3 {
+  font-size: 1.5rem !important;    /* Tamaño de los títulos de párrafos interiores */
+  font-weight: 500 !important;    /* Peso Bold */
+}
+
+h4 {
+  font-size: 1.25rem !important;   /* Tamaño del texto de bajada */
+  font-weight: normal !important;  /* Peso Regular */
+}
+
+h5 {
+  font-size: 1rem !important;      /* Tamaño del título de quinto nivel */
+  font-weight: normal !important;  /* Peso Regular */
+}
+
+p {
+  font-size: 1rem !important;      /* Tamaño del cuerpo del texto */
+  font-weight: normal !important;  /* Peso Regular */
+}
+
+small {
+  font-size: 0.8125rem !important; /* Tamaño del texto pequeño de apoyo */
+  font-weight: normal !important;  /* Peso Regular */
+}
+
+ion-title {
+  font-size: 1.5rem !important;    /* Tamaño de los títulos de párrafos interiores */
+  font-weight: 500 !important;    /* Peso Bold */
+}
+
+.transparent-bg {
+  --background: transparent; /* Hace el fondo de un elemento transparente */
+}
+
+.border-white {
+  border: 1px solid white; /* Borde de 1px de color azul */
+}
+
+.color-white {
+  color: white; /* Color del texto blanco para letras en modo oscuro */
+}
+
+.color-black {
+  color: black; /* Color del texto negro para letras en modo claro */
+}
+
+.padding-2 {
+  padding: 2px; /* Espaciado de 2px */
+}
+
+.padding-4 {
+  padding: 4px; /* Espaciado de 4px */
+}
+
+.padding-6 {
+  padding: 6px; /* Espaciado de 6px */
+}
+
+.margin-top-2 {
+  margin-top: 2px !important; /* Margen superior de 2px */
+}
+
+.margin-top-4 {
+  margin-top: 4px !important; /* Margen superior de 4px */
+}
+
+.margin-top-6 {
+  margin-top: 6px !important; /* Margen superior de 6px */
+}
+
+.margin-bottom-2 {
+  margin-bottom: 2px !important; /* Margen inferior de 2px */
+}
+
+.margin-bottom-4 {
+  margin-bottom: 4px !important; /* Margen inferior de 4px */
+}
+
+.margin-bottom-6 {
+  margin-bottom: 6px !important; /* Margen inferior de 6px */
+}
+
+.centrar {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 100%;
+}
+
+.enmarcar {
+	max-width: 600px;
+	width: 100%;
+	margin: auto;
+	border-radius: 10px;
+	padding: 20px;
+	border: 1px solid gray;
+}
+
+.button1 {
+  --background: #F1B634;
+  font-weight: bold;
+}
+
+.link1 {
+	text-decoration: underline;
+	font-weight: bold;
+}
+
+.link-box {
+	background-color: rgba(26, 26, 26, 0.5);
+	padding: 5px;
+	border-radius: 5px;
+}
+
+.logoHeader {
+	--border-radius: 0px;
+	height: 40px;
+	width: auto;
+	position: absolute;
+	z-index: 1;
+	top: 10%;
+}
+
+.body-text {
+	color: #1A1A1A;
+}
+
+@media screen and (orientation: portrait) {
+  .show-in-portrait {
+    display: block;
+  }
+
+  .hide-in-portrait {
+    display: none;
+  }
+
+  .show-in-landscape {
+    display: none;
+  }
+
+  .hide-in-landscape {
+    display: block;
+  }
+}
+
+/* Estilo para orientación horizontal */
+@media screen and (orientation: landscape) {
+  .show-in-portrait {
+    display: none;
+  }
+
+  .hide-in-portrait {
+    display: block;
+  }
+
+  .show-in-landscape {
+    display: block;
+  }
+
+  .hide-in-landscape {
+    display: none;
+  }
+}
+
+/* Clase .centrar:
+   Esta clase está diseñada para centrar un contenido tanto horizontal como verticalmente
+   utilizando la técnica de Flexbox. Se puede aplicar a cualquier contenedor o elemento para
+   asegurar que sus hijos se centren en el eje principal y el eje cruzado. Además, asegura
+   que el contenedor ocupe el 100% de la altura disponible.
+*/
+
+.center-frame {
+  display: flex;                 /* Define un contenedor Flexbox */
+  justify-content: center;       /* Centra el contenido horizontalmente dentro del contenedor */
+  align-items: center;           /* Centra el contenido verticalmente dentro del contenedor */
+  height: 100%;                  /* Hace que el contenedor ocupe el 100% de la altura del elemento padre */
+  padding: 20px;                 /* Agrega un espacio de 20px alrededor del contenido */
+  //border: 5px solid red !important; // Comentado: Estilo de borde para depuración visual
+}
+
+/* Clases .picture-frame:
+ Estas clases están pensada para proporcionar un marco (borde) alrededor de un contenido
+ con un ancho máximo. Asegura que el contenido esté centrado horizontalmente, con bordes
+ redondeados, relleno interno (padding) y un borde gris claro.
+*/
+
+.picture-frame {
+  max-width: 600px;              /* Define el ancho máximo del elemento en 600px */
+  width: 100%;                   /* Asegura que el elemento ocupe el 100% del ancho disponible */
+  margin: auto;                  /* Centra el elemento horizontalmente dentro de su contenedor padre */
+  border-radius: 10px;           /* Aplica un radio de 10px a las esquinas del borde, redondeándolas */
+  padding: 20px;                 /* Agrega un espacio de 20px dentro del elemento, entre el contenido y el borde */
+  border: 1px solid gray;      /* Aplica un borde de 1px de grosor con color gris alrededor del elemento */
+  //border: 5px solid blue !important; // Comentado: Estilo de borde para depuración visual
+}
+
+.picture-frame-800px {
+  max-width: 800px;              /* Define el ancho máximo del elemento en 600px */
+  width: 100%;                   /* Asegura que el elemento ocupe el 100% del ancho disponible */
+  margin: auto;                  /* Centra el elemento horizontalmente dentro de su contenedor padre */
+  border-radius: 10px;           /* Aplica un radio de 10px a las esquinas del borde, redondeándolas */
+  padding: 20px;                 /* Agrega un espacio de 20px dentro del elemento, entre el contenido y el borde */
+  border: 1px solid gray;      /* Aplica un borde de 1px de grosor con color gris alrededor del elemento */
+  //border: 5px solid blue !important; // Comentado: Estilo de borde para depuración visual
+}
+
+.picture-frame-1000px {
+  max-width: 1000px;              /* Define el ancho máximo del elemento en 600px */
+  width: 100%;                   /* Asegura que el elemento ocupe el 100% del ancho disponible */
+  margin: auto;                  /* Centra el elemento horizontalmente dentro de su contenedor padre */
+  border-radius: 10px;           /* Aplica un radio de 10px a las esquinas del borde, redondeándolas */
+  padding: 20px;                 /* Agrega un espacio de 20px dentro del elemento, entre el contenido y el borde */
+  border: 1px solid gray;      /* Aplica un borde de 1px de grosor con color gris alrededor del elemento */
+  //border: 5px solid blue !important; // Comentado: Estilo de borde para depuración visual
+}
+
+.alert-title {
+  font-size: 1.5rem !important; /* Ajusta el tamaño del texto */
+}
+
+// CGV-FIN: CSS

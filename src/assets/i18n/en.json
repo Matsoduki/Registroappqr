@@ -1,0 +1,67 @@
+{
+    "AppName": "Sistema de Asistencia DuocUC",
+    "AuthorText": "Developed by:",
+    "Author": "Cristián Gómez Vega",
+    "Language": "Language",
+    "Language.English": "English",
+    "Language.Spanish": "Español",
+    "Language.Mapudungun": "Mapudungun",
+    
+    "Start.StartNewExperience": "Start a new experience",
+
+    "Login.Title.Login": "Login",
+    "Login.Label.Email": "Email",
+    "Login.Placeholder.Email": "Enter your email here",
+    "Login.Label.Password": "Password",
+    "Login.Placeholder.Password": "Enter your password here",
+    "Login.Button.Login": "Login",
+    "Login.Button.Signin": "Sign Up",
+    "Login.Button.ForgotPassword": "Forgot my password",
+    "Login.Button.DarkMode": "Dark Mode",
+
+    "WelcomePage.Title.Wellcome": "Welcome to Angry-Dinosaurs!",
+
+    "HomePage.Button.Wellcome": "Home",
+    "HomePage.Button.Scan": "Scan",
+    "HomePage.Button.Dinosaur": "Dinosaur",
+    "HomePage.Button.Forum": "Forum",
+
+    "ThemePage.Label.ColorTheme": "Color Theme:",
+    "ThemePage.Color.Light": "Light",
+    "ThemePage.Color.Dark": "Dark",
+    "ThemePage.Color.Green": "Green",
+    "ThemePage.Color.Red": "Red",
+    "ThemePage.Color.Facebook": "Facebook",
+    "ThemePage.Color.Instagram": "Instagram",
+    "ThemePage.Color.Duoc": "Duoc",
+    
+    "ThemePage.Button.Primary": "Primary Button",
+    "ThemePage.Button.Secondary": "Secondary Button",
+    "ThemePage.Button.Tertiary": "Tertiary Button",
+    "ThemePage.Button.Success": "Success Button",
+    "ThemePage.Button.Warning": "Warning Button",
+    "ThemePage.Button.Danger": "Danger Button",
+    "ThemePage.Button.Light": "Light Button",
+    "ThemePage.Button.Dark": "Dark Button",
+    "ThemePage.Button.Home": "Home",
+    "ThemePage.Button.Logout": "Logout",
+    
+    "ThemePage.Card.Title": "Card Title",
+    "ThemePage.Card.Subtitle": "Card Subtitle",
+    "ThemePage.Card.Content": "This is the content of the card. You can customize the colors of the card and its content.",
+    
+    "ThemePage.List.Title": "Lists",
+    "ThemePage.List.Item1": "List Item 1",
+    "ThemePage.List.Item2": "List Item 2",
+    "ThemePage.List.Item3": "List Item 3",
+    
+    "ThemePage.Calendar.Title": "Calendars",
+    
+    "ThemePage.Form.Title": "Data Entry",
+    "ThemePage.Form.NameLabel": "Name",
+    "ThemePage.Form.NamePlaceholder": "Enter your name",
+    "ThemePage.Form.DescriptionLabel": "Description",
+    "ThemePage.Form.DescriptionPlaceholder": "Write a description here...",
+    "ThemePage.Form.ToggleLabel": "Enable notifications",
+    "ThemePage.Form.CheckboxLabel": "I accept the terms"
+}

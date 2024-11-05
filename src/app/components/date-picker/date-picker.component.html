@@ -1,0 +1,19 @@
+<ion-input 
+    type="text"
+    [label]="label"
+    [labelPlacement]="labelPlacement"
+    placeholder="dd/mmM/yyyy"
+    [(ngModel)]="selectedDateText"
+    (ionChange)="onDateTextChange()"
+    (click)="toggleCalendar()">
+</ion-input>
+
+<ion-datetime
+    class="floating-div"
+    *ngIf="showCalendar"
+    [(ngModel)]="selectedDateISO"
+    (ionChange)="onDateChange($event)"
+    display-format="DD/MM/YYYY"
+    presentation="date"
+    locale="es">
+</ion-datetime>

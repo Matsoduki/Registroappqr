@@ -1,6 +1,13 @@
 <!DOCTYPE html>
-<html lang="en">
+<!-- 
+  CGV-INI-Página-En-Español
+    Se reemplazará: <html lang="en">, por: <html lang="en">
+    para que la página no solicite traducción al momento de
+    abrirla en el navegador de Internet.
+  CGV-FIN-Página-En-Español
+-->
 
+<html lang="es">
 <head>
   <meta charset="utf-8" />
   <title>Ionic App</title>
@@ -15,11 +22,24 @@
   <link rel="icon" type="image/png" href="assets/icon/favicon.png" />
 
   <!-- add to homescreen for ios -->
-  <meta name="apple-mobile-web-app-capable" content="yes" />
+  
+
+<!-- 
+  CGV-INI-Actualización-Etiqueta-META
+    Debido a que está obsoleta, se reemplazará:
+      <meta name="apple-mobile-web-app-capable" content="yes" />
+    por:
+      <meta name="mobile-web-app-capable" content="yes">
+  CGV-FIN-Página-En-Español
+-->
+  <meta name="mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
 </head>
 
-<body>
+<body class="mat-typography">
   <app-root></app-root>
 </body>
 
