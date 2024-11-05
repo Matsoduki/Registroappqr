@@ -79,7 +79,7 @@ export class IngresoPage implements ViewWillEnter {
   }
 
   map() {
-    // Implementa la funcionalidad del mapa aquí
+    this.router.navigate(['/map']); // Redirigir a la página del mapa
   }
 
   private async showToast(message: string) {
