@@ -241,18 +241,18 @@ export class DatabaseService {
       const rows = (await this.db.query(q, [username])).values;
       return rows? this.rowToUser(rows[0]) : undefined;
     } catch (error) {
-      showAlertError('DataBaseService.findUserByEmail', error);
+      showAlertError('DataBaseService.findUserByUsername', error);
       return undefined;
     }
   }
 
-  async findUserByEmail(email: string): Promise<Usuario | undefined> {
+  async findUserByCorreo(correo: string): Promise<Usuario | undefined> {
     try {
-      const q = 'SELECT * FROM USUARIO WHERE email=?;';
-      const rows = (await this.db.query(q, [email])).values;
+      const q = 'SELECT * FROM USUARIO WHERE correo=?;';
+      const rows = (await this.db.query(q, [correo])).values;
       return rows? this.rowToUser(rows[0]) : undefined;
     } catch (error) {
-      showAlertError('DataBaseService.findUserByEmail', error);
+      showAlertError('DataBaseService.findUserByCorreo', error);
       return undefined;
     }
   }
