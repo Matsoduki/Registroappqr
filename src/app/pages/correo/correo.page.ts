@@ -8,7 +8,8 @@ import { Router } from '@angular/router';
 import { NavController } from '@ionic/angular';
 import { ToastController } from '@ionic/angular';
 import { AnimationController } from '@ionic/angular';
-import { User } from 'src/app/model/user';
+import { Usuario } from 'src/app/model/usuario';
+import { DatabaseService } from 'src/app/services/database.service';
 
 @Component({
   selector: 'app-correo',
@@ -24,7 +25,7 @@ import { User } from 'src/app/model/user';
   ]
 })
 export class CorreoPage implements AfterViewInit {
-  email: string = '';
+  correo: string = '';
   errorMessage: string | null = null;
 
   @ViewChild('ingresar', { read: ElementRef }) itemIngresar!: ElementRef;
@@ -32,28 +33,47 @@ export class CorreoPage implements AfterViewInit {
   constructor(
     private navCtrl: NavController,
     private toastCtrl: ToastController,
-    private animationCtrl: AnimationController
+    private animationCtrl: AnimationController,
+    private databaseService: DatabaseService
   ) {}
 
   ngAfterViewInit() {
     this.animIngresarCont();
   }
-
-  recuperarContrasena() {
-    console.log('Correo ingresado:', this.email); // Debugging
-    const usuarios = User.getListaUsuarios(); // Obtiene la lista de usuarios
-    const usuarioValido = usuarios.find(usuario => usuario.email === this.email); // Busca el usuario por email
   
-    if (usuarioValido) {
-      console.log('Usuario encontrado:', usuarioValido); // Debugging
-      this.navCtrl.navigateForward('/pregunta', {
-        state: { username: usuarioValido.username }
-      });
-    } else {
-      this.errorMessage = 'Correo electronico no encontrado.'; // Mensaje de error
-      console.log(this.errorMessage); // Debugging
-      this.toastCtrl.create({
-        message: 'Credenciales incorrectas. Por favor, inténtelo de nuevo.',
+  async recuperarPassword() {
+    console.log('Correo ingresado:', this.correo); // Debugging
+    
+    try {
+      // Utiliza DatabaseService para buscar el usuario por correo
+      const usuarioValido = await this.databaseService.findUserByCorreo(this.correo);
+  
+      if (usuarioValido) {
+        console.log('Usuario encontrado:', usuarioValido); // Debugging
+        this.navCtrl.navigateForward('/pregunta', {
+          state: { username: usuarioValido.username }
+        });
+      } else {
+        this.errorMessage = 'Correo electrónico no encontrado.'; // Mensaje de error
+        console.log(this.errorMessage); // Debugging
+  
+        const toast = await this.toastCtrl.create({
+          message: 'Credenciales incorrectas. Por favor, inténtelo de nuevo.',
+          duration: 2000,
+          color: 'danger',
+          buttons: [
+            {
+              text: 'X',
+              role: 'cancel'
+            }
+          ]
+        });
+        toast.present();
+      }
+    } catch (error) {
+      console.error('Error al recuperar el usuario:', error);
+      const toast = await this.toastCtrl.create({
+        message: 'Ocurrió un error al buscar el usuario. Por favor, inténtelo de nuevo.',
         duration: 2000,
         color: 'danger',
         buttons: [
@@ -62,7 +82,8 @@ export class CorreoPage implements AfterViewInit {
             role: 'cancel'
           }
         ]
-      }).then(toast => toast.present());
+      });
+      toast.present();
     }
   }
 

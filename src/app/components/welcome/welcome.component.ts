@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { TranslateModule } from '@ngx-translate/core';
-import { User } from 'src/app/model/user';
+import { Usuario } from 'src/app/model/usuario';
 import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
@@ -12,7 +12,7 @@ import { AuthService } from 'src/app/services/auth.service';
 })
 export class WelcomeComponent implements OnInit {
 
-  user: User = new User();
+  user: Usuario = new Usuario();
 
   constructor(private auth: AuthService) { 
     this.auth.authUser.subscribe((user) => {

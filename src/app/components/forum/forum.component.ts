@@ -13,7 +13,7 @@ import { Post } from 'src/app/model/post';
 import { showToast } from 'src/app/tools/message-functions';
 import { addIcons } from 'ionicons';
 import { Subscription } from 'rxjs';
-import { User } from 'src/app/model/user';
+import { Usuario } from 'src/app/model/usuario';
 
 @Component({
   selector: 'app-forum',
@@ -33,7 +33,7 @@ export class ForumComponent implements OnInit, OnDestroy {
   posts: Post[] = [];
   selectedPostText = '';
   intervalId: any = null;
-  user = new User();
+  user = new Usuario();
   private postsSubscription!: Subscription;
   private userSubscription!: Subscription;
 
@@ -46,7 +46,7 @@ export class ForumComponent implements OnInit, OnDestroy {
       this.posts = posts;
     });
     this.userSubscription = this.auth.authUser.subscribe((user) => {
-      this.user = user? user : new User();
+      this.user = user? user : new Usuario();
     });
     this.api.refreshPostList(); // Actualiza lista de posts al iniciar
   }
@@ -78,7 +78,7 @@ export class ForumComponent implements OnInit, OnDestroy {
   }
 
   private async createPost() {
-    this.post.author = this.user.firstName + ' ' + this.user.lastName;
+    this.post.author = this.user.nombre + ' ' + this.user.apellido;
     const createdPost = await this.api.createPost(this.post);
     if (createdPost) {
       showToast(`Publicación creada correctamente: ${createdPost.title}`);
@@ -87,7 +87,7 @@ export class ForumComponent implements OnInit, OnDestroy {
   }
 
   private async updatePost() {
-    this.post.author = this.user.firstName + ' ' + this.user.lastName;
+    this.post.author = this.user.nombre + ' ' + this.user.apellido;
     const updatedPost = await this.api.updatePost(this.post);
     if (updatedPost) {
       showToast(`Publicación actualizada correctamente: ${updatedPost.title}`);

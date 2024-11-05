@@ -35,39 +35,7 @@ export const routes: Routes = [
     loadComponent: () => import('./pages/correo/correo.page').then( m => m.CorreoPage)
   },
   {
-    path: 'pregunta',
-    loadComponent: () => import('./pages/pregunta/pregunta.page').then( m => m.PreguntaPage)
-  },
-  {
-    path: 'correcto',
-    loadComponent: () => import('./pages/correcto/correcto.page').then( m => m.CorrectoPage)
-  },
-  {
-    path: 'incorrecto',
-    loadComponent: () => import('./pages/incorrecto/incorrecto.page').then( m => m.IncorrectoPage)
-  },
-  {
     path: 'temas',
     loadComponent: () => import('./pages/temas/temas.page').then( m => m.TemasPage)
-  },
-  {
-    path: 'inicio',
-    loadComponent: () => import('./pages/inicio/inicio.page').then( m => m.InicioPage)
-  },
-  {
-    path: 'codigoqr',
-    loadComponent: () => import('./pages/codigoqr/codigoqr.page').then( m => m.CodigoqrPage)
-  },
-  {
-    path: 'miclase',
-    loadComponent: () => import('./pages/miclase/miclase.page').then( m => m.MiclasePage)
-  },
-  {
-    path: 'misdatos',
-    loadComponent: () => import('./pages/misdatos/misdatos.page').then( m => m.MisdatosPage)
-  },
-  {
-    path: 'foro',
-    loadComponent: () => import('./pages/foro/foro.page').then( m => m.ForoPage)
-  },
+  }
 ];

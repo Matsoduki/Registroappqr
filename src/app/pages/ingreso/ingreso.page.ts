@@ -45,7 +45,7 @@ export class IngresoPage implements ViewWillEnter {
   }
 
   navigateTheme() {
-    this.router.navigate(['/theme']);
+    this.router.navigate(['/temas']);
   }
 
   login() {
@@ -53,7 +53,7 @@ export class IngresoPage implements ViewWillEnter {
   }
 
   passwordRecovery() {
-
+    this.router.navigate(['/correo']);
   }
 
   map() {
