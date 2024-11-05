@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { BehaviorSubject } from 'rxjs';
 import { showAlertError, showToast } from 'src/app/tools/message-functions';
-import { User } from '../model/user';
+import { Usuario } from '../model/usuario';
 import { Storage } from '@ionic/storage-angular';
 import { DatabaseService } from './database.service';
 
@@ -12,7 +12,7 @@ import { DatabaseService } from './database.service';
 export class AuthService {
 
   storageAuthUserKey = 'AUTHENTICATED_USER';
-  authUser = new BehaviorSubject<User | null>(null);
+  authUser = new BehaviorSubject<Usuario | null>(null);
   isFirstLogin = new BehaviorSubject<boolean>(false);
   storageQrCodeKey = 'QR_CODE';
   qrCodeData = new BehaviorSubject<string | null>(null);
@@ -36,9 +36,9 @@ export class AuthService {
     }
   }
 
-  async readAuthUser(): Promise<User | null> {
+  async readAuthUser(): Promise<Usuario | null> {
     try {
-      const user = (await this.storage.get(this.storageAuthUserKey)) as User | null;
+      const user = (await this.storage.get(this.storageAuthUserKey)) as Usuario | null;
       this.authUser.next(user ?? null);
       return user;
     } catch (error) {
@@ -47,7 +47,7 @@ export class AuthService {
     }
   }
 
-  async saveAuthUser(user: User): Promise<User | null> {
+  async saveAuthUser(user: Usuario): Promise<Usuario | null> {
     try {
       await this.storage.set(this.storageAuthUserKey, user);
       this.authUser.next(user);
@@ -69,7 +69,7 @@ export class AuthService {
     }
   }
 
-  async login(userName: string, password: string): Promise<boolean> {
+  async login(username: string, password: string): Promise<boolean> {
     try {
       const authUser = await this.storage.get(this.storageAuthUserKey);
 
@@ -79,17 +79,17 @@ export class AuthService {
         await this.router.navigate(['/home']);
         return true;
       } else {
-        const user = await this.db.findUser(userName, password);
+        const user = await this.db.findUser(username, password);
 
         if (user) {
-          showToast(`¡Bienvenid@ ${user.firstName} ${user.lastName}!`);
+          showToast(`¡Bienvenid@ ${user.nombre} ${user.apellido}!`);
           await this.saveAuthUser(user);
           this.isFirstLogin.next(true);
           await this.router.navigate(['/home']);
           return true;
         } else {
           showToast('El correo o la password son incorrectos');
-          await this.router.navigate(['/login']);
+          await this.router.navigate(['/ingreso']);
           return false;
         }
       }
@@ -104,11 +104,11 @@ export class AuthService {
       const user = await this.readAuthUser();
 
       if (user) {
-        showToast(`¡Hasta pronto ${user.firstName} ${user.lastName}!`);
+        showToast(`¡Hasta pronto ${user.nombre} ${user.apellido}!`);
         await this.deleteAuthUser();
       }
 
-      await this.router.navigate(['/login']);
+      await this.router.navigate(['/ingreso']);
       return true;
     } catch (error) {
       showAlertError('AuthService.logout', error);

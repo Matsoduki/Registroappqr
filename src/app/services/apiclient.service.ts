@@ -5,7 +5,7 @@ import { retry } from 'rxjs/operators';
 import { Post } from '../model/post';
 import { showAlertError } from '../tools/message-functions';
 import { AuthService } from './auth.service';
-import { User } from '../model/user';
+import { Usuario } from '../model/usuario';
 
 @Injectable({
   providedIn: 'root'
