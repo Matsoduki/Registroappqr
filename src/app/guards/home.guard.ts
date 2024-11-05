@@ -10,7 +10,7 @@ export const homeGuard: CanActivateFn = async (route, state) => {
   if (await authService.isAuthenticated()) {
     return true;
   } else {
-    router.navigate(['/login']);
+    router.navigate(['/ingreso']);
     return false;    
   }
 }

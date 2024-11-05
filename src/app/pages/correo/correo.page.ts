@@ -41,31 +41,34 @@ export class CorreoPage implements AfterViewInit {
   ngAfterViewInit() {
     this.animIngresarCont();
   }
-  
   async recuperarPassword() {
+    // Validación para verificar si el campo de correo está vacío
+    if (!this.correo) {
+        await this.mostrarToast('Por favor, ingresa tu correo electrónico.');
+        return; // Sale del método si el campo está vacío
+    }
+
     console.log('Correo ingresado:', this.correo); // Debugging
 
     try {
         // Utiliza DatabaseService para buscar el usuario por correo
         const usuarioValido = await this.databaseService.findUserByCorreo(this.correo);
 
-        if (usuarioValido) {
+        // Verifica si el usuario encontrado tiene datos válidos
+        if (usuarioValido && usuarioValido.username) {
             console.log('Usuario encontrado:', usuarioValido); // Debugging
             this.navCtrl.navigateForward('/pregunta', {
                 state: { username: usuarioValido.username }
             });
         } else {
-            // Manejo de caso cuando el usuario es undefined
-            this.errorMessage = 'Correo electrónico no encontrado.'; // Mensaje de error
-            console.log(this.errorMessage); // Debugging
-
-            // Mostrar un toast para el error
-            await this.mostrarToast('Credenciales incorrectas. Por favor, inténtelo de nuevo.');
+            // Redirige a la página incorrecto si no se encuentra el usuario o si los datos son inválidos
+            console.log('Correo electrónico no encontrado o usuario inválido.'); // Debugging
+            this.router.navigate(['/incorrecto']);
         }
     } catch (error) {
         console.error('Error al recuperar el usuario:', error);
-        // Mostrar un toast para el error de búsqueda
-        await this.mostrarToast('Ocurrió un error al buscar el usuario. Por favor, inténtelo de nuevo.');
+        // Manejo de error: redirigir a la página incorrecto
+        this.router.navigate(['/incorrecto']);
     }
 }
 
