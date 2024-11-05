@@ -11,17 +11,13 @@ export class Usuario extends Persona {
   password = '';
   fraseSecreta = '';
   respuestaSecreta = '';
-  db: DatabaseService | null = null;
+  // db = inject(DatabaseService);
   foto = '';
 
   constructor() {
     super();
   }
 
-  setDatabaseService(db: DatabaseService) {
-    this.db = db;
-  }
-  
   static getNewUsuario(
     username: string,
     correo: string,
@@ -50,25 +46,25 @@ export class Usuario extends Persona {
     return usuario;
   }
 
-  async findUser(username: string, password: string): Promise<Usuario | undefined> {
-    return await this.db.findUser(username, password);
-  }
+  // async findUser(username: string, password: string): Promise<Usuario | undefined> {
+  //   return await this.db.findUser(username, password);
+  // }
 
-  async findByUsername(username: string): Promise<Usuario | undefined>  {
-    return await this.db.findUserByUsername(username);
-  }
+  // async findByUsername(username: string): Promise<Usuario | undefined>  {
+  //   return await this.db.findUserByUsername(username);
+  // }
 
-  async findUserByCorreo(correo: string): Promise<Usuario | undefined>  {
-    return await this.db.findUserByCorreo(correo);
-  }
+  // async findUserByCorreo(correo: string): Promise<Usuario | undefined>  {
+  //   return await this.db.findUserByCorreo(correo);
+  // }
 
-  async save(): Promise<void> {
-    this.db.saveUser(this);
-  }
+  // async save(): Promise<void> {
+  //   this.db.saveUser(this);
+  // }
 
-  async delete(username: string): Promise<void>  {
-    this.db.deleteByUsername(username);
-  }
+  // async delete(username: string): Promise<void>  {
+  //   this.db.deleteByUsername(username);
+  // }
 
   override toString(): string {
     return `\n
