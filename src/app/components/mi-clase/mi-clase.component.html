@@ -1,3 +1,16 @@
-<p>
-  miclase works!
-</p>
+<div *ngIf="asistencia">
+  <h2>Detalles de Asistencia</h2>
+  <p><strong>Sede:</strong> {{ asistencia.sede }}</p>
+  <p><strong>ID Asignatura:</strong> {{ asistencia.idAsignatura }}</p>
+  <p><strong>Sección:</strong> {{ asistencia.seccion }}</p>
+  <p><strong>Nombre Asignatura:</strong> {{ asistencia.nombreAsignatura }}</p>
+  <p><strong>Nombre Profesor:</strong> {{ asistencia.nombreProfesor }}</p>
+  <p><strong>Día:</strong> {{ asistencia.dia }}</p>
+  <p><strong>Bloque Inicio:</strong> {{ asistencia.bloqueInicio }}</p>
+  <p><strong>Bloque Término:</strong> {{ asistencia.bloqueTermino }}</p>
+  <p><strong>Hora Inicio:</strong> {{ asistencia.horaInicio }}</p>
+  <p><strong>Hora Fin:</strong> {{ asistencia.horaFin }}</p>
+</div>
+<div *ngIf="!asistencia">
+  <p>No hay datos de asistencia disponibles.</p>
+</div>

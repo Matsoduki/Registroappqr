@@ -1,5 +1,4 @@
 import { Component, ViewChild } from '@angular/core';
-import { DinosaurComponent } from 'src/app/components/dinosaur/dinosaur.component';
 import { AuthService } from 'src/app/services/auth.service';
 import { IonContent } from '@ionic/angular/standalone';
 import { TranslateModule } from '@ngx-translate/core';
@@ -7,14 +6,14 @@ import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { HeaderComponent } from 'src/app/components/header/header.component';
 import { FooterComponent } from 'src/app/components/footer/footer.component';
-// import { QrWebScannerComponent } from 'src/app/components/qr-web-scanner/qr-web-scanner.component';
-import { Dinosaur } from 'src/app/model/dinosaur';
 import { Capacitor } from '@capacitor/core';
 import { ScannerService } from 'src/app/services/scanner.service';
 import { WelcomeComponent } from 'src/app/components/welcome/welcome.component';
 import { ForumComponent } from 'src/app/components/forum/forum.component';
-import { MisDatosComponent } from 'src/app/components/mis-datos/mis-datos.component';// Asegúrate de que la ruta sea correcta
+import { MisDatosComponent } from 'src/app/components/mis-datos/mis-datos.component';
 import { CodigoqrComponent } from 'src/app/components/codigoqr/codigoqr.component';
+import { Asistencia } from 'src/app/model/asistencia'; // Importa el modelo Asistencia
+import { Router } from '@angular/router'; // Importa el router
 
 @Component({
   selector: 'app-home',
@@ -30,16 +29,15 @@ import { CodigoqrComponent } from 'src/app/components/codigoqr/codigoqr.componen
     FooterComponent,
     WelcomeComponent,
     CodigoqrComponent,
-    DinosaurComponent,
     ForumComponent,
-    MisDatosComponent // Asegúrate de agregar este componente
+    MisDatosComponent
   ]
 })
 export class HomePage {
   @ViewChild(FooterComponent) footer!: FooterComponent;
   selectedComponent = 'welcome';
 
-  constructor(private auth: AuthService, private scanner: ScannerService) { }
+  constructor(private auth: AuthService, private scanner: ScannerService, private router: Router) { }
 
   ionViewWillEnter() {
     this.changeComponent('codigoqr');
@@ -48,16 +46,12 @@ export class HomePage {
   async headerClick(button: string) {
     try {
       switch (button) {
-        case 'testqr':
-          this.showDinoComponent(Dinosaur.jsonDinoExample);
-          break;
-
         case 'scan':
           if (Capacitor.getPlatform() === 'web') {
             this.selectedComponent = 'qrwebscanner';
           } else {
             const scannedData = await this.scanner.scan();
-            this.showDinoComponent(scannedData);
+            this.handleScannedData(scannedData);
           }
           break;
 
@@ -71,24 +65,42 @@ export class HomePage {
   }
 
   webQrScanned(qr: string) {
-    this.showDinoComponent(qr);
+    this.handleScannedData(qr);
   }
 
   webQrStopped() {
     this.changeComponent('welcome');
   }
 
-  showDinoComponent(qr: string) {
-    if (Dinosaur.isValidDinosaurQrCode(qr)) {
-      this.auth.qrCodeData.next(qr);
-      this.changeComponent('dinosaur');
+  handleScannedData(qr: string) {
+    if (Asistencia.isValidAsistenciaQrCode(qr)) {
+      const asistenciaData = JSON.parse(qr);
+      const asistencia = Asistencia.getNewAsistencia(
+        asistenciaData.sede,
+        asistenciaData.idAsignatura,
+        asistenciaData.seccion,
+        asistenciaData.nombreAsignatura,
+        asistenciaData.nombreProfesor,
+        asistenciaData.dia,
+        asistenciaData.bloqueInicio,
+        asistenciaData.bloqueTermino,
+        asistenciaData.horaInicio,
+        asistenciaData.horaFin
+      );
+
+      this.auth.qrCodeData.next(qr); // Maneja el código QR escaneado de acuerdo a tu lógica
+      console.log('Asistencia válida:', asistencia);
+      this.router.navigate(['/mi-clase'], {
+        state: { asistencia } // Pasa los datos de asistencia si es necesario
+      });
     } else {
+      console.error('El código QR escaneado no corresponde a una asistencia válida');
       this.changeComponent('welcome');
     }
   }
 
   footerClick(button: string) {
-    if (button === 'mis-datos') { // Asegúrate de que este botón maneje correctamente
+    if (button === 'mis-datos') {
       this.selectedComponent = 'mis-datos';
     } else {
       this.selectedComponent = button;

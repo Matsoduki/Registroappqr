@@ -10,6 +10,7 @@ import { TranslateModule } from '@ngx-translate/core';
 import { EventEmitter } from '@angular/core';
 import { AuthService } from 'src/app/services/auth.service';
 import { DatabaseService } from 'src/app/services/database.service';
+import { Asistencia } from 'src/app/model/asistencia';
 
 @Component({
   selector: 'app-codigoqr',
@@ -135,7 +136,7 @@ export class CodigoqrComponent implements OnDestroy {
   mostrarDatosQROrdenados(datosQR: string) {
     const asistencia = JSON.parse(datosQR);
     console.log('Datos de asistencia:', asistencia);
-
+  
     // Navegar a la página de mi-clase, pasando los datos de asistencia.
     this.router.navigate(['/mi-clase'], {
       state: { asistencia, usuario: this.usuario }
