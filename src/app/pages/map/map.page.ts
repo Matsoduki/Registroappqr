@@ -29,6 +29,7 @@ export class MapPage implements OnInit {
   distance: string = '';
   private currentPosition: { lat: number; lng: number } | null = null; // Almacena la posición actual
   private currentMarker: L.Marker | null = null; // Almacena el marcador actual
+  private duocMarker: L.Marker | null = null; // Almacena el marcador de DUOC
   private routeLine: L.Polyline | null = null; // Almacena la línea de ruta actual
 
   constructor(
@@ -72,15 +73,17 @@ export class MapPage implements OnInit {
   goToMyPosition() {
     if (this.currentPosition) {
       this.goToPosition(this.currentPosition.lat, this.currentPosition.lng, 15, 'Mi ubicación');
+    } else {
+      console.warn('No se pudo obtener la posición actual.');
     }
   }
 
   goToPosition(lat: number, lng: number, zoom: number, popupText: string) {
     if (this.map) {
       this.map.setView([lat, lng], zoom);
-      this.clearCurrentMarker(); // Limpiar marcador anterior
+      this.clearCurrentMarker(); // Limpiar marcador anterior, pero no el de DUOC
       this.currentMarker = L.marker([lat, lng]).addTo(this.map);
-      this.currentMarker.bindPopup(popupText).openPopup();
+      this.currentMarker.bindPopup(popupText).openPopup(); // Mostramos el texto en el popup
     }
   }
 
@@ -93,8 +96,30 @@ export class MapPage implements OnInit {
 
   showRouteToDuoc() {
     if (this.currentPosition) {
+      // Centrar el mapa en tu ubicación y mostrar el popup
       this.goToPosition(this.currentPosition.lat, this.currentPosition.lng, 15, 'Mi ubicación');
-      this.getRoute(this.currentPosition, { lat: -33.446968800767166, lng: -70.65785871075605 }, "walking");
+      
+      // Crear o actualizar el marcador de mi ubicación
+      if (!this.currentMarker && this.map) {
+        this.currentMarker = L.marker([this.currentPosition.lat, this.currentPosition.lng]).addTo(this.map);
+        this.currentMarker.bindPopup('Mi ubicación').openPopup();
+      } else if (this.currentMarker) {
+        // Si el marcador de mi ubicación ya existe, asegúrate de que se muestre su popup
+        this.currentMarker.setLatLng([this.currentPosition.lat, this.currentPosition.lng]);
+        this.currentMarker.bindPopup('Mi ubicación').openPopup();
+      }
+  
+      // Crear el marcador de DUOC si no existe y si el mapa está definido
+      const duocCoords = { lat: -33.446968800767166, lng: -70.65785871075605 };
+      if (!this.duocMarker && this.map) {
+        this.duocMarker = L.marker([duocCoords.lat, duocCoords.lng]).addTo(this.map);
+        this.duocMarker.bindPopup('Instituto DUOC').openPopup();
+      } else if (this.duocMarker) {
+        // Si el marcador de DUOC ya existe, asegúrate de que se muestre su popup
+        this.duocMarker.openPopup();
+      }
+  
+      this.getRoute(this.currentPosition, duocCoords, "walking");
     }
   }
 
@@ -110,8 +135,13 @@ export class MapPage implements OnInit {
 
         this.routeLine = L.polyline(routeLatLngs, { color: 'blue', weight: 5 }).addTo(this.map);
         
-        // Ajustar el mapa para mostrar la ruta
-        this.map.fitBounds(this.routeLine.getBounds());
+        // Ajustar el mapa para mostrar la ruta y ambos marcadores
+        const latLngs = [
+          [start.lat, start.lng],
+          [end.lat, end.lng],
+          ...routeLatLngs
+        ];
+        this.map.fitBounds(latLngs);
 
         const distance = response.routes[0].distance / 1000; // Distancia en kilómetros
         const duration = response.routes[0].duration / 60;   // Duración en minutos

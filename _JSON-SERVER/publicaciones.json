@@ -2,98 +2,98 @@
   "posts": [
     {
       "userId": 1,
-      "id": "1",
+      "id": 1,
       "title": "Instituto Duoc: Una Institución Educativa de Excelencia",
       "body": "El Instituto Duoc se ha destacado por ofrecer una educación de calidad en diversas áreas del conocimiento. Sus programas académicos son altamente valorados por estudiantes y empleadores por igual."
     },
     {
       "userId": 1,
-      "id": "2",
+      "id": 2,
       "title": "Carrera de Ingeniería en Informática en el Instituto Duoc",
       "body": "Si te apasiona la tecnología, la carrera de Ingeniería en Informática en el Instituto Duoc es una excelente opción. Aprenderás las habilidades necesarias para destacarte en el campo de la informática."
     },
     {
       "userId": 2,
-      "id": "3",
+      "id": 3,
       "title": "Experiencia de un Estudiante en el Instituto Duoc",
       "body": "Como estudiante del Instituto Duoc, he tenido la oportunidad de participar en proyectos emocionantes y adquirir conocimientos prácticos que me preparan para el mundo laboral."
     },
     {
       "userId": 2,
-      "id": "4",
+      "id": 4,
       "title": "Programas de Investigación en el Instituto Duoc",
       "body": "El Instituto Duoc promueve la investigación en diversas áreas. Sus programas de investigación han contribuido significativamente al avance del conocimiento en campos como la ciencia y la tecnología."
     },
     {
       "userId": 3,
-      "id": "5",
+      "id": 5,
       "title": "Desarrollo de Habilidades en el Instituto Duoc",
       "body": "En el Instituto Duoc, no solo adquieres conocimientos teóricos, sino que también desarrollas habilidades prácticas que te ayudarán a destacarte en tu carrera profesional."
     },
     {
       "userId": 3,
-      "id": "6",
+      "id": 6,
       "title": "Innovación y Emprendimiento en el Instituto Duoc",
       "body": "El Instituto Duoc fomenta la innovación y el espíritu emprendedor entre sus estudiantes. Muchos de sus graduados han creado empresas exitosas."
     },
     {
       "userId": 4,
-      "id": "7",
+      "id": 7,
       "title": "Instituto Duoc: Comprometido con la Educación de Calidad",
       "body": "El Instituto Duoc se enorgullece de ofrecer una educación de calidad que prepara a los estudiantes para enfrentar los desafíos del mundo actual."
     },
     {
       "userId": 4,
-      "id": "8",
+      "id": 8,
       "title": "Egresados Exitosos del Instituto Duoc",
       "body": "Muchos egresados del Instituto Duoc han logrado alcanzar el éxito en sus carreras y contribuir positivamente a la sociedad."
     },
     {
       "userId": 5,
-      "id": "9",
+      "id": 9,
       "title": "Estudiar en el Instituto Duoc: Una Experiencia Transformadora",
       "body": "La experiencia de estudiar en el Instituto Duoc puede transformar tu vida y brindarte las herramientas necesarias para alcanzar tus metas profesionales."
     },
     {
       "userId": 5,
-      "id": "10",
+      "id": 10,
       "title": "Instituto Duoc: Compromiso con la Excelencia Académica",
       "body": "La excelencia académica es una prioridad en el Instituto Duoc. Sus programas están diseñados para brindar una formación de alto nivel."
     },
     {
       "userId": 6,
-      "id": "11",
+      "id": 11,
       "title": "Oportunidades de Estudio en el Instituto Duoc",
       "body": "El Instituto Duoc ofrece una amplia gama de oportunidades de estudio en diversas disciplinas. Encuentra el programa que se adapte a tus intereses y metas."
     },
     {
       "userId": 6,
-      "id": "12",
+      "id": 12,
       "title": "Instituto Duoc: Compromiso con la Comunidad",
       "body": "El Instituto Duoc está comprometido con la comunidad y realiza actividades de servicio social para contribuir al bienestar de la sociedad."
     },
     {
       "userId": 7,
-      "id": "13",
+      "id": 13,
       "title": "Aprendizaje en Línea en el Instituto Duoc",
       "body": "El Instituto Duoc ofrece opciones de aprendizaje en línea para aquellos que desean flexibilidad en sus estudios. Aprovecha la tecnología para tu formación académica."
     },
     {
       "userId": 7,
-      "id": "14",
+      "id": 14,
       "title": "Apoyo Académico en el Instituto Duoc",
       "body": "El Instituto Duoc brinda apoyo académico a sus estudiantes para garantizar su éxito en sus estudios. Tutores y recursos están disponibles para ayudarte en tu camino."
     },
     {
       "userId": 8,
-      "id": "15",
+      "id": 15,
       "title": "Instituto Duoc: Forjando el Futuro de la Educación",
       "body": "El Instituto Duoc está a la vanguardia de la educación superior y sigue forjando el futuro de la educación a través de la innovación y la excelencia."
     }
   ],
   "users": [
     {
-      "id": "1",
+      "id": 1,
       "name": "Leanne Graham",
       "username": "Bret",
       "email": "Sincere@april.biz",
@@ -116,7 +116,7 @@
       }
     },
     {
-      "id": "2",
+      "id": 2,
       "name": "Ervin Howell",
       "username": "Antonette",
       "email": "Shanna@melissa.tv",
@@ -139,7 +139,7 @@
       }
     },
     {
-      "id": "3",
+      "id": 3,
       "name": "Clementine Bauch",
       "username": "Samantha",
       "email": "Nathan@yesenia.net",
@@ -162,7 +162,7 @@
       }
     },
     {
-      "id": "4",
+      "id": 4,
       "name": "Patricia Lebsack",
       "username": "Karianne",
       "email": "Julianne.OConner@kory.org",
@@ -185,7 +185,7 @@
       }
     },
     {
-      "id": "5",
+      "id": 5,
       "name": "Chelsey Dietrich",
       "username": "Kamren",
       "email": "Lucio_Hettinger@annie.ca",
@@ -208,7 +208,7 @@
       }
     },
     {
-      "id": "6",
+      "id": 6,
       "name": "Mrs. Dennis Schulist",
       "username": "Leopoldo_Corkery",
       "email": "Karley_Dach@jasper.info",
@@ -231,7 +231,7 @@
       }
     },
     {
-      "id": "7",
+      "id": 7,
       "name": "Kurtis Weissnat",
       "username": "Elwyn.Skiles",
       "email": "Telly.Hoeger@billy.biz",
@@ -254,7 +254,7 @@
       }
     },
     {
-      "id": "8",
+      "id": 8,
       "name": "Nicholas Runolfsdottir V",
       "username": "Maxime_Nienow",
       "email": "Sherwood@rosamond.me",
@@ -277,7 +277,7 @@
       }
     },
     {
-      "id": "9",
+      "id": 9,
       "name": "Glenna Reichert",
       "username": "Delphine",
       "email": "Chaim_McDermott@dana.io",
@@ -300,7 +300,7 @@
       }
     },
     {
-      "id": "10",
+      "id": 10,
       "name": "Clementina DuBuque",
       "username": "Moriah.Stanton",
       "email": "Rey.Padberg@karina.biz",
