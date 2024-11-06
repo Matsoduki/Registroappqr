@@ -1,0 +1,68 @@
+{
+    "AppName": "Sistema de Asistencia DuocUC",
+    "AuthorText": "Desarrollado por:",
+    "Author": "Cristián Gómez Vega",
+    "Language": "Idioma",
+    "Language.English": "English",
+    "Language.Spanish": "Español",
+    "Language.Mapudungun": "Mapudungun",
+    
+    "Start.StartNewExperience": "Comienza una nueva experiencia",
+
+    "Login.Title.Login": "Iniciar sesión",
+    "Login.Label.Email": "Correo",
+    "Login.Placeholder.Email": "Ingresa aquí tu correo",
+    "Login.Label.Password": "Contraseña",
+    "Login.Placeholder.Password": "Ingresa aquí tu contraseña",
+    "Login.Button.Login": "Ingresar",
+    "Login.Button.Signin": "Registrarse",
+    "Login.Button.ForgotPassword": "Recuperar contraseña",
+    "Login.Button.Map": "Mi ruta a DuocUC",
+    "Login.Button.DarkMode": "Oscuro",
+    "Login.Button.Theme": "Tema",
+
+    "HomePage.Button.CodigoQR": "QR",
+    "HomePage.Button.Scan": "Escanear",
+    "HomePage.Button.MiClase": "Mi Clase",
+    "HomePage.Button.Forum": "Foro",
+    "HomePage.Button.MisDatos": "Mis Datos",
+
+    "ThemePage.Label.ColorTheme": "Tema de color:",
+    "ThemePage.Color.Light": "Claro",
+    "ThemePage.Color.Dark": "Oscuro",
+    "ThemePage.Color.Green": "Verde",
+    "ThemePage.Color.Red": "Rojo",
+    "ThemePage.Color.Facebook": "Facebook",
+    "ThemePage.Color.Instagram": "Instagram",
+    "ThemePage.Color.Duoc": "DUOC",
+    
+    "ThemePage.Button.Primary": "Botón Primario",
+    "ThemePage.Button.Secondary": "Botón Secundario",
+    "ThemePage.Button.Tertiary": "Botón Terciario",
+    "ThemePage.Button.Success": "Botón Éxito",
+    "ThemePage.Button.Warning": "Botón Advertencia",
+    "ThemePage.Button.Danger": "Botón Peligro",
+    "ThemePage.Button.Light": "Botón Claro",
+    "ThemePage.Button.Dark": "Botón Oscuro",
+    "ThemePage.Button.Home": "Inicio",
+    "ThemePage.Button.Logout": "Salir",
+    
+    "ThemePage.Card.Title": "Título de la Tarjeta",
+    "ThemePage.Card.Subtitle": "Subtítulo de la Tarjeta",
+    "ThemePage.Card.Content": "Este es el contenido de la tarjeta. Puedes personalizar los colores de la tarjeta y su contenido.",
+    
+    "ThemePage.List.Title": "Listas",
+    "ThemePage.List.Item1": "Elemento de Lista 1",
+    "ThemePage.List.Item2": "Elemento de Lista 2",
+    "ThemePage.List.Item3": "Elemento de Lista 3",
+    
+    "ThemePage.Calendar.Title": "Calendarios",
+    
+    "ThemePage.Form.Title": "Ingreso de datos",
+    "ThemePage.Form.NameLabel": "Nombre",
+    "ThemePage.Form.NamePlaceholder": "Ingresa tu nombre",
+    "ThemePage.Form.DescriptionLabel": "Descripción",
+    "ThemePage.Form.DescriptionPlaceholder": "Escribe aquí una descripción...",
+    "ThemePage.Form.ToggleLabel": "Activar notificaciones",
+    "ThemePage.Form.CheckboxLabel": "Acepto los términos"
+}

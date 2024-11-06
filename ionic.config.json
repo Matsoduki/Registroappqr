@@ -1,0 +1,7 @@
+{
+  "name": "angrydinosaur",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular-standalone"
+}

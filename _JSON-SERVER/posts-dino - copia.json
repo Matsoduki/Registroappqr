@@ -1,0 +1,84 @@
+{
+  "posts": [
+    {
+      "id": 1,
+      "title": "El Rey de los Dinosaurios: Tiranosaurio Rex",
+      "body": "Exploramos la vida y características del poderoso Tiranosaurio Rex.",
+      "author": "Juan Pérez",
+      "date": "27/10/2024",
+      "authorImage": "https://example.com/images/juan_perez.jpg"
+    },
+    {
+      "id": 2,
+      "title": "Los Dinosaurios del Jurásico",
+      "body": "Una mirada a los dinosaurios más icónicos de la era Jurásica.",
+      "author": "Carla Mujica",
+      "date": "27/10/2024",
+      "authorImage": "https://example.com/images/carla_mujica.jpg"
+    },
+    {
+      "id": 3,
+      "title": "¿Cómo se extinguieron los dinosaurios?",
+      "body": "Investigamos las teorías sobre la extinción de los dinosaurios hace 65 millones de años.",
+      "author": "Ana Torres",
+      "date": "27/10/2024",
+      "authorImage": "https://example.com/images/ana_torres.jpg"
+    },
+    {
+      "id": 4,
+      "title": "El Velociraptor: Más pequeño, pero mortal",
+      "body": "Descubre la agilidad y ferocidad de este pequeño dinosaurio carnívoro.",
+      "author": "Juan Pérez",
+      "date": "27/10/2024",
+      "authorImage": "https://example.com/images/juan_perez.jpg"
+    },
+    {
+      "id": 5,
+      "title": "Triceratops: El herbívoro de los tres cuernos",
+      "body": "Todo sobre el Triceratops, un herbívoro con un aspecto impresionante.",
+      "author": "Carla Mujica",
+      "date": "27/10/2024",
+      "authorImage": "https://example.com/images/carla_mujica.jpg"
+    },
+    {
+      "id": 6,
+      "title": "Los Dinosaurios y su Evolución",
+      "body": "Un análisis de la evolución de los dinosaurios a lo largo de millones de años.",
+      "author": "Ana Torres",
+      "date": "27/10/2024",
+      "authorImage": "https://example.com/images/ana_torres.jpg"
+    },
+    {
+      "id": 7,
+      "title": "Dinosaurios en el Cine: Jurassic Park",
+      "body": "Cómo Jurassic Park cambió nuestra percepción de los dinosaurios.",
+      "author": "Juan Pérez",
+      "date": "27/10/2024",
+      "authorImage": "https://example.com/images/juan_perez.jpg"
+    },
+    {
+      "id": 8,
+      "title": "Los Dinosaurios Voladores: Pterosaurios",
+      "body": "Conoce a los dinosaurios voladores que dominaron el cielo prehistórico.",
+      "author": "Carla Mujica",
+      "date": "27/10/2024",
+      "authorImage": "https://example.com/images/carla_mujica.jpg"
+    },
+    {
+      "id": 9,
+      "title": "Dientes y Garras: Los Carnívoros más temibles",
+      "body": "Una exploración de los dinosaurios carnívoros más peligrosos.",
+      "author": "Ana Torres",
+      "date": "27/10/2024",
+      "authorImage": "https://example.com/images/ana_torres.jpg"
+    },
+    {
+      "id": 10,
+      "title": "El Misterio de los Dinosaurios Acuáticos",
+      "body": "¿Cómo vivían los dinosaurios en los océanos prehistóricos?",
+      "author": "Juan Pérez",
+      "date": "27/10/2024",
+      "authorImage": "https://example.com/images/juan_perez.jpg"
+    }
+  ]
+}

@@ -1,0 +1,157 @@
+<ion-header>
+  <ion-toolbar color="primary" class="padding-6">
+    <h4 slot="start" class="margin-top-6">
+      <ion-select 
+          label="{{ 'ThemePage.Label.ColorTheme' | translate }}" 
+          (ionChange)="changeTheme($event)"
+          [(ngModel)]="colorTheme">
+        <ion-select-option value="light">
+          {{ 'ThemePage.Color.Light' | translate }}
+        </ion-select-option>
+        <ion-select-option value="dark">
+          {{ 'ThemePage.Color.Dark' | translate }}
+        </ion-select-option>
+        <ion-select-option value="green">
+          {{ 'ThemePage.Color.Green' | translate }}
+        </ion-select-option>
+        <ion-select-option value="red">
+          {{ 'ThemePage.Color.Red' | translate }}
+        </ion-select-option>
+        <ion-select-option value="facebook">
+          {{ 'ThemePage.Color.Facebook' | translate }}
+        </ion-select-option>
+        <ion-select-option value="instagram">
+          {{ 'ThemePage.Color.Instagram' | translate }}
+        </ion-select-option>
+        <ion-select-option value="duoc">
+          {{ 'ThemePage.Color.Duoc' | translate }}
+        </ion-select-option>
+      </ion-select>
+    </h4>
+    <div slot="end">
+      <ion-button shape="round" (click)="goBack()">
+        <ion-icon name="arrow-back-outline"></ion-icon>
+      </ion-button>
+    </div>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="ion-padding">
+
+  <!-- Botones -->
+    <p>
+    <ion-button shape="round" size="small" color="primary">
+      {{ 'ThemePage.Button.Primary' | translate }}
+    </ion-button>
+    <ion-button shape="round" size="small" color="secondary">
+      {{ 'ThemePage.Button.Secondary' | translate }}
+    </ion-button>
+    <ion-button shape="round" size="small" color="tertiary">
+      {{ 'ThemePage.Button.Tertiary' | translate }}
+    </ion-button>
+    <ion-button shape="round" size="small" color="success">
+      {{ 'ThemePage.Button.Success' | translate }}
+    </ion-button>
+    <ion-button shape="round" size="small" color="warning">
+      {{ 'ThemePage.Button.Warning' | translate }}
+    </ion-button>
+    <ion-button shape="round" size="small" color="danger">
+      {{ 'ThemePage.Button.Danger' | translate }}
+    </ion-button>
+    <ion-button shape="round" size="small" color="light">
+      {{ 'ThemePage.Button.Light' | translate }}
+    </ion-button>
+    <ion-button shape="round" size="small" color="dark">
+      {{ 'ThemePage.Button.Dark' | translate }}
+    </ion-button>
+    <ion-button shape="round" size="small" color="primary">
+      <ion-icon slot="start" name="home-outline" size="small"></ion-icon>
+      {{ 'ThemePage.Button.Home' | translate }}
+    </ion-button>
+    <ion-button shape="round" size="small" color="primary">
+      <ion-icon slot="start" name="log-out-outline" size="small"></ion-icon>
+      {{ 'ThemePage.Button.Logout' | translate }}
+    </ion-button>
+  </p>
+
+  <!-- Tarjetas -->
+  <p>
+    <ion-card class="picture-frame">
+      <ion-card-header>
+        <ion-card-title>
+          {{ 'ThemePage.Card.Title' | translate }}
+        </ion-card-title>
+        <ion-card-subtitle>
+          {{ 'ThemePage.Card.Subtitle' | translate }}
+        </ion-card-subtitle>
+      </ion-card-header>
+      <ion-card-content>
+        {{ 'ThemePage.Card.Content' | translate }}
+      </ion-card-content>
+    </ion-card>
+  </p>
+  
+  <!-- Listas -->
+  <p>
+    <ion-title> {{ 'ThemePage.List.Title' | translate }} </ion-title>
+    <ion-list>
+      <ion-item>
+        <ion-label> {{ 'ThemePage.List.Item1' | translate }} </ion-label>
+      </ion-item>
+      <ion-item>
+        <ion-label> {{ 'ThemePage.List.Item2' | translate }} </ion-label>
+      </ion-item>
+      <ion-item>
+        <ion-label> {{ 'ThemePage.List.Item3' | translate }} </ion-label>
+      </ion-item>
+    </ion-list>
+  </p>
+  
+  <!-- Calendarios -->
+  <p>
+    <ion-title> {{ 'ThemePage.Calendar.Title' | translate }} </ion-title>
+    <br>
+    <ion-datetime 
+        size="small"
+        class="ion-text-right picture-frame" 
+        presentation="date" 
+        [preferWheel]="true"
+        displayFormat="DD/MM/YYYY"
+        placeholder="dd/mm/yyyy">
+    </ion-datetime>
+  </p>
+
+  <!-- Ingreso de datos -->
+  <p>
+    <ion-title> {{ 'ThemePage.Form.Title' | translate }} </ion-title>
+    <ion-item>
+      <ion-input label="{{ 'ThemePage.Form.NameLabel' | translate }}" labelPlacement="floating" 
+          placeholder="{{ 'ThemePage.Form.NamePlaceholder' | translate }}"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-textarea label="{{ 'ThemePage.Form.DescriptionLabel' | translate }}" labelPlacement="floating" 
+          placeholder="{{ 'ThemePage.Form.DescriptionPlaceholder' | translate }}"></ion-textarea>
+    </ion-item>
+    
+    <ion-item>
+      <ion-label>{{ 'ThemePage.Form.ToggleLabel' | translate }}</ion-label>
+      <ion-toggle checked="true"></ion-toggle>
+    </ion-item>
+    
+    <ion-item>
+      <ion-label>{{ 'ThemePage.Form.CheckboxLabel' | translate }}</ion-label>
+      <ion-checkbox slot="start"></ion-checkbox>
+    </ion-item>
+  </p>
+
+</ion-content>
+
+<ion-footer>
+  <ion-toolbar color="primary" class="padding-6">
+    <h5>
+      {{ 'AuthorText' | translate }}
+      {{ 'Author' | translate }}
+    </h5>
+  </ion-toolbar>
+</ion-footer>

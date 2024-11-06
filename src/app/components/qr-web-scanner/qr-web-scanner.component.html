@@ -1,0 +1,17 @@
+<ion-content class="ion-padding ion-text-center" class="video-container">
+
+  <img class="background-image" src="/assets/images/circuit.jpg">
+
+  <ion-button class="stop-button" (click)="stopQrScanning()">
+    Detener escaneo de QR
+  </ion-button>
+
+  <div class="frame">
+    <video class="video" #video></video>
+    <div class="qr-overlay"></div>
+    <div class="moving-horizontal-line"></div>
+  </div>
+
+  <canvas #canvas hidden></canvas>
+
+</ion-content>

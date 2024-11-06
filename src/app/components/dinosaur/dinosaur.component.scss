@@ -1,0 +1,66 @@
+.dino-content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  max-width: 90%;
+  max-height: 90%;
+  animation: createBox1 2s;
+  font-size: 24px;
+  color: black;
+  text-align: center;
+}
+
+@keyframes createBox1 {
+  from {
+    transform: translate(-50%, -50%) scale(0); /* Centrado y escala inicial de 0 */
+  }
+  to {
+    transform: translate(-50%, -50%) scale(1); /* Centrado y escala final de 1 */
+  }
+}
+
+.you-must-scan {
+  position: relative;
+  max-width: 30%;
+  max-height: 30%;
+}
+
+.background-image {
+  position: fixed; /* Fija la imagen al fondo de la pantalla */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Hace que la imagen cubra el área sin distorsión */
+  object-position: center; /* Centra la imagen */
+  z-index: -1; /* Coloca la imagen detrás del contenido */
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+/* Imagen de fondo en modo portrait */
+@media (orientation: portrait) {
+  .background-image {
+    background-image: url('../../../assets/images/trex-v.jpg'); /* Cambia esta URL a la imagen en portrait */
+  }
+}
+
+/* Imagen de fondo en modo landscape */
+@media (orientation: landscape) {
+  .background-image {
+    background-image: url('../../../assets/images/trex-h.jpg'); /* Cambia esta URL a la imagen en landscape */
+  }
+}
+
+.glow-text {
+  font-size: 2rem; /* Tamaño del texto */
+  color: #ffffff; /* Color del texto */
+  text-align: center; /* Alineación del texto */
+  text-shadow: 
+    0 0 10px #00ffff, /* Primer nivel de sombra (más cercano al texto) */
+    0 0 20px #00ffff, /* Segundo nivel de sombra */
+    0 0 30px #00ffff, /* Tercer nivel de sombra */
+    0 0 40px #00ffff, /* Cuarto nivel de sombra */
+    0 0 50px #00ffff; /* Quinto nivel de sombra */
+}

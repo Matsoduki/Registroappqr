@@ -1,0 +1,29 @@
+<app-header 
+  (headerClick)="headerClick($event)">
+</app-header>
+
+<ion-content [fullscreen]="true">
+
+  <app-codigoqr
+    *ngIf="selectedComponent === 'codigoqr'" 
+    (scanned)="webQrScanned($event)"
+    (stopped)="webQrStopped()">
+  </app-codigoqr>
+  
+  <app-welcome 
+    *ngIf="selectedComponent === 'welcome'">
+  </app-welcome>
+
+  <app-forum 
+    *ngIf="selectedComponent === 'forum'">
+  </app-forum>
+
+  <app-mis-datos 
+    *ngIf="selectedComponent === 'mis-datos'"> <!-- Asegúrate de que esté aquí -->
+  </app-mis-datos>
+
+</ion-content>
+
+<app-footer
+  (footerClick)="footerClick($event)">
+</app-footer>

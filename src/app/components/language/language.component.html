@@ -1,0 +1,24 @@
+<div class="transparent-bg">
+
+  <ion-select 
+      class="color-white"
+      label="{{ 'Language' | translate }}:"
+      slot="end"
+      [(ngModel)]="languageSelected" 
+      (ngModelChange)="changeLanguage($event)">
+
+    <ion-select-option value="en"> 
+      {{ 'Language.English' | translate }}
+    </ion-select-option>
+
+    <ion-select-option value="es"> 
+      {{ 'Language.Spanish' | translate }}
+    </ion-select-option>
+
+    <ion-select-option value="arn"> 
+      {{ 'Language.Mapudungun' | translate }}
+    </ion-select-option>
+
+  </ion-select>
+
+</div>

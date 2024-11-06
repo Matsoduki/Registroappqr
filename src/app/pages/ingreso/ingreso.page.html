@@ -1,0 +1,61 @@
+<ion-header>
+  <ion-toolbar>
+    <div slot="start" class="ion-margin">
+      <app-language #selectLanguage></app-language>
+    </div>
+    <div slot="end" class="ion-margin">
+      <ion-button fill="clear" class="link1 link-box" (click)="navigateTheme()">
+        {{ 'Login.Button.Theme' | translate }} 
+        <ion-icon slot="start" name="color-wand-outline"></ion-icon>
+      </ion-button>
+    </div>
+   </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="ion-padding-horizontal ion-text-center">
+  
+  <div class="background"></div>
+  <div class="centrar">
+    
+    <div>
+      
+      <img src="../../assets/img/logoBlanco.png" style="width: 75%;">
+      <h2 class="ion-padding-bottom">{{ 'AppName' | translate }}</h2>
+      <ion-card>
+        <ion-card-content class="ion-padding-vertical">
+          <ion-item>
+            <ion-input
+              [(ngModel)]="correo"
+              label="{{ 'Login.Label.Email' | translate }}" 
+              labelPlacement="floating"
+              fill="outline"
+              placeholder="{{ 'Login.Placeholder.Email' | translate }}">
+            </ion-input>
+          </ion-item>
+
+          <ion-item>
+            <ion-input
+              [(ngModel)]="password"
+              label="{{ 'Login.Label.Password' | translate }}"
+              labelPlacement="floating"
+              fill="outline"
+              placeholder="{{ 'Login.Placeholder.Password' | translate }}"
+              type="password">
+            </ion-input>
+          </ion-item>
+        </ion-card-content>
+    
+          <ion-button class="ion-padding-vertical button1" (click)="login()">{{ 'Login.Button.Login' | translate }}</ion-button>
+        </ion-card>
+    
+      <ion-col>
+        <ion-row class="centrar">
+          <ion-button #boton1 fill="clear" class="link1 link-box" (click)="passwordRecovery()">{{ 'Login.Button.ForgotPassword' | translate }}</ion-button>
+        </ion-row>
+        <ion-row class="centrar">
+          <ion-button #boton2 fill="clear" class="link1 link-box" (click)="miruta()">{{ 'Login.Button.Map' | translate }}</ion-button>
+        </ion-row>
+      </ion-col>
+    </div>
+  </div>
+</ion-content>

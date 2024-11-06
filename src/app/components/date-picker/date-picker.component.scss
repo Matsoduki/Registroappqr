@@ -1,0 +1,14 @@
+.floating-div {
+  position: fixed;  /* Fija el div en la pantalla, independiente de scroll o del ion-item */
+  top: 50%;         /* Posiciona el div al 50% del alto de la pantalla */
+  left: 50%;        /* Posiciona el div al 50% del ancho de la pantalla */
+  transform: translate(-50%, -50%); /* Ajusta la posición para centrar el div exactamente */
+  z-index: 1000;    /* Asegura que el div esté por encima de otros elementos */
+  background-color: white;  /* Fondo blanco */
+  padding: 20px;    /* Espacio interno */
+  border: 1px solid black;  /* Borde negro */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra para resaltar el div */
+  border-radius: 8px;  /* Bordes redondeados */
+  width: 300px;  /* Ancho personalizado */
+  text-align: center;  /* Centra el texto dentro del div */
+}
