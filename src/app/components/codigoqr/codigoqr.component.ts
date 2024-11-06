@@ -1,13 +1,12 @@
 import { OnDestroy, Component, ElementRef, ViewChild, Output } from '@angular/core';
 import { Router } from '@angular/router';
 import { Usuario } from 'src/app/model/usuario';
-import jsQR, { QRCode } from 'jsqr';
+import jsQR from 'jsqr';
 import { AnimationController } from '@ionic/angular';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
-import { TranslateModule, TranslateService } from '@ngx-translate/core';
-import { LanguageComponent } from 'src/app/components/language/language.component';
+import { TranslateModule } from '@ngx-translate/core';
 import { EventEmitter } from '@angular/core';
 import { AuthService } from 'src/app/services/auth.service';
 import { DatabaseService } from 'src/app/services/database.service';
@@ -21,8 +20,7 @@ import { DatabaseService } from 'src/app/services/database.service';
     CommonModule,
     FormsModule,
     IonicModule,
-    TranslateModule,
-    LanguageComponent
+    TranslateModule
   ]
 })
 export class CodigoqrComponent implements OnDestroy {
@@ -89,11 +87,15 @@ export class CodigoqrComponent implements OnDestroy {
   }
 
   async iniciarCamara() {
-    const mediaStream = await navigator.mediaDevices.getUserMedia({ video: { facingMode: 'environment' } });
-    this.video.nativeElement.srcObject = this.mediaStream;
-    this.video.nativeElement.setAttribute('playsinline', 'true');
-    this.video.nativeElement.play();
-    requestAnimationFrame(this.verificarVideo.bind(this));
+    try {
+      this.mediaStream = await navigator.mediaDevices.getUserMedia({ video: { facingMode: 'environment' } });
+      this.video.nativeElement.srcObject = this.mediaStream;
+      this.video.nativeElement.setAttribute('playsinline', 'true');
+      this.video.nativeElement.play();
+      requestAnimationFrame(this.verificarVideo.bind(this));
+    } catch (error) {
+      console.error('Error al acceder a la cámara:', error);
+    }
   }
 
   async verificarVideo() {
@@ -122,7 +124,6 @@ export class CodigoqrComponent implements OnDestroy {
       console.error('El video no está disponible.');
     }
   }
-  
 
   stopCamera() {
     if (this.mediaStream) {

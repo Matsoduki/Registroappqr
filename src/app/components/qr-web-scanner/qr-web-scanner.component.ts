@@ -13,7 +13,6 @@ import jsQR, { QRCode } from 'jsqr';
   imports: [IonicModule, CommonModule, FormsModule],
 })
 export class QrWebScannerComponent implements OnDestroy {
-
   @ViewChild('video') private video!: ElementRef;
   @ViewChild('canvas') private canvas!: ElementRef;
   @Output() scanned: EventEmitter<string> = new EventEmitter<string>();
@@ -22,19 +21,22 @@ export class QrWebScannerComponent implements OnDestroy {
   qrData: string = '';
   mediaStream: MediaStream | null = null; // Almacena el flujo de medios
 
-  constructor() 
-  { 
+  constructor() { 
     this.startQrScanningForWeb();
   }
 
   async startQrScanningForWeb() {
-    this.mediaStream = await navigator.mediaDevices.getUserMedia({
-      video: { facingMode: 'environment' }
-    });
-    this.video.nativeElement.srcObject = this.mediaStream;
-    this.video.nativeElement.setAttribute('playsinline', 'true');
-    this.video.nativeElement.play();
-    requestAnimationFrame(this.verifyVideo.bind(this));
+    try {
+      this.mediaStream = await navigator.mediaDevices.getUserMedia({
+        video: { facingMode: { exact: 'environment' } }
+      });
+      this.video.nativeElement.srcObject = this.mediaStream;
+      this.video.nativeElement.setAttribute('playsinline', 'true');
+      this.video.nativeElement.play();
+      requestAnimationFrame(this.verifyVideo.bind(this));
+    } catch (error) {
+      console.error('Error al acceder a la cámara:', error);
+    }
   }
 
   async verifyVideo() {
@@ -51,10 +53,10 @@ export class QrWebScannerComponent implements OnDestroy {
     const h: number = this.video.nativeElement.videoHeight;
     this.canvas.nativeElement.width = w;
     this.canvas.nativeElement.height = h;
-    const context: CanvasRenderingContext2D = this.canvas.nativeElement.getContext('2d');
+    const context: CanvasRenderingContext2D = this.canvas.nativeElement.getContext('2d')!;
     context.drawImage(this.video.nativeElement, 0, 0, w, h);
     const img: ImageData = context.getImageData(0, 0, w, h);
-    let qrCode: QRCode  | null = jsQR(img.data, w, h, { inversionAttempts: 'dontInvert' });
+    let qrCode: QRCode | null = jsQR(img.data, w, h, { inversionAttempts: 'dontInvert' });
     if (qrCode) {
       const data = qrCode.data;
       if (data !== '') {
@@ -75,12 +77,10 @@ export class QrWebScannerComponent implements OnDestroy {
     this.stopCamera();
   }
 
-
   stopCamera() {
     if (this.mediaStream) {
       this.mediaStream.getTracks().forEach(track => track.stop()); // Detén todas las pistas de video
       this.mediaStream = null; // Limpia el flujo de medios
     }
   }
-
 }
