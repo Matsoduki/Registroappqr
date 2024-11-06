@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { IonSelect, IonSelectOption, IonContent, IonHeader, IonTitle, IonToolbar, IonInput, IonButton, IonItem, IonLabel } from '@ionic/angular/standalone';
+import { IonCard, IonCardHeader, IonCardContent, IonInput, IonItem, IonSelect, IonSelectOption, IonLabel, IonButton, IonHeader, IonToolbar, IonTitle, IonContent, IonFooter } from '@ionic/angular/standalone';
 import { Usuario } from 'src/app/model/usuario';
 import { DatabaseService } from 'src/app/services/database.service';
 import { AuthService } from 'src/app/services/auth.service';
@@ -13,23 +13,30 @@ import { showToast } from 'src/app/tools/message-functions';
   templateUrl: './mis-datos.component.html',
   styleUrls: ['./mis-datos.component.scss'],
   standalone: true,
-  imports: [IonLabel, 
+  imports: [
     CommonModule,
     FormsModule,
-    IonButton,
+    IonCard,
+    IonCardHeader,
+    IonCardContent,
     IonInput,
-    IonContent,
-    IonHeader,
-    IonTitle,
-    IonToolbar,
     IonItem,
     IonSelect,
-    IonSelectOption
+    IonSelectOption,
+    IonLabel,
+    IonButton,
+    IonHeader,
+    IonToolbar,
+    IonTitle,
+    IonContent,
+    IonFooter
   ]
 })
 export class MisDatosComponent implements OnInit {
   usuario: Usuario = new Usuario();
   listaNivelesEducacionales: NivelEducacional[] = NivelEducacional.getNiveles();
+  fechaNacimientoString: string = '';
+  repetirPassword: string = ''; // Asegúrate de definir esta propiedad
 
   constructor(
     private bd: DatabaseService,
@@ -45,10 +52,10 @@ export class MisDatosComponent implements OnInit {
       const usuarioAuth = await this.auth.readAuthUser();
       if (usuarioAuth) {
         this.usuario = usuarioAuth;
-  
-        // Asegúrate de que fechaDeNacimiento sea un objeto Date
+
+        // Convertir fechaDeNacimiento a string para el input
         if (this.usuario.fechaDeNacimiento) {
-          this.usuario.fechaDeNacimiento = new Date(this.usuario.fechaDeNacimiento); // Asigna un objeto Date
+          this.fechaNacimientoString = this.formatDateToInput(this.usuario.fechaDeNacimiento);
         }
       } else {
         showToast('No se encontró información del usuario.');
@@ -59,16 +66,31 @@ export class MisDatosComponent implements OnInit {
     }
   }
 
-  // Cambiamos guardarUsuario para ser asíncrono
+  formatDateToInput(date: Date): string {
+    const year = date.getFullYear();
+    const month = String(date.getMonth() + 1).padStart(2, '0');
+    const day = String(date.getDate()).padStart(2, '0');
+    return `${year}-${month}-${day}`;
+  }
+
+  public onFechaNacimientoChange(event: any) {
+    const inputDate = event.detail.value; // Obtiene la fecha del evento
+    if (inputDate) {
+      const parts = inputDate.split('-');
+      this.usuario.fechaDeNacimiento = new Date(+parts[0], +parts[1] - 1, +parts[2]); // Convierte a Date
+      this.fechaNacimientoString = inputDate; // Actualiza la variable string
+    }
+  }
+
   async guardarUsuario() {
     if (!this.usuario.nombre || this.usuario.nombre.trim() === '') {
       showToast('El usuario debe tener un nombre.');
       return;
     }
-  
+
     try {
-      await this.bd.saveUser(this.usuario); 
-      this.auth.saveAuthUser(this.usuario); 
+      await this.bd.saveUser(this.usuario);
+      this.auth.saveAuthUser(this.usuario);
       showToast('El usuario fue guardado correctamente.');
     } catch (error) {
       console.error('Error guardando el usuario:', error);
@@ -80,14 +102,4 @@ export class MisDatosComponent implements OnInit {
     const nivelId = event.detail.value;
     this.usuario.nivelEducacional = NivelEducacional.buscarNivel(nivelId)!; 
   }
-
-  onFechaNacimientoChange(event: any) {
-    const inputDate = event.detail.value; // Obtiene la fecha del evento
-    if (inputDate) {
-      const dateParts = inputDate.split('-'); // Separa el año, mes y día
-      this.usuario.fechaDeNacimiento = new Date(+dateParts[0], +dateParts[1] - 1, +dateParts[2]); // Crea un objeto Date
-    }
-  }
- 
-  
 }

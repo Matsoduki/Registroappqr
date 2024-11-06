@@ -54,10 +54,13 @@ export class MapPage implements OnInit {
 
         this.goToMyPosition(); // Ir a mi ubicación al cargar el mapa
       } else {
-        console.log('Posición geográfica desconocida');
+        console.warn('Posición geográfica desconocida, mostrando ubicación predeterminada.');
+        const defaultCoords = { lat: -33.4489, lng: -70.6693 }; // Coordenadas de Santiago
+        this.map = L.map('mapId').setView([defaultCoords.lat, defaultCoords.lng], 12);
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(this.map);
       }
     } catch (error) {
-      console.log('Error al obtener la posición geográfica', error);
+      console.error('Error al obtener la posición geográfica', error);
     }
   }
 

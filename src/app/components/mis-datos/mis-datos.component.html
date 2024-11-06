@@ -1,66 +1,69 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>Mis Datos</ion-title>
-  </ion-toolbar>
-</ion-header>
+<form *ngIf="usuario" (ngSubmit)="guardarUsuario()">
+  <ion-card>
+    <ion-card-header style="color: white;">
+      <h1 style="margin: 0;">Mis Datos Personales</h1>
+    </ion-card-header>
+    <ion-card-content>
 
-<ion-content [fullscreen]="true">
-  
-  <div>
-    <h3> Bienvenido(a) {{ usuario.nombre }} {{ usuario.apellido }} </h3>
-  </div>
+      <ion-item>
+        <ion-input label="Usuario" labelPlacement="floating" [(ngModel)]="usuario.username" name="username" required readonly></ion-input>
+      </ion-item>
 
-  <ion-item>
-    <ion-input label="Correo" labelPlacement="floating" [(ngModel)]="usuario.correo"></ion-input>
-  </ion-item>
+      <ion-item>
+        <ion-input label="Nombre" labelPlacement="floating" [(ngModel)]="usuario.nombre" name="nombre" required></ion-input>
+      </ion-item>
 
-  <ion-item>
-    <ion-input type="password" label="Contraseña" labelPlacement="floating" [(ngModel)]="usuario.password"></ion-input>
-  </ion-item>
+      <ion-item>
+        <ion-input label="Apellido" labelPlacement="floating" [(ngModel)]="usuario.apellido" name="apellido" required></ion-input>
+      </ion-item>
 
-  <ion-item>
-    <ion-input label="Pregunta secreta" labelPlacement="floating" [(ngModel)]="usuario.fraseSecreta"></ion-input>
-  </ion-item>
+      <ion-item>
+        <ion-input type="email" label="Correo" labelPlacement="floating" [(ngModel)]="usuario.correo" name="email" required></ion-input>
+      </ion-item>
 
-  <ion-item>
-    <ion-input label="Respuesta secreta" labelPlacement="floating" [(ngModel)]="usuario.respuestaSecreta"></ion-input>
-  </ion-item>
+      <ion-item>
+        <ion-input label="Pregunta Secreta" labelPlacement="floating" [(ngModel)]="usuario.fraseSecreta" name="pregunta" required></ion-input>
+      </ion-item>
 
-  <ion-item>
-    <ion-input label="Nombre" labelPlacement="floating" [(ngModel)]="usuario.nombre"></ion-input>
-  </ion-item>
+      <ion-item>
+        <ion-input label="Respuesta Secreta" labelPlacement="floating" [(ngModel)]="usuario.respuestaSecreta" name="respuesta" required></ion-input>
+      </ion-item>
 
-  <ion-item>
-    <ion-input label="Apellido" labelPlacement="floating" [(ngModel)]="usuario.apellido"></ion-input> <!-- Corregido a apellido -->
-  </ion-item>
+      <ion-item>
+        <ion-select [(ngModel)]="usuario.nivelEducacional.id" 
+                    (ionChange)="actualizarNivelEducacional($event)" 
+                    label="Nivel Educacional" 
+                    position="floating" name="nivel" required>
+          <ion-select-option *ngFor="let nivelEducacional of listaNivelesEducacionales" 
+                            [value]="nivelEducacional.id">
+            {{ nivelEducacional.nombre }}
+          </ion-select-option>
+        </ion-select>
+      </ion-item>
 
-  <ion-item>
-    <ion-select [(ngModel)]="usuario.nivelEducacional.id" 
-                (ionChange)="actualizarNivelEducacional($event)" 
-                label="Educación" 
-                position="floating">
-      <ion-select-option *ngFor="let nivelEducacional of listaNivelesEducacionales" 
-                        [value]="nivelEducacional.id">
-        {{ nivelEducacional.nombre }}
-      </ion-select-option>
-    </ion-select>
-  </ion-item>
+      <ion-item>
+        <ion-label>Fecha de Nacimiento</ion-label>
+        <ion-input 
+          type="date" 
+          [(ngModel)]="fechaNacimientoString" 
+          (ionChange)="onFechaNacimientoChange($event)" name="fechaNacimiento">
+        </ion-input>
+      </ion-item>
 
-  <ion-item>
-    <ion-input 
-      label="Fecha de Nacimiento" 
-      labelPlacement="floating" 
-      type="date" 
-      [(ngModel)]="usuario.fechaDeNacimiento" 
-      (ionChange)="onFechaNacimientoChange($event)">
-    </ion-input>
-  </ion-item>
+      <ion-item>
+        <ion-input label="Dirección" labelPlacement="floating" [(ngModel)]="usuario.direccion" name="direccion"></ion-input>
+      </ion-item>
 
-  <ion-item>
-    <ion-input label="Dirección" labelPlacement="floating" [(ngModel)]="usuario.direccion"></ion-input>
-  </ion-item>
+      <ion-item>
+        <ion-input label="Contraseña" type="password" labelPlacement="floating" [(ngModel)]="usuario.password" name="password" required></ion-input>
+      </ion-item>
 
-  <ion-button expand="full" (click)="guardarUsuario()">
-    Guardar
-  </ion-button>
-</ion-content>
+      <ion-item>
+        <ion-input label="Repetir Contraseña" type="password" labelPlacement="floating" [(ngModel)]="repetirPassword" name="repetirPassword" required></ion-input>
+      </ion-item>
+
+    </ion-card-content>
+    
+    <ion-button expand="full" type="submit" class="ion-padding-vertical">Actualizar</ion-button>
+  </ion-card>
+</form>
