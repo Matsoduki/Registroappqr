@@ -37,6 +37,7 @@ export class MisDatosComponent implements OnInit {
   listaNivelesEducacionales: NivelEducacional[] = NivelEducacional.getNiveles();
   fechaNacimientoString: string = '';
   repetirPassword: string = ''; // Asegúrate de definir esta propiedad
+  selectedImage: string | ArrayBuffer | null = null; // Para almacenar la imagen seleccionada
 
   constructor(
     private bd: DatabaseService,
@@ -52,11 +53,14 @@ export class MisDatosComponent implements OnInit {
       const usuarioAuth = await this.auth.readAuthUser();
       if (usuarioAuth) {
         this.usuario = usuarioAuth;
-
+  
         // Convertir fechaDeNacimiento a string para el input
         if (this.usuario.fechaDeNacimiento) {
           this.fechaNacimientoString = this.formatDateToInput(this.usuario.fechaDeNacimiento);
         }
+  
+        // Asignar la imagen seleccionada desde el usuario
+        this.selectedImage = this.usuario.foto || 'assets/img/noPhoto.png'; // Mostrar noPhoto.png si no hay foto
       } else {
         showToast('No se encontró información del usuario.');
       }
@@ -79,6 +83,21 @@ export class MisDatosComponent implements OnInit {
       const parts = inputDate.split('-');
       this.usuario.fechaDeNacimiento = new Date(+parts[0], +parts[1] - 1, +parts[2]); // Convierte a Date
       this.fechaNacimientoString = inputDate; // Actualiza la variable string
+    }
+  }
+
+  onFileSelected(event: Event) {
+    const fileInput = event.target as HTMLInputElement;
+    if (fileInput.files && fileInput.files[0]) {
+      const file = fileInput.files[0];
+      const reader = new FileReader();
+      
+      reader.onload = (e) => {
+        this.selectedImage = reader.result; // Guarda la imagen en el formato adecuado
+        this.usuario.foto = this.selectedImage as string; // Guarda la imagen en el objeto Usuario
+      };
+      
+      reader.readAsDataURL(file); // Lee la imagen como URL
     }
   }
 

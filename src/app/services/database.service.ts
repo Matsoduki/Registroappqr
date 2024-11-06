@@ -23,7 +23,8 @@ export class DatabaseService {
     NivelEducacional.buscarNivel(6)!,
     new Date(2000, 0, 5),
     'La Florida',
-    'default-image.jpg');
+    'assets/img/anaPhoto.png' 
+  );
 
   testUser2 = Usuario.getNewUsuario(
     'avalenzuela', 
@@ -36,7 +37,8 @@ export class DatabaseService {
     NivelEducacional.buscarNivel(5)!,
     new Date(2000, 1, 10),
     'La Pintana',
-    'default-image.jpg');
+    'assets/img/albertoPhoto.png' 
+  );
 
   testUser3 = Usuario.getNewUsuario(
     'cfuentes', 
@@ -49,7 +51,8 @@ export class DatabaseService {
     NivelEducacional.buscarNivel(6)!,
     new Date(2000, 2, 20),
     'Providencia',
-    'default-image.jpg');
+    'assets/img/carlaPhoto.png' 
+  );
 
   userUpgrades = [
     {
@@ -107,24 +110,14 @@ export class DatabaseService {
 
   async createTestUsers() {
     try {
-      // Verifica y guarda al usuario 'atorres' si no existe
-      const user1 = await this.readUser(this.testUser1.username);
-      if (!user1) {
-        await this.saveUser(this.testUser1);
-      }
+      const testUsers = [this.testUser1, this.testUser2, this.testUser3];
   
-      // Verifica y guarda al usuario 'jperez' si no existe
-      const user2 = await this.readUser(this.testUser2.username);
-      if (!user2) {
-        await this.saveUser(this.testUser2);
+      for (const user of testUsers) {
+        const existingUser = await this.readUser(user.username);
+        if (!existingUser) {
+          await this.saveUser(user);
+        }
       }
-  
-      // Verifica y guarda al usuario 'cmujica' si no existe
-      const user3 = await this.readUser(this.testUser3.username);
-      if (!user3) {
-        await this.saveUser(this.testUser3);
-      }
-  
     } catch (error) {
       showAlertError('DataBaseService.createTestUsers', error);
     }
@@ -271,6 +264,7 @@ export class DatabaseService {
         user.username = row.username || '';
         user.correo = row.correo || '';
         user.password = row.password || '';
+        user.foto = row.foto || ''; // Asegúrate de que se lee la foto
         user.fraseSecreta = row.fraseSecreta || '';
         user.respuestaSecreta = row.respuestaSecreta || '';
         user.nombre = row.nombre || '';

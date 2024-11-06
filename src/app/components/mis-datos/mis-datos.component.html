@@ -1,7 +1,14 @@
-<form *ngIf="usuario" (ngSubmit)="guardarUsuario()">
+<<form *ngIf="usuario" (ngSubmit)="guardarUsuario()">
   <ion-card>
-    <ion-card-header style="color: white;">
+    <ion-card-header style="color: white; display: flex; align-items: center; justify-content: space-between;">
       <h1 style="margin: 0;">Mis Datos Personales</h1>
+      <div class="photo-container" (click)="fileInput.click()">
+        <img *ngIf="selectedImage && selectedImage !== 'assets/img/noPhoto.png'; else defaultImage" [src]="selectedImage" alt="Foto de Perfil" class="profile-image" />
+        <ng-template #defaultImage>
+          <img src="assets/img/noPhoto.png" alt="Foto de Perfil" class="profile-image" />
+        </ng-template>
+        <input type="file" #fileInput (change)="onFileSelected($event)" accept="image/*" style="display: none;" />
+      </div>
     </ion-card-header>
     <ion-card-content>
 

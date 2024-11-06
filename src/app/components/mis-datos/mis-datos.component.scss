@@ -70,3 +70,27 @@ ion-item {
   --inner-padding-end: 8px; /* Ajustar el padding para que los íconos se alineen mejor */
   --highlight-color-focused: var(--ion-color-primary);
 }
+
+.photo-container {
+  width: 120px; /* Ajusta el tamaño según lo necesites */
+  height: 120px; /* Ajusta el tamaño según lo necesites */
+  border-radius: 80%; /* Hace que la imagen sea circular */
+  overflow: hidden; /* Oculta el desbordamiento */
+  border: 2px solid #fff; /* Color del borde */
+  background-color: #f0f0f0; /* Color de fondo por defecto */
+  cursor: pointer; /* Cambia el cursor al pasar por encima */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.profile-image {
+  width: 100%;
+  height: auto;
+}
+
+.photo-container img {
+  width: 100%; /* Ajusta la imagen al tamaño del contenedor */
+  height: 100%; /* Asegura que la altura también se ajuste */
+  object-fit: cover; /* Mantiene la proporción de la imagen */
+}
