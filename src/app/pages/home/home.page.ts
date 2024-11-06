@@ -35,13 +35,13 @@ import { Asistencia } from 'src/app/model/asistencia';
 })
 export class HomePage {
   @ViewChild(FooterComponent) footer!: FooterComponent;
-  selectedComponent = 'welcome';
+  selectedComponent = 'codigoqr';
   asistencia: Asistencia | null = null;
 
   constructor(private auth: AuthService, private router: Router) {}
 
   ionViewWillEnter() {
-    this.changeComponent('welcome');
+    this.changeComponent('codigoqr');
   }
 
   footerClick(button: string) {
