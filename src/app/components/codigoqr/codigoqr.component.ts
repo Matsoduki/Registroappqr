@@ -27,7 +27,7 @@ import { Asistencia } from 'src/app/model/asistencia';
 export class CodigoqrComponent implements OnDestroy {
   @ViewChild('video') private video!: ElementRef;
   @ViewChild('canvas') private canvas!: ElementRef;
-  @Output() scanned: EventEmitter<string> = new EventEmitter<string>();
+  @Output() scanned: EventEmitter<Asistencia> = new EventEmitter<Asistencia>(); // Cambiado a Asistencia
   @Output() stopped: EventEmitter<void> = new EventEmitter<void>();
 
   usuario: Usuario;
@@ -49,7 +49,7 @@ export class CodigoqrComponent implements OnDestroy {
     this.usuario = navigation?.extras.state ? navigation.extras.state['usuario'] : null;
 
     if (navigation && navigation.extras.state) {
-      this.username = navigation.extras.state['username'] || ''; // Acceso con corchetes
+      this.username = navigation.extras.state['username'] || '';
     }
     
     // Cargar datos del usuario desde la base de datos
@@ -63,25 +63,14 @@ export class CodigoqrComponent implements OnDestroy {
 
   detenerEscaneo() {
     if (this.video && this.video.nativeElement && this.video.nativeElement.srcObject) {
-      // Acceder al stream del video
       const stream = this.video.nativeElement.srcObject as MediaStream;
-  
-      // Verifica si el stream tiene tracks (pistas de video/audio)
-      if (stream) {
-        const tracks = stream.getTracks(); // Obtiene todas las pistas de video/audio del stream
-        tracks.forEach(track => track.stop()); // Detiene cada pista
-  
-        // Limpia el srcObject para detener la transmisión de video
-        this.video.nativeElement.srcObject = null;
-        this.escaneando = false; // Actualiza el estado del escaneo
-      } else {
-        console.error('No se encontró el stream en el elemento de video.');
-      }
-    } else {
-      console.error('El elemento de video o su fuente no está disponible.');
+      const tracks = stream.getTracks();
+      tracks.forEach(track => track.stop());
+      this.video.nativeElement.srcObject = null;
+      this.escaneando = false;
     }
   }
-  
+
   ngOnDestroy() {
     this.stopCamera();
     this.stopped.emit();
@@ -114,7 +103,6 @@ export class CodigoqrComponent implements OnDestroy {
         if (qrCode) {
           this.escaneando = false;
           this.mostrarDatosQROrdenados(qrCode.data);
-          this.scanned.emit(qrCode.data);
         } else {
           requestAnimationFrame(this.verificarVideo.bind(this));
         }
@@ -128,19 +116,18 @@ export class CodigoqrComponent implements OnDestroy {
 
   stopCamera() {
     if (this.mediaStream) {
-      this.mediaStream.getTracks().forEach(track => track.stop()); // Detén todas las pistas de video
-      this.mediaStream = null; // Limpia el flujo de medios
+      this.mediaStream.getTracks().forEach(track => track.stop());
+      this.mediaStream = null;
     }
   }
 
   mostrarDatosQROrdenados(datosQR: string) {
-    const asistencia = JSON.parse(datosQR);
+    const asistencia: Asistencia = JSON.parse(datosQR); // Asegúrate de que esto coincida con la estructura de Asistencia
     console.log('Datos de asistencia:', asistencia);
   
-    // Navegar a la página de mi-clase, pasando los datos de asistencia.
-    this.router.navigate(['/mi-clase'], {
-      state: { asistencia, usuario: this.usuario }
-    });
+    // Emitir el evento al componente padre (HomePage)
+    this.scanned.emit(asistencia); // Emitir el objeto de asistencia
+    this.detenerEscaneo(); // Detiene el escaneo
   }
 
   cerrarSesion() {

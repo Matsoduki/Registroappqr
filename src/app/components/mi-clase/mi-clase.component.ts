@@ -1,22 +1,30 @@
-import { Component } from '@angular/core';
-import { Router } from '@angular/router';
+import { Component, Input, OnInit } from '@angular/core';
 import { Asistencia } from 'src/app/model/asistencia';
-import { CommonModule } from '@angular/common'; // Importar CommonModule
+import { CommonModule } from '@angular/common';
+import { IonHeader, IonToolbar, IonTitle, IonContent, IonCard, IonCardHeader, IonCardTitle, IonCardContent } from '@ionic/angular/standalone';
 
 @Component({
   selector: 'app-mi-clase',
   templateUrl: './mi-clase.component.html',
   styleUrls: ['./mi-clase.component.scss'],
   standalone: true,
-  imports: [CommonModule] // Agregar CommonModule aquí
+  imports: [
+    CommonModule,
+    IonHeader,
+    IonToolbar,
+    IonTitle,
+    IonContent,
+    IonCard,
+    IonCardHeader,
+    IonCardTitle,
+    IonCardContent
+  ]
 })
-export class MiClaseComponent {
-  asistencia!: Asistencia;
+export class MiClaseComponent implements OnInit {
+  @Input() asistencia!: Asistencia | null;
 
-  constructor(private router: Router) {
-    const navigation = this.router.getCurrentNavigation();
-    if (navigation?.extras.state) {
-      this.asistencia = navigation.extras.state['asistencia'];
+  ngOnInit() {
+    if (this.asistencia) {
       console.log('Asistencia recibida:', this.asistencia);
     } else {
       console.error('No se recibieron datos de asistencia');

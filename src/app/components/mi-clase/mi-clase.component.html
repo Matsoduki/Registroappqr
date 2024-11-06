@@ -1,16 +1,67 @@
-<div *ngIf="asistencia">
-  <h2>Detalles de Asistencia</h2>
-  <p><strong>Sede:</strong> {{ asistencia.sede }}</p>
-  <p><strong>ID Asignatura:</strong> {{ asistencia.idAsignatura }}</p>
-  <p><strong>Sección:</strong> {{ asistencia.seccion }}</p>
-  <p><strong>Nombre Asignatura:</strong> {{ asistencia.nombreAsignatura }}</p>
-  <p><strong>Nombre Profesor:</strong> {{ asistencia.nombreProfesor }}</p>
-  <p><strong>Día:</strong> {{ asistencia.dia }}</p>
-  <p><strong>Bloque Inicio:</strong> {{ asistencia.bloqueInicio }}</p>
-  <p><strong>Bloque Término:</strong> {{ asistencia.bloqueTermino }}</p>
-  <p><strong>Hora Inicio:</strong> {{ asistencia.horaInicio }}</p>
-  <p><strong>Hora Fin:</strong> {{ asistencia.horaFin }}</p>
-</div>
-<div *ngIf="!asistencia">
-  <p>No hay datos de asistencia disponibles.</p>
-</div>
+<ion-header>
+  <ion-toolbar>
+    <img src="../../assets/img/logoHeader.png" class="logoHeader">
+    <ion-title #titulo>
+      Sistema de Asistencia DUOC
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="ion-padding-horizontal ion-text-center">
+  <ion-card *ngIf="asistencia">
+    <ion-card-header>
+      <ion-card-title>Detalles de Asistencia</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <table class="minimal-table">
+        <tbody>
+          <tr>
+            <th>Bloque Inicio</th>
+            <td>{{ asistencia.bloqueInicio }}</td>
+          </tr>
+          <tr>
+            <th>Bloque Término</th>
+            <td>{{ asistencia.bloqueTermino }}</td>
+          </tr>
+          <tr>
+            <th>Día</th>
+            <td>{{ asistencia.dia }}</td>
+          </tr>
+          <tr>
+            <th>Hora Inicio</th>
+            <td>{{ asistencia.horaInicio }}</td>
+          </tr>
+          <tr>
+            <th>Hora Fin</th>
+            <td>{{ asistencia.horaFin }}</td>
+          </tr>
+          <tr>
+            <th>ID Asignatura</th>
+            <td>{{ asistencia.idAsignatura }}</td>
+          </tr>
+          <tr>
+            <th>Nombre Asignatura</th>
+            <td>{{ asistencia.nombreAsignatura }}</td>
+          </tr>
+          <tr>
+            <th>Nombre Profesor</th>
+            <td>{{ asistencia.nombreProfesor }}</td>
+          </tr>
+          <tr>
+            <th>Sección</th>
+            <td>{{ asistencia.seccion }}</td>
+          </tr>
+          <tr>
+            <th>Sede</th>
+            <td>{{ asistencia.sede }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </ion-card-content>
+  </ion-card>
+
+  <div *ngIf="!asistencia">
+    <h1 class="body-text ion-padding-top">No se encontraron datos de asistencia.</h1>
+  </div>
+</ion-content>
+
