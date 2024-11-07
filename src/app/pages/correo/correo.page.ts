@@ -7,7 +7,6 @@ import { LanguageComponent } from 'src/app/components/language/language.componen
 import { Router } from '@angular/router';
 import { NavController } from '@ionic/angular';
 import { ToastController } from '@ionic/angular';
-import { AnimationController } from '@ionic/angular';
 import { Usuario } from 'src/app/model/usuario';
 import { DatabaseService } from 'src/app/services/database.service';
 
@@ -24,23 +23,17 @@ import { DatabaseService } from 'src/app/services/database.service';
     LanguageComponent
   ]
 })
-export class CorreoPage implements AfterViewInit {
+export class CorreoPage {
   correo: string = '';
   errorMessage: string | null = null;
-
-  @ViewChild('ingresar', { read: ElementRef }) itemIngresar!: ElementRef;
 
   constructor(
     private navCtrl: NavController,
     private toastCtrl: ToastController,
-    private animationCtrl: AnimationController,
     private databaseService: DatabaseService,
     private router: Router
   ) {}
 
-  ngAfterViewInit() {
-    this.animIngresarCont();
-  }
   async recuperarPassword() {
     // Validación para verificar si el campo de correo está vacío
     if (!this.correo) {
@@ -87,22 +80,6 @@ private async mostrarToast(mensaje: string) {
     });
     await toast.present();
 }
-
-
-  animIngresarCont() {
-    this.animationCtrl
-      .create()
-      .addElement(this.itemIngresar.nativeElement)
-      .iterations(Infinity)
-      .duration(6000)
-      .keyframes([
-        { offset: 0, transform: 'scaleX(1)' },
-        { offset: 0.5, transform: 'scaleX(1.05)' },
-        { offset: 1, transform: 'scaleX(1)' }
-      ])
-      .easing('ease-in-out')
-      .play();
-  }
 
   ingreso() {
     this.router.navigate(['/ingreso']);

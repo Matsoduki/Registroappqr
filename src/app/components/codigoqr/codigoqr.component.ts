@@ -38,6 +38,7 @@ export class CodigoqrComponent implements OnDestroy {
   nombre: string = '';
   apellido: string = '';
   errorMessage: string | null = null;
+  user: Usuario = new Usuario();
 
   constructor(
     private router: Router,
@@ -51,7 +52,13 @@ export class CodigoqrComponent implements OnDestroy {
     if (navigation && navigation.extras.state) {
       this.username = navigation.extras.state['username'] || '';
     }
-    
+
+    this.authService.authUser.subscribe((user) => {
+      console.log(user);
+      if (user) {
+        this.user = user;
+      }
+    });
     // Cargar datos del usuario desde la base de datos
     this.cargarDatosUsuario();
   }

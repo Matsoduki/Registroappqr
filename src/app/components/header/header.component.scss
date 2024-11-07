@@ -1,0 +1,19 @@
+ion-toolbar {
+  overflow: visible;
+  position: relative;
+}
+
+ion-toolbar ion-title {
+  position: absolute;
+  top: 20%;
+}
+
+.logoHeader {
+	--border-radius: 0px;
+	height: 40px;
+	width: auto;
+	position: absolute;
+	z-index: 1;
+	top: 10%;
+}
+

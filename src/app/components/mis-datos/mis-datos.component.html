@@ -1,7 +1,7 @@
-<<form *ngIf="usuario" (ngSubmit)="guardarUsuario()">
+<form *ngIf="usuario" (ngSubmit)="guardarUsuario()">
   <ion-card>
     <ion-card-header style="color: white; display: flex; align-items: center; justify-content: space-between;">
-      <h1 style="margin: 0;">Mis Datos Personales</h1>
+      <h1 style="margin: 0; font-size: 30px !important;">Mis Datos Personales</h1>
       <div class="photo-container" (click)="fileInput.click()">
         <img *ngIf="selectedImage && selectedImage !== 'assets/img/noPhoto.png'; else defaultImage" [src]="selectedImage" alt="Foto de Perfil" class="profile-image" />
         <ng-template #defaultImage>
@@ -48,14 +48,17 @@
         </ion-select>
       </ion-item>
 
-      <ion-item>
-        <ion-label>Fecha de Nacimiento</ion-label>
+      <ion-item class="date-item">
+        <ion-label position="floating">Fecha de Nacimiento</ion-label>
         <ion-input 
           type="date" 
           [(ngModel)]="fechaNacimientoString" 
-          (ionChange)="onFechaNacimientoChange($event)" name="fechaNacimiento">
+          (ionChange)="onFechaNacimientoChange($event)" 
+          name="fechaNacimiento"
+          class="date-input">
         </ion-input>
       </ion-item>
+      
 
       <ion-item>
         <ion-input label="Dirección" labelPlacement="floating" [(ngModel)]="usuario.direccion" name="direccion"></ion-input>

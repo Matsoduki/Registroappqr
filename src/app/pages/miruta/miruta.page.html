@@ -1,13 +1,23 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>miruta</ion-title>
-  </ion-toolbar>
-</ion-header>
+<app-header></app-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">miruta</ion-title>
-    </ion-toolbar>
-  </ion-header>
+  <div id="mapId" style="height: 100%;"></div>
+<div class="distance-info" *ngIf="distance">{{ distance }}</div>
 </ion-content>
+
+<ion-footer>
+  <ion-tab-bar>
+    <ion-tab-button (click)="goToDUOC()" tab="DuocUC">
+      <ion-icon name="business" style="color: white;"></ion-icon>
+      <ion-label style="color: white;">DuocUC</ion-label>
+    </ion-tab-button>
+    <ion-tab-button (click)="goToMyPosition()" tab="MyPosition">
+      <ion-icon name="pin" style="color: white;"></ion-icon>
+      <ion-label style="color: white;">Mi Ubicación</ion-label>
+    </ion-tab-button>
+    <ion-tab-button (click)="showRouteToDuoc()" tab="showRoute">
+      <ion-icon name="navigate" style="color: white;"></ion-icon>
+      <ion-label style="color: white;">Ruta</ion-label>
+    </ion-tab-button>
+  </ion-tab-bar>
+</ion-footer>

@@ -1,13 +1,13 @@
-<ion-header>
-  <ion-toolbar>
-    <div slot="start" class="ion-margin">
+<ion-header style="height: 60px; padding: 0;">
+  <ion-toolbar style="height: 60px; padding: 0;">
+    <ion-nav-link slot="start" class="ion-margin" style="margin: 0; margin-left: 15px;">
       <app-language #selectLanguage></app-language>
-    </div>
-    <div slot="end" class="ion-margin">
-      <ion-button fill="clear" class="link1 link-box" (click)="navigateTheme()">
-        {{ 'Login.Button.Theme' | translate }} 
-        <ion-icon slot="start" name="color-wand-outline"></ion-icon>
-      </ion-button>
+    </ion-nav-link>
+    <div slot="end" class="ion-margin" style="margin: 0;">
+      <ion-nav-link (click)="navigateTheme()">
+        <ion-icon name="color-wand-outline"></ion-icon>
+        {{ 'Login.Button.Theme' | translate }}
+      </ion-nav-link>
     </div>
    </ion-toolbar>
 </ion-header>
@@ -45,15 +45,15 @@
           </ion-item>
         </ion-card-content>
     
-          <ion-button class="ion-padding-vertical button1" (click)="login()">{{ 'Login.Button.Login' | translate }}</ion-button>
+          <ion-button class="ion-padding-vertical" (click)="login()">{{ 'Login.Button.Login' | translate }}</ion-button>
         </ion-card>
     
       <ion-col>
         <ion-row class="centrar">
-          <ion-button #boton1 fill="clear" class="link1 link-box" (click)="passwordRecovery()">{{ 'Login.Button.ForgotPassword' | translate }}</ion-button>
+          <ion-nav-link (click)="passwordRecovery()">{{ 'Login.Button.ForgotPassword' | translate }}</ion-nav-link>
         </ion-row>
         <ion-row class="centrar">
-          <ion-button #boton2 fill="clear" class="link1 link-box" (click)="miruta()">{{ 'Login.Button.Map' | translate }}</ion-button>
+          <ion-nav-link (click)="miruta()">{{ 'Login.Button.Map' | translate }}</ion-nav-link>
         </ion-row>
       </ion-col>
     </div>

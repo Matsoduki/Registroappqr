@@ -1,0 +1,31 @@
+<app-header (headerClick)="headerClick($event)"></app-header>
+
+<ion-content [fullscreen]="true">
+  <ng-container [ngSwitch]="selectedComponent">
+    <!-- Componente para escanear códigos QR -->
+    <app-codigoqr 
+      *ngSwitchCase="'codigoqr'" 
+      (scanned)="webQrScanned($event)"
+      (stopped)="webQrStopped()">
+    </app-codigoqr>
+
+    <!-- Componente del foro -->
+    <app-forum 
+      *ngSwitchCase="'forum'">
+    </app-forum>
+
+    <!-- Componente para mostrar datos del usuario -->
+    <app-mis-datos 
+      *ngSwitchCase="'mis-datos'"> 
+    </app-mis-datos>
+
+    <!-- Componente para mostrar detalles de asistencia -->
+    <app-mi-clase 
+      *ngSwitchCase="'mi-clase'" 
+      [asistencia]="asistencia">
+    </app-mi-clase>
+  </ng-container>
+</ion-content>
+
+<!-- Componente del pie de página -->
+<app-footer (footerClick)="footerClick($event)"></app-footer>

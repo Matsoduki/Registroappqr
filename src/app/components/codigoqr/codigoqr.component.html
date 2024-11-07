@@ -1,9 +1,8 @@
 <ion-content [fullscreen]="true" class="ion-padding-horizontal ion-text-center">
-  <div class="container">
-    <h1 *ngIf="usuario" class="body-text">
-      ¡Bienvenido/a, {{ nombre }} {{ apellido }}!
-    </h1>
-    <p class="body-text">
+    <p>
+      ¡Bienvenido/a, {{ user.nombre }} {{ user.apellido }}!
+    </p>
+    <p>
       Escanea el código QR para registrar tu asistencia a clases
     </p>
 
@@ -25,8 +24,7 @@
     </ion-button>
 
     <!-- Separación para el botón de cerrar sesión -->
-    <ion-button #recuperar (click)="cerrarSesion()" fill="clear" class="link1 cerrar-sesion">
+    <ion-button (click)="cerrarSesion()" fill="clear">
       Cerrar Sesión
     </ion-button>
-  </div>
 </ion-content>

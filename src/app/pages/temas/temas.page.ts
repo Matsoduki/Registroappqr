@@ -24,7 +24,7 @@ export class TemasPage {
   colorTheme: string = '';
 
   constructor(private navCtrl: NavController) { 
-    this.colorTheme = 'light';
+    this.colorTheme = 'dark';
     document.body.setAttribute('color-theme', this.colorTheme);
     addIcons({ homeOutline, logOutOutline, arrowBackOutline });
   }

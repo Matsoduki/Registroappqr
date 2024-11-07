@@ -56,9 +56,7 @@ export class IngresoPage implements ViewWillEnter {
         const result = await this.authService.login(this.correo, this.password);
         if (result) {
           // Redirigir a la página principal o dashboard
-          this.router.navigate(['/home']);
-        } else {
-          this.showToast('Inicio de sesión fallido. Verifica tus credenciales.');
+          this.router.navigate(['/inicio']);
         }
       } catch (error) {
         if (error instanceof TypeError) {
@@ -79,7 +77,7 @@ export class IngresoPage implements ViewWillEnter {
   }
 
   miruta() {
-    this.router.navigate(['/map']);
+    this.router.navigate(['/miruta']);
   }
 
   private async showToast(message: string) {

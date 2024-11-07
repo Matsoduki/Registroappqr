@@ -14,6 +14,7 @@ ion-footer {
   --background: #1A1A1A;
 }
 
+
 ion-content {
   --background: #FFFFFF;
   display: flex;
@@ -72,8 +73,8 @@ ion-item {
 }
 
 .photo-container {
-  width: 120px; /* Ajusta el tamaño según lo necesites */
-  height: 120px; /* Ajusta el tamaño según lo necesites */
+  width: 100px; /* Ajusta el tamaño según lo necesites */
+  height: 100px; /* Ajusta el tamaño según lo necesites */
   border-radius: 80%; /* Hace que la imagen sea circular */
   overflow: hidden; /* Oculta el desbordamiento */
   border: 2px solid #fff; /* Color del borde */
@@ -93,4 +94,21 @@ ion-item {
   width: 100%; /* Ajusta la imagen al tamaño del contenedor */
   height: 100%; /* Asegura que la altura también se ajuste */
   object-fit: cover; /* Mantiene la proporción de la imagen */
+}
+
+.date-item {
+  --highlight-color: #c2c2c2; /* Set a subtle color for labels */
+  --padding-start: 0px;
+  margin-bottom: 16px;
+}
+
+.date-item ion-label {
+  color: var(--highlight-color);
+  font-weight: 500;
+}
+
+.date-input {
+  color: #c7c7c7; /* Set color for date text */
+  font-size: 16px;
+  padding-top: 12px;
 }

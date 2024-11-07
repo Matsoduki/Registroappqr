@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, ElementRef, ViewChild } from '@angular/core';
+import { Component, ElementRef, ViewChild } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
@@ -23,7 +23,7 @@ import { Usuario } from 'src/app/model/usuario';
     LanguageComponent
   ]
 })
-export class PreguntaPage implements AfterViewInit {
+export class PreguntaPage {
   username: string = '';
   respuestaSecreta: string = '';
   errorMessage: string | null = null;
@@ -38,7 +38,6 @@ export class PreguntaPage implements AfterViewInit {
   constructor(
     private router: Router, 
     private toastCtrl: ToastController, 
-    private animationCtrl: AnimationController,
     private databaseService: DatabaseService // Inyección del servicio de base de datos
   ) {
     const navigation = this.router.getCurrentNavigation();
@@ -48,10 +47,6 @@ export class PreguntaPage implements AfterViewInit {
     
     // Cargar datos del usuario desde la base de datos
     this.cargarDatosUsuario();
-  }
-
-  ngAfterViewInit() {
-    this.animIngresarCont();
   }
 
   // Función para cargar los datos del usuario (nombre, apellido, pregunta secreta)
@@ -86,21 +81,6 @@ export class PreguntaPage implements AfterViewInit {
       this.errorMessage = 'Error al verificar la respuesta.';
       console.error(error);
     }
-  }
-
-  animIngresarCont() {
-    this.animationCtrl
-      .create()
-      .addElement(this.itemIngresar.nativeElement)
-      .iterations(Infinity)
-      .duration(6000)
-      .keyframes([
-        { offset: 0, transform: 'scaleX(1)' },
-        { offset: 0.5, transform: 'scaleX(1.05)' },
-        { offset: 1, transform: 'scaleX(1)' }
-      ])
-      .easing('ease-in-out')
-      .play();
   }
 
   ingreso() {

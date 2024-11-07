@@ -1,9 +1,12 @@
-import type { CapacitorConfig } from '@capacitor/cli';
+import { CapacitorConfig } from '@capacitor/cli';
 
 const config: CapacitorConfig = {
   appId: 'io.ionic.starter',
-  appName: 'angrydinosaur',
+  appName: 'registroapp',
   webDir: 'www',
+  server: {
+    androidScheme: 'https'
+  },
   plugins: {
     SplashScreen: {
       launchShowDuration: 3000,
@@ -13,7 +16,7 @@ const config: CapacitorConfig = {
       splashImmersive: true,
       backgroundColor: '#ffffff',
     },
-  },
+  }
 };
 
 export default config;

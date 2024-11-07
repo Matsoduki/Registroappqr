@@ -4,7 +4,7 @@ import { MessageEnum } from "./message-enum";
 export let showLogs: boolean = true;
 
 export const getAppName = (): string => {
-  return 'Angry Dinosaurs';
+  return 'RegistroApp';
 }
 
 export const log = (source: string, message: string, returnValue?: boolean): any => {
@@ -38,7 +38,9 @@ export const showToast =
     const controler = new ToastController();
     const toast = await controler.create({ 
       message:message, 
-      duration: duration?duration:2000 });
+      duration: duration?duration:2000,
+      position: 'top'
+    });
     await toast.present();
   }
 
@@ -117,7 +119,7 @@ export const showAlertError =
     errorMessage += 'Por favor, comuníquese con el Administrador del Sistema '
         + 'o intente nuevamente más tarde.';
 
-    if (showLogs) console.log('🐞' + errorMessage);
+    if (showLogs) console.log('[ ! ] ' + errorMessage);
 
     // Crea y muestra la alerta
     if (toast) {
