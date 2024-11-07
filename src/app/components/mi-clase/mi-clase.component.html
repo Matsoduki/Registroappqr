@@ -59,13 +59,26 @@
   <h1 class="body-text ion-padding-top">No se encontraron datos de asistencia.</h1>
 </div>
 
+<!-- Historial de asistencias en tabla -->
 <div *ngIf="historial.length > 0">
   <h2>Historial de Asistencia</h2>
-  <ion-list>
-    <ion-item *ngFor="let item of historial">
-      <ion-label>
-        {{ item.dia }} - {{ item.horaInicio }} a {{ item.horaFin }}
-      </ion-label>
-    </ion-item>
-  </ion-list>
+  <table class="minimal-table">
+    <thead>
+      <tr>
+        <th>Fecha</th>
+        <th>Docente a Cargo</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of historial">
+        <td>{{ item.dia }}</td>
+        <td>{{ item.nombreProfesor }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- Mensaje si no hay historial -->
+<div *ngIf="noHistorialVisible && asistencia">
+  <h2>No hay asistencias registradas en el historial.</h2>
 </div>
