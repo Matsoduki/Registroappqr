@@ -6,6 +6,7 @@ import { BehaviorSubject } from 'rxjs';
 import { NivelEducacional } from '../model/nivel-educacional';
 import { showAlertError } from '../tools/message-functions';
 import { convertDateToString, convertStringToDate } from '../tools/date-functions';
+import { Asistencia } from '../model/asistencia';
 
 @Injectable({
   providedIn: 'root'
@@ -72,6 +73,25 @@ export class DatabaseService {
         foto              TEXT NOT NULL
       );
       `]
+    },
+    {
+      toVersion: 2,
+      statements: [`
+        CREATE TABLE IF NOT EXISTS ASISTENCIAS (
+          id INTEGER PRIMARY KEY AUTOINCREMENT,
+          username TEXT NOT NULL,
+          sede TEXT NOT NULL,
+          idAsignatura TEXT NOT NULL,
+          seccion TEXT NOT NULL,
+          nombreAsignatura TEXT NOT NULL,
+          nombreProfesor TEXT NOT NULL,
+          dia TEXT NOT NULL,
+          bloqueInicio TEXT NOT NULL,
+          bloqueTermino TEXT NOT NULL,
+          horaInicio TEXT NOT NULL,
+          horaFin TEXT NOT NULL
+        );
+      `]
     }
   ];
 
@@ -99,9 +119,14 @@ export class DatabaseService {
 
   async initializeDataBase() {
     try {
-      await this.sqliteService.createDataBase({database: this.dataBaseName, upgrade: this.userUpgrades});
-      this.db = await this.sqliteService.open(this.dataBaseName, false, 'no-encryption', 1, false);
+      await this.sqliteService.createDataBase({
+        database: this.dataBaseName,
+        upgrade: this.userUpgrades
+      });
+      // Cambia la versión de 1 a 2
+      this.db = await this.sqliteService.open(this.dataBaseName, false, 'no-encryption', 2, false);
       await this.createTestUsers();
+      await this.createTestAsistencias(); // Asegúrate de llamar a este método aquí
       await this.readUsers();
     } catch (error) {
       showAlertError('DataBaseService.initializeDataBase', error);
@@ -279,4 +304,102 @@ export class DatabaseService {
       return new Usuario();
     }
   }
+
+  async saveUserAsistencia(username: string, asistencia: Asistencia): Promise<void> {
+    const sqlInsert = `
+      INSERT INTO ASISTENCIAS (username, sede, idAsignatura, seccion, nombreAsignatura, nombreProfesor, dia, bloqueInicio, bloqueTermino, horaInicio, horaFin)
+      VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);
+    `;
+    await this.db.run(sqlInsert, [
+      username,
+      asistencia.sede,
+      asistencia.idAsignatura,
+      asistencia.seccion,
+      asistencia.nombreAsignatura,
+      asistencia.nombreProfesor,
+      asistencia.dia,
+      asistencia.bloqueInicio,
+      asistencia.bloqueTermino,
+      asistencia.horaInicio,
+      asistencia.horaFin
+    ]);
+  }
+
+  async getHistorialAsistencias(username: string): Promise<any[]> {
+    const q = 'SELECT * FROM ASISTENCIAS WHERE username=? ORDER BY dia DESC, horaInicio ASC;';
+    const rows = (await this.db.query(q, [username])).values;
+    return rows || [];
+  }
+
+  async createTestAsistencias() {
+    try {
+      const testAsistencias = [
+        {
+          username: 'atorres',
+          asistencia: Asistencia.getNewAsistencia(
+            'Alonso Ovalle',
+            'PGY4121',
+            '001D',
+            'Aplicaciones Móviles',
+            'Cristián Gómez Vega',
+            '2022-08-09',
+            7,
+            9,
+            '13:00',
+            '15:15'
+          )
+        },
+        {
+          username: 'avalenzuela',
+          asistencia: Asistencia.getNewAsistencia(
+            'Sede B',
+            'ASIGNATURA_2',
+            '002D',
+            'Historia',
+            'Prof. González',
+            '2024-11-02',
+            2,
+            3,
+            '10:00',
+            '12:00'
+          )
+        },
+        {
+          username: 'cfuentes',
+          asistencia: Asistencia.getNewAsistencia(
+            'Sede C',
+            'ASIGNATURA_3',
+            '003D',
+            'Ciencias',
+            'Prof. López',
+            '2024-11-03',
+            3,
+            4,
+            '12:00',
+            '14:00'
+          )
+        }
+      ];
+  
+      for (const { username, asistencia } of testAsistencias) {
+        await this.saveUserAsistencia(username, asistencia);
+      }
+    } catch (error) {
+      showAlertError('DataBaseService.createTestAsistencias', error);
+    }
+  }
+
+async clearHistorialAsistencias(): Promise<void> {
+  try {
+    const q = 'DELETE FROM ASISTENCIAS;';
+    await this.db.run(q);
+    console.log("Historial de asistencias limpiado.");
+  } catch (error) {
+    showAlertError('DatabaseService.clearHistorialAsistencias', error);
+  }
 }
+
+
+}
+
+
