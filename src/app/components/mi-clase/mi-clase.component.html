@@ -1,84 +1,55 @@
 <ion-card *ngIf="asistencia">
   <ion-card-header>
-    <ion-card-title>Detalles de Asistencia</ion-card-title>
+    <ion-card-title class="centrar">{{ 'MiClase.Title' | translate }}</ion-card-title>
   </ion-card-header>
   <ion-card-content>
     <table class="minimal-table">
       <tbody>
         <tr>
-          <th>Bloque Inicio</th>
+          <th>{{ 'MiClase.Row.BloqueInicio' | translate }}</th>
           <td>{{ asistencia.bloqueInicio }}</td>
         </tr>
         <tr>
-          <th>Bloque Término</th>
+          <th>{{ 'MiClase.Row.BloqueTermino' | translate }}</th>
           <td>{{ asistencia.bloqueTermino }}</td>
         </tr>
         <tr>
-          <th>Día</th>
+          <th>{{ 'MiClase.Row.Dia' | translate }}</th>
           <td>{{ asistencia.dia }}</td>
         </tr>
         <tr>
-          <th>Hora Inicio</th>
+          <th>{{ 'MiClase.Row.HoraInicio' | translate }}</th>
           <td>{{ asistencia.horaInicio }}</td>
         </tr>
         <tr>
-          <th>Hora Fin</th>
+          <th>{{ 'MiClase.Row.HoraFin' | translate }}</th>
           <td>{{ asistencia.horaFin }}</td>
         </tr>
         <tr>
-          <th>ID Asignatura</th>
+          <th>{{ 'MiClase.Row.IdAsignatura' | translate }}</th>
           <td>{{ asistencia.idAsignatura }}</td>
         </tr>
         <tr>
-          <th>Nombre Asignatura</th>
+          <th>{{ 'MiClase.Row.NombreAsignatura' | translate }}</th>
           <td>{{ asistencia.nombreAsignatura }}</td>
         </tr>
         <tr>
-          <th>Nombre Profesor</th>
+          <th>{{ 'MiClase.Row.NombreProfesor' | translate }}</th>
           <td>{{ asistencia.nombreProfesor }}</td>
         </tr>
         <tr>
-          <th>Sección</th>
+          <th>{{ 'MiClase.Row.Seccion' | translate }}</th>
           <td>{{ asistencia.seccion }}</td>
         </tr>
         <tr>
-          <th>Sede</th>
+          <th>{{ 'MiClase.Row.Sede' | translate }}</th>
           <td>{{ asistencia.sede }}</td>
         </tr>
       </tbody>
     </table>
-    <div class="button-container">
-      <ion-button (click)="guardarAsistencia()" expand="full">Guardar Asistencia</ion-button>
-      <ion-button (click)="verHistorial()" expand="full">Ver Historial</ion-button>
-      <ion-button (click)="limpiarHistorial()" expand="full" color="danger">Limpiar Historial</ion-button>
-    </div>
   </ion-card-content>
 </ion-card>
 
-<div *ngIf="!asistencia">
-  <h1 class="body-text ion-padding-top">No se encontraron datos de asistencia.</h1>
-</div>
-
-<!-- Historial de asistencias en tabla -->
-<div *ngIf="historial.length > 0">
-  <h2>Historial de Asistencia</h2>
-  <table class="minimal-table">
-    <thead>
-      <tr>
-        <th>Fecha</th>
-        <th>Docente a Cargo</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let item of historial">
-        <td>{{ item.dia }}</td>
-        <td>{{ item.nombreProfesor }}</td>
-      </tr>
-    </tbody>
-  </table>
-</div>
-
-<!-- Mensaje si no hay historial -->
-<div *ngIf="noHistorialVisible && asistencia">
-  <h2>No hay asistencias registradas en el historial.</h2>
+<div *ngIf="!asistencia" style="align-items: center; text-align: center;">
+  <h4 class="ion-padding-top">{{ 'MiClase.Label.SinDatos' | translate }}</h4>
 </div>

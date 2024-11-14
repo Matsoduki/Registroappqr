@@ -39,12 +39,12 @@
     --ion-color-warning-shade: #E6A500;
     --ion-color-warning-tint: #FFC233;
     
-    --ion-color-danger: #1A1A1A;
-    --ion-color-danger-rgb: 26,26,26;
-    --ion-color-danger-contrast: #FFFFFF;
-    --ion-color-danger-contrast-rgb: 255,255,255;
-    --ion-color-danger-shade: #000000;
-    --ion-color-danger-tint: #333333;
+	--ion-color-danger: #c5000f;
+	--ion-color-danger-rgb: 197,0,15;
+	--ion-color-danger-contrast: #ffffff;
+	--ion-color-danger-contrast-rgb: 255,255,255;
+	--ion-color-danger-shade: #ad000d;
+	--ion-color-danger-tint: #cb1a27;
     
     --ion-color-light: #FFFFFF;
     --ion-color-light-rgb: 255,255,255;
@@ -149,25 +149,874 @@
         --border-color-checked: #FFB800; /* Color del borde cuando está marcado */
         --checkbox-background-checked: #FFB800; /* Color de fondo del checkbox cuando está marcado */
     }
-      
+
+    .ion-valid.sc-ion-input-md-h {
+        --highlight-color: var(--ion-color-tertiary) !important;
+    }
+
+    .ion-invalid.sc-ion-input-md-h {
+        --highlight-color: var(--ion-color-danger) !important;
+    }
+
+    .sc-ion-input-md-h {
+        --highlight-color: var(--ion-color-tertiary) !important;
+    }
+
+    .sc-ion-textarea-md-h {
+        --highlight-color: var(--ion-color-tertiary) !important;
+    }
+    
+    ion-datetime {
+        --ion-color-primary: var(--ion-color-tertiary) !important;
+    }
 }
 
 body[color-theme='EscAdmin'] {
-    --ion-background-color: #AC4FC6 !important;
+    --ion-background-color: #0F0F0F;
+
+    --ion-color-primary: #1A1A1A;
+    --ion-color-primary-rgb: 26,26,26;
+    --ion-color-primary-contrast: #FFFFFF;
+    --ion-color-primary-contrast-rgb: 255,255,255;
+    --ion-color-primary-shade: #111111; /* Negro más claro */
+    --ion-color-primary-tint: #333333;
+    
+    --ion-color-secondary: #666666;
+    --ion-color-secondary-rgb: 102,102,102;
+    --ion-color-secondary-contrast: #FFFFFF;
+    --ion-color-secondary-contrast-rgb: 255,255,255;
+    --ion-color-secondary-shade: #555555;
+    --ion-color-secondary-tint: #777777;
+    
+    --ion-color-tertiary: #ac4fc6; /* Morado en lugar de amarillo */
+    --ion-color-tertiary-rgb: 172,79,198;
+    --ion-color-tertiary-contrast: #FFFFFF;
+    --ion-color-tertiary-contrast-rgb: 255,255,255;
+    --ion-color-tertiary-shade: #8a3ea2; /* Sombra más oscura */
+    --ion-color-tertiary-tint: #b670d7; /* Tinte más claro */
+    
+    --ion-color-success: #666666;
+    --ion-color-success-rgb: 102,102,102;
+    --ion-color-success-contrast: #FFFFFF;
+    --ion-color-success-contrast-rgb: 255,255,255;
+    --ion-color-success-shade: #555555;
+    --ion-color-success-tint: #777777;
+    
+    --ion-color-warning: #ac4fc6; /* Reemplazamos el amarillo por morado */
+    --ion-color-warning-rgb: 172,79,198;
+    --ion-color-warning-contrast: #FFFFFF;
+    --ion-color-warning-contrast-rgb: 255,255,255;
+    --ion-color-warning-shade: #8a3ea2;
+    --ion-color-warning-tint: #b670d7;
+    
+	--ion-color-danger: #c5000f;
+	--ion-color-danger-rgb: 197,0,15;
+	--ion-color-danger-contrast: #ffffff;
+	--ion-color-danger-contrast-rgb: 255,255,255;
+	--ion-color-danger-shade: #ad000d;
+	--ion-color-danger-tint: #cb1a27;
+    
+    --ion-color-light: #FFFFFF;
+    --ion-color-light-rgb: 255,255,255;
+    --ion-color-light-contrast: #000000;
+    --ion-color-light-contrast-rgb: 0,0,0;
+    --ion-color-light-shade: #EEEEEE;
+    --ion-color-light-tint: #FFFFFF;
+    
+    --ion-color-medium: #666666;
+    --ion-color-medium-rgb: 102,102,102;
+    --ion-color-medium-contrast: #FFFFFF;
+    --ion-color-medium-contrast-rgb: 255,255,255;
+    --ion-color-medium-shade: #555555;
+    --ion-color-medium-tint: #777777;
+    
+    --ion-color-dark: #222222; /* Negro más claro */
+    --ion-color-dark-rgb: 34,34,34;
+    --ion-color-dark-contrast: #FFFFFF;
+    --ion-color-dark-contrast-rgb: 255,255,255;
+    --ion-color-dark-shade: #111111;
+    --ion-color-dark-tint: #444444; /* Tinte más claro */
+    
+
+    --ion-background-color: #1A1A1A !important;
+
+    ion-nav-link {
+        background-color: rgba(26, 26, 26, 0.5);
+        padding: 10px;
+        border-radius: 5px;
+        font-size: 0.8125rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        margin: 5px;
+    }
+
+    ion-button {
+        --background: #ac4fc6; /* Morado */
+        font-size: 0.8125rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        color: #FFFFFF;
+    }
+    
+    ion-alert {
+        //background color
+        // .alert-wrapper.sc-ion-alert-md {
+        //   background-color: #f8f4aa;
+        //   --background: #f8f4aa
+        // }
+        
+        .alert-head {
+            height: 60px;
+        }
+
+        // Header Text
+        .alert-title.sc-ion-alert-md {
+            font-size: 20px !important;
+            font-weight: 600;
+            text-transform: uppercase;
+            color: var(--ion-text-color, #00000080);
+            transform: translateY(-15px);
+        }
+        
+        // checkbox border color
+        [aria-checked="true"].sc-ion-alert-md .alert-radio-icon.sc-ion-alert-md {
+            border-color: #ac4fc6; /* Morado */
+        }
+        
+        // checkbox or radio button color
+        .alert-radio-inner.sc-ion-alert-md {
+            background-color: #ac4fc6 !important;
+        }
+
+        // Checked text color
+        [aria-checked="true"].sc-ion-alert-md .alert-radio-label.sc-ion-alert-md {
+            color: #ac4fc6;
+        }
+
+        // Height of text
+        .alert-tappable.sc-ion-alert-md {
+            height: 50px !important;
+        }
+        
+        // Button color
+        .alert-button-inner.sc-ion-alert-md {
+            color: #ffffff;
+            font-weight: bold;
+            font-size: larger;
+        }
+    }
+
+    ion-toggle {
+        --handle-background-checked: #ac4fc6; /* Morado para el mango cuando está activado */
+        --track-background-checked: #ac4fc680;
+    }
+
+    ion-checkbox {
+        --background: #FFFFFF; /* Color de fondo del checkbox cuando no está marcado */
+        --border-color: #ac4fc6; /* Color del borde del checkbox cuando no está marcado */
+        --checkmark-color: #000000; /* Color de la marca de verificación */
+        --checked-background: #ac4fc6; /* Color de fondo cuando está marcado */
+        --border-color-checked: #ac4fc6; /* Color del borde cuando está marcado */
+        --checkbox-background-checked: #ac4fc6; /* Color de fondo del checkbox cuando está marcado */
+    }
+
+    .ion-valid.sc-ion-input-md-h {
+        --highlight-color: var(--ion-color-tertiary) !important;
+    }
+
+    .ion-invalid.sc-ion-input-md-h {
+        --highlight-color: var(--ion-color-danger) !important;
+    }
+
+    .sc-ion-input-md-h {
+        --highlight-color: var(--ion-color-tertiary) !important;
+    }
+
+    .sc-ion-textarea-md-h {
+        --highlight-color: var(--ion-color-tertiary) !important;
+    }
+    
+    ion-datetime {
+        --ion-color-primary: var(--ion-color-tertiary) !important;
+    }
 }
 
 body[color-theme='EscComm'] {
-    --ion-background-color: #D50032 !important;
+    --ion-background-color: #0F0F0F;
+
+    --ion-color-primary: #1A1A1A;
+    --ion-color-primary-rgb: 26,26,26;
+    --ion-color-primary-contrast: #FFFFFF;
+    --ion-color-primary-contrast-rgb: 255,255,255;
+    --ion-color-primary-shade: #111111; /* Negro más claro */
+    --ion-color-primary-tint: #333333;
+    
+    --ion-color-secondary: #666666;
+    --ion-color-secondary-rgb: 102,102,102;
+    --ion-color-secondary-contrast: #FFFFFF;
+    --ion-color-secondary-contrast-rgb: 255,255,255;
+    --ion-color-secondary-shade: #555555;
+    --ion-color-secondary-tint: #777777;
+    
+    --ion-color-tertiary: #D50032; /* Rojo en lugar de amarillo */
+    --ion-color-tertiary-rgb: 213,0,50;
+    --ion-color-tertiary-contrast: #FFFFFF;
+    --ion-color-tertiary-contrast-rgb: 255,255,255;
+    --ion-color-tertiary-shade: #A20026; /* Sombra más oscura del rojo */
+    --ion-color-tertiary-tint: #FF3350; /* Tinte más claro del rojo */
+    
+    --ion-color-success: #666666;
+    --ion-color-success-rgb: 102,102,102;
+    --ion-color-success-contrast: #FFFFFF;
+    --ion-color-success-contrast-rgb: 255,255,255;
+    --ion-color-success-shade: #555555;
+    --ion-color-success-tint: #777777;
+    
+    --ion-color-warning: #D50032; /* Rojo en lugar de amarillo */
+    --ion-color-warning-rgb: 213,0,50;
+    --ion-color-warning-contrast: #FFFFFF;
+    --ion-color-warning-contrast-rgb: 255,255,255;
+    --ion-color-warning-shade: #A20026; /* Sombra más oscura */
+    --ion-color-warning-tint: #FF3350; /* Tinte más claro */
+    
+	--ion-color-danger: #c5000f;
+	--ion-color-danger-rgb: 197,0,15;
+	--ion-color-danger-contrast: #ffffff;
+	--ion-color-danger-contrast-rgb: 255,255,255;
+	--ion-color-danger-shade: #ad000d;
+	--ion-color-danger-tint: #cb1a27;
+    
+    --ion-color-light: #FFFFFF;
+    --ion-color-light-rgb: 255,255,255;
+    --ion-color-light-contrast: #000000;
+    --ion-color-light-contrast-rgb: 0,0,0;
+    --ion-color-light-shade: #EEEEEE;
+    --ion-color-light-tint: #FFFFFF;
+    
+    --ion-color-medium: #666666;
+    --ion-color-medium-rgb: 102,102,102;
+    --ion-color-medium-contrast: #FFFFFF;
+    --ion-color-medium-contrast-rgb: 255,255,255;
+    --ion-color-medium-shade: #555555;
+    --ion-color-medium-tint: #777777;
+    
+    --ion-color-dark: #222222; /* Negro más claro */
+    --ion-color-dark-rgb: 34,34,34;
+    --ion-color-dark-contrast: #FFFFFF;
+    --ion-color-dark-contrast-rgb: 255,255,255;
+    --ion-color-dark-shade: #111111;
+    --ion-color-dark-tint: #444444; /* Tinte más claro */
+    
+
+    --ion-background-color: #1A1A1A !important;
+
+    ion-nav-link {
+        background-color: rgba(26, 26, 26, 0.5);
+        padding: 10px;
+        border-radius: 5px;
+        font-size: 0.8125rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        margin: 5px;
+    }
+
+    ion-button {
+        --background: #D50032; /* Rojo en lugar de amarillo */
+        font-size: 0.8125rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        color: #FFFFFF;
+    }
+    
+    ion-alert {
+        //background color
+        // .alert-wrapper.sc-ion-alert-md {
+        //   background-color: #f8f4aa;
+        //   --background: #f8f4aa
+        // }
+        
+        .alert-head {
+            height: 60px;
+        }
+
+        // Header Text
+        .alert-title.sc-ion-alert-md {
+            font-size: 20px !important;
+            font-weight: 600;
+            text-transform: uppercase;
+            color: var(--ion-text-color, #00000080);
+            transform: translateY(-15px);
+        }
+        
+        // checkbox border color
+        [aria-checked="true"].sc-ion-alert-md .alert-radio-icon.sc-ion-alert-md {
+            border-color: #D50032; /* Rojo */
+        }
+        
+        // checkbox or radio button color
+        .alert-radio-inner.sc-ion-alert-md {
+            background-color: #D50032 !important; /* Rojo */
+        }
+
+        // Checked text color
+        [aria-checked="true"].sc-ion-alert-md .alert-radio-label.sc-ion-alert-md {
+            color: #D50032; /* Rojo */
+        }
+
+        // Height of text
+        .alert-tappable.sc-ion-alert-md {
+            height: 50px !important;
+        }
+        
+        // Button color
+        .alert-button-inner.sc-ion-alert-md {
+            color: #ffffff;
+            font-weight: bold;
+            font-size: larger;
+        }
+    }
+
+    ion-toggle {
+        --handle-background-checked: #D50032; /* Rojo para el mango cuando está activado */
+        --track-background-checked: #D5003280;
+    }
+
+    ion-checkbox {
+        --background: #FFFFFF; /* Color de fondo del checkbox cuando no está marcado */
+        --border-color: #D50032; /* Color del borde del checkbox cuando no está marcado */
+        --checkmark-color: #000000; /* Color de la marca de verificación */
+        --checked-background: #D50032; /* Color de fondo cuando está marcado */
+        --border-color-checked: #D50032; /* Color del borde cuando está marcado */
+        --checkbox-background-checked: #D50032; /* Color de fondo del checkbox cuando está marcado */
+    }
+
+    .ion-valid.sc-ion-input-md-h {
+        --highlight-color: var(--ion-color-tertiary) !important;
+    }
+
+    .ion-invalid.sc-ion-input-md-h {
+        --highlight-color: var(--ion-color-danger) !important;
+    }
+
+    .sc-ion-input-md-h {
+        --highlight-color: var(--ion-color-tertiary) !important;
+    }
+
+    .sc-ion-textarea-md-h {
+        --highlight-color: var(--ion-color-tertiary) !important;
+    }
+    
+    ion-datetime {
+        --ion-color-primary: var(--ion-color-tertiary) !important;
+    }
 }
 
 body[color-theme='EscInf'] {
-    --ion-background-color: #307FE2 !important;
+    --ion-background-color: #0F0F0F;
+
+    --ion-color-primary: #1A1A1A;
+    --ion-color-primary-rgb: 26,26,26;
+    --ion-color-primary-contrast: #FFFFFF;
+    --ion-color-primary-contrast-rgb: 255,255,255;
+    --ion-color-primary-shade: #222222; /* Negro más claro */
+    --ion-color-primary-tint: #333333;
+    
+    --ion-color-secondary: #666666;
+    --ion-color-secondary-rgb: 102,102,102;
+    --ion-color-secondary-contrast: #FFFFFF;
+    --ion-color-secondary-contrast-rgb: 255,255,255;
+    --ion-color-secondary-shade: #555555;
+    --ion-color-secondary-tint: #777777;
+    
+    --ion-color-tertiary: #307FE2; /* Azul en lugar de amarillo */
+    --ion-color-tertiary-rgb: 48,127,226;
+    --ion-color-tertiary-contrast: #FFFFFF;
+    --ion-color-tertiary-contrast-rgb: 255,255,255;
+    --ion-color-tertiary-shade: #1E5FB9; /* Sombra más oscura del azul */
+    --ion-color-tertiary-tint: #58A3E6; /* Tinte más claro del azul */
+    
+    --ion-color-success: #666666;
+    --ion-color-success-rgb: 102,102,102;
+    --ion-color-success-contrast: #FFFFFF;
+    --ion-color-success-contrast-rgb: 255,255,255;
+    --ion-color-success-shade: #555555;
+    --ion-color-success-tint: #777777;
+    
+    --ion-color-warning: #307FE2; /* Azul en lugar de amarillo */
+    --ion-color-warning-rgb: 48,127,226;
+    --ion-color-warning-contrast: #FFFFFF;
+    --ion-color-warning-contrast-rgb: 255,255,255;
+    --ion-color-warning-shade: #1E5FB9; /* Sombra más oscura */
+    --ion-color-warning-tint: #58A3E6; /* Tinte más claro */
+    
+	--ion-color-danger: #c5000f;
+	--ion-color-danger-rgb: 197,0,15;
+	--ion-color-danger-contrast: #ffffff;
+	--ion-color-danger-contrast-rgb: 255,255,255;
+	--ion-color-danger-shade: #ad000d;
+	--ion-color-danger-tint: #cb1a27;
+    
+    --ion-color-light: #FFFFFF;
+    --ion-color-light-rgb: 255,255,255;
+    --ion-color-light-contrast: #000000;
+    --ion-color-light-contrast-rgb: 0,0,0;
+    --ion-color-light-shade: #EEEEEE;
+    --ion-color-light-tint: #FFFFFF;
+    
+    --ion-color-medium: #666666;
+    --ion-color-medium-rgb: 102,102,102;
+    --ion-color-medium-contrast: #FFFFFF;
+    --ion-color-medium-contrast-rgb: 255,255,255;
+    --ion-color-medium-shade: #555555;
+    --ion-color-medium-tint: #777777;
+    
+    --ion-color-dark: #222222; /* Negro más claro */
+    --ion-color-dark-rgb: 34,34,34;
+    --ion-color-dark-contrast: #FFFFFF;
+    --ion-color-dark-contrast-rgb: 255,255,255;
+    --ion-color-dark-shade: #111111;
+    --ion-color-dark-tint: #444444; /* Tinte más claro */
+    
+
+    --ion-background-color: #1A1A1A !important;
+
+    ion-nav-link {
+        background-color: rgba(26, 26, 26, 0.5);
+        padding: 10px;
+        border-radius: 5px;
+        font-size: 0.8125rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        margin: 5px;
+    }
+
+    ion-button {
+        --background: #307FE2; /* Azul en lugar de amarillo */
+        font-size: 0.8125rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        color: #FFFFFF;
+    }
+    
+    ion-alert {
+        //background color
+        // .alert-wrapper.sc-ion-alert-md {
+        //   background-color: #f8f4aa;
+        //   --background: #f8f4aa
+        // }
+        
+        .alert-head {
+            height: 60px;
+        }
+
+        // Header Text
+        .alert-title.sc-ion-alert-md {
+            font-size: 20px !important;
+            font-weight: 600;
+            text-transform: uppercase;
+            color: var(--ion-text-color, #00000080);
+            transform: translateY(-15px);
+        }
+        
+        // checkbox border color
+        [aria-checked="true"].sc-ion-alert-md .alert-radio-icon.sc-ion-alert-md {
+            border-color: #307FE2; /* Azul */
+        }
+        
+        // checkbox or radio button color
+        .alert-radio-inner.sc-ion-alert-md {
+            background-color: #307FE2 !important; /* Azul */
+        }
+
+        // Checked text color
+        [aria-checked="true"].sc-ion-alert-md .alert-radio-label.sc-ion-alert-md {
+            color: #307FE2; /* Azul */
+        }
+
+        // Height of text
+        .alert-tappable.sc-ion-alert-md {
+            height: 50px !important;
+        }
+        
+        // Button color
+        .alert-button-inner.sc-ion-alert-md {
+            color: #ffffff;
+            font-weight: bold;
+            font-size: larger;
+        }
+    }
+
+    ion-toggle {
+        --handle-background-checked: #307FE2; /* Azul para el mango cuando está activado */
+        --track-background-checked: #307FE280;
+    }
+
+    ion-checkbox {
+        --background: #FFFFFF; /* Color de fondo del checkbox cuando no está marcado */
+        --border-color: #307FE2; /* Color del borde del checkbox cuando no está marcado */
+        --checkmark-color: #000000; /* Color de la marca de verificación */
+        --checked-background: #307FE2; /* Color de fondo cuando está marcado */
+        --border-color-checked: #307FE2; /* Color del borde cuando está marcado */
+        --checkbox-background-checked: #307FE2; /* Color de fondo del checkbox cuando está marcado */
+    }
+
+    .ion-valid.sc-ion-input-md-h {
+        --highlight-color: var(--ion-color-tertiary) !important;
+    }
+
+    .ion-invalid.sc-ion-input-md-h {
+        --highlight-color: var(--ion-color-danger) !important;
+    }
+
+    .sc-ion-input-md-h {
+        --highlight-color: var(--ion-color-tertiary) !important;
+    }
+
+    .sc-ion-textarea-md-h {
+        --highlight-color: var(--ion-color-tertiary) !important;
+    }
+    
+    ion-datetime {
+        --ion-color-primary: var(--ion-color-tertiary) !important;
+    }
 }
 
 body[color-theme='EscMA'] {
-    --ion-background-color: #A1D884 !important;
+    --ion-background-color: #0F0F0F;
+
+    --ion-color-primary: #1A1A1A;
+    --ion-color-primary-rgb: 26,26,26;
+    --ion-color-primary-contrast: #FFFFFF;
+    --ion-color-primary-contrast-rgb: 255,255,255;
+    --ion-color-primary-shade: #222222; /* Negro más claro */
+    --ion-color-primary-tint: #333333;
+    
+    --ion-color-secondary: #666666;
+    --ion-color-secondary-rgb: 102,102,102;
+    --ion-color-secondary-contrast: #FFFFFF;
+    --ion-color-secondary-contrast-rgb: 255,255,255;
+    --ion-color-secondary-shade: #555555;
+    --ion-color-secondary-tint: #777777;
+    
+    --ion-color-tertiary: #A1D884; /* Verde claro en lugar de amarillo */
+    --ion-color-tertiary-rgb: 161,216,132;
+    --ion-color-tertiary-contrast: #000000;
+    --ion-color-tertiary-contrast-rgb: 0,0,0;
+    --ion-color-tertiary-shade: #8BBF70; /* Sombra más oscura del verde */
+    --ion-color-tertiary-tint: #B4E29C; /* Tinte más claro del verde */
+    
+    --ion-color-success: #666666;
+    --ion-color-success-rgb: 102,102,102;
+    --ion-color-success-contrast: #FFFFFF;
+    --ion-color-success-contrast-rgb: 255,255,255;
+    --ion-color-success-shade: #555555;
+    --ion-color-success-tint: #777777;
+    
+    --ion-color-warning: #A1D884; /* Verde en lugar de amarillo */
+    --ion-color-warning-rgb: 161,216,132;
+    --ion-color-warning-contrast: #000000;
+    --ion-color-warning-contrast-rgb: 0,0,0;
+    --ion-color-warning-shade: #8BBF70; /* Sombra más oscura */
+    --ion-color-warning-tint: #B4E29C; /* Tinte más claro */
+    
+	--ion-color-danger: #c5000f;
+	--ion-color-danger-rgb: 197,0,15;
+	--ion-color-danger-contrast: #ffffff;
+	--ion-color-danger-contrast-rgb: 255,255,255;
+	--ion-color-danger-shade: #ad000d;
+	--ion-color-danger-tint: #cb1a27;
+    
+    --ion-color-light: #FFFFFF;
+    --ion-color-light-rgb: 255,255,255;
+    --ion-color-light-contrast: #000000;
+    --ion-color-light-contrast-rgb: 0,0,0;
+    --ion-color-light-shade: #EEEEEE;
+    --ion-color-light-tint: #FFFFFF;
+    
+    --ion-color-medium: #666666;
+    --ion-color-medium-rgb: 102,102,102;
+    --ion-color-medium-contrast: #FFFFFF;
+    --ion-color-medium-contrast-rgb: 255,255,255;
+    --ion-color-medium-shade: #555555;
+    --ion-color-medium-tint: #777777;
+    
+    --ion-color-dark: #222222; /* Negro más claro */
+    --ion-color-dark-rgb: 34,34,34;
+    --ion-color-dark-contrast: #FFFFFF;
+    --ion-color-dark-contrast-rgb: 255,255,255;
+    --ion-color-dark-shade: #111111;
+    --ion-color-dark-tint: #444444; /* Tinte más claro */
+    
+
+    --ion-background-color: #1A1A1A !important;
+
+    ion-nav-link {
+        background-color: rgba(26, 26, 26, 0.5);
+        padding: 10px;
+        border-radius: 5px;
+        font-size: 0.8125rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        margin: 5px;
+    }
+
+    ion-button {
+        --background: #A1D884; /* Verde en lugar de amarillo */
+        font-size: 0.8125rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        color: #000000;
+    }
+    
+    ion-alert {
+        //background color
+        // .alert-wrapper.sc-ion-alert-md {
+        //   background-color: #f8f4aa;
+        //   --background: #f8f4aa
+        // }
+        
+        .alert-head {
+            height: 60px;
+        }
+
+        // Header Text
+        .alert-title.sc-ion-alert-md {
+            font-size: 20px !important;
+            font-weight: 600;
+            text-transform: uppercase;
+            color: var(--ion-text-color, #00000080);
+            transform: translateY(-15px);
+        }
+        
+        // checkbox border color
+        [aria-checked="true"].sc-ion-alert-md .alert-radio-icon.sc-ion-alert-md {
+            border-color: #A1D884; /* Verde */
+        }
+        
+        // checkbox or radio button color
+        .alert-radio-inner.sc-ion-alert-md {
+            background-color: #A1D884 !important; /* Verde */
+        }
+
+        // Checked text color
+        [aria-checked="true"].sc-ion-alert-md .alert-radio-label.sc-ion-alert-md {
+            color: #A1D884; /* Verde */
+        }
+
+        // Height of text
+        .alert-tappable.sc-ion-alert-md {
+            height: 50px !important;
+        }
+        
+        // Button color
+        .alert-button-inner.sc-ion-alert-md {
+            color: #ffffff;
+            font-weight: bold;
+            font-size: larger;
+        }
+    }
+
+    ion-toggle {
+        --handle-background-checked: #A1D884; /* Verde para el mango cuando está activado */
+        --track-background-checked: #A1D88480;
+    }
+
+    ion-checkbox {
+        --background: #FFFFFF; /* Color de fondo del checkbox cuando no está marcado */
+        --border-color: #A1D884; /* Color del borde del checkbox cuando no está marcado */
+        --checkmark-color: #000000; /* Color de la marca de verificación */
+        --checked-background: #A1D884; /* Color de fondo cuando está marcado */
+        --border-color-checked: #A1D884; /* Color del borde cuando está marcado */
+        --checkbox-background-checked: #A1D884; /* Color de fondo del checkbox cuando está marcado */
+    }
+
+    .ion-valid.sc-ion-input-md-h {
+        --highlight-color: var(--ion-color-tertiary) !important;
+    }
+
+    .ion-invalid.sc-ion-input-md-h {
+        --highlight-color: var(--ion-color-danger) !important;
+    }
+
+    .sc-ion-input-md-h {
+        --highlight-color: var(--ion-color-tertiary) !important;
+    }
+
+    .sc-ion-textarea-md-h {
+        --highlight-color: var(--ion-color-tertiary) !important;
+    }
+    
+    ion-datetime {
+        --ion-color-primary: var(--ion-color-tertiary) !important;
+    }
 }
 
 body[color-theme='EscTrm'] {
-    --ion-background-color: #2AD2C9 !important;
+    --ion-background-color: #0F0F0F;
+
+    --ion-color-primary: #1A1A1A;
+    --ion-color-primary-rgb: 26,26,26;
+    --ion-color-primary-contrast: #FFFFFF;
+    --ion-color-primary-contrast-rgb: 255,255,255;
+    --ion-color-primary-shade: #222222; /* Negro más claro */
+    --ion-color-primary-tint: #333333;
+    
+    --ion-color-secondary: #666666;
+    --ion-color-secondary-rgb: 102,102,102;
+    --ion-color-secondary-contrast: #FFFFFF;
+    --ion-color-secondary-contrast-rgb: 255,255,255;
+    --ion-color-secondary-shade: #555555;
+    --ion-color-secondary-tint: #777777;
+    
+    --ion-color-tertiary: #2AD2C9; /* Verde azulado en lugar de amarillo */
+    --ion-color-tertiary-rgb: 42,210,201;
+    --ion-color-tertiary-contrast: #000000;
+    --ion-color-tertiary-contrast-rgb: 0,0,0;
+    --ion-color-tertiary-shade: #26B0A1; /* Sombra más oscura del verde azulado */
+    --ion-color-tertiary-tint: #62D9D0; /* Tinte más claro del verde azulado */
+    
+    --ion-color-success: #666666;
+    --ion-color-success-rgb: 102,102,102;
+    --ion-color-success-contrast: #FFFFFF;
+    --ion-color-success-contrast-rgb: 255,255,255;
+    --ion-color-success-shade: #555555;
+    --ion-color-success-tint: #777777;
+    
+    --ion-color-warning: #2AD2C9; /* Verde azulado en lugar de amarillo */
+    --ion-color-warning-rgb: 42,210,201;
+    --ion-color-warning-contrast: #000000;
+    --ion-color-warning-contrast-rgb: 0,0,0;
+    --ion-color-warning-shade: #26B0A1; /* Sombra más oscura */
+    --ion-color-warning-tint: #62D9D0; /* Tinte más claro */
+    
+	--ion-color-danger: #c5000f;
+	--ion-color-danger-rgb: 197,0,15;
+	--ion-color-danger-contrast: #ffffff;
+	--ion-color-danger-contrast-rgb: 255,255,255;
+	--ion-color-danger-shade: #ad000d;
+	--ion-color-danger-tint: #cb1a27;
+    
+    --ion-color-light: #FFFFFF;
+    --ion-color-light-rgb: 255,255,255;
+    --ion-color-light-contrast: #000000;
+    --ion-color-light-contrast-rgb: 0,0,0;
+    --ion-color-light-shade: #EEEEEE;
+    --ion-color-light-tint: #FFFFFF;
+    
+    --ion-color-medium: #666666;
+    --ion-color-medium-rgb: 102,102,102;
+    --ion-color-medium-contrast: #FFFFFF;
+    --ion-color-medium-contrast-rgb: 255,255,255;
+    --ion-color-medium-shade: #555555;
+    --ion-color-medium-tint: #777777;
+    
+    --ion-color-dark: #222222; /* Negro más claro */
+    --ion-color-dark-rgb: 34,34,34;
+    --ion-color-dark-contrast: #FFFFFF;
+    --ion-color-dark-contrast-rgb: 255,255,255;
+    --ion-color-dark-shade: #111111;
+    --ion-color-dark-tint: #444444; /* Tinte más claro */
+    
+
+    --ion-background-color: #1A1A1A !important;
+
+    ion-nav-link {
+        background-color: rgba(26, 26, 26, 0.5);
+        padding: 10px;
+        border-radius: 5px;
+        font-size: 0.8125rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        margin: 5px;
+    }
+
+    ion-button {
+        --background: #2AD2C9; /* Verde azulado en lugar de amarillo */
+        font-size: 0.8125rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        color: #000000;
+    }
+    
+    ion-alert {
+        //background color
+        // .alert-wrapper.sc-ion-alert-md {
+        //   background-color: #f8f4aa;
+        //   --background: #f8f4aa
+        // }
+        
+        .alert-head {
+            height: 60px;
+        }
+
+        // Header Text
+        .alert-title.sc-ion-alert-md {
+            font-size: 20px !important;
+            font-weight: 600;
+            text-transform: uppercase;
+            color: var(--ion-text-color, #00000080);
+            transform: translateY(-15px);
+        }
+        
+        // checkbox border color
+        [aria-checked="true"].sc-ion-alert-md .alert-radio-icon.sc-ion-alert-md {
+            border-color: #2AD2C9; /* Verde azulado */
+        }
+        
+        // checkbox or radio button color
+        .alert-radio-inner.sc-ion-alert-md {
+            background-color: #2AD2C9 !important; /* Verde azulado */
+        }
+
+        // Checked text color
+        [aria-checked="true"].sc-ion-alert-md .alert-radio-label.sc-ion-alert-md {
+            color: #2AD2C9; /* Verde azulado */
+        }
+
+        // Height of text
+        .alert-tappable.sc-ion-alert-md {
+            height: 50px !important;
+        }
+        
+        // Button color
+        .alert-button-inner.sc-ion-alert-md {
+            color: #ffffff;
+            font-weight: bold;
+            font-size: larger;
+        }
+    }
+
+    ion-toggle {
+        --handle-background-checked: #2AD2C9; /* Verde azulado para el mango cuando está activado */
+        --track-background-checked: #2AD2C980;
+    }
+
+    ion-checkbox {
+        --background: #FFFFFF; /* Color de fondo del checkbox cuando no está marcado */
+        --border-color: #2AD2C9; /* Color del borde del checkbox cuando no está marcado */
+        --checkmark-color: #000000; /* Color de la marca de verificación */
+        --checked-background: #2AD2C9; /* Color de fondo cuando está marcado */
+        --border-color-checked: #2AD2C9; /* Color del borde cuando está marcado */
+        --checkbox-background-checked: #2AD2C9; /* Color de fondo del checkbox cuando está marcado */
+    }
+
+    .ion-valid.sc-ion-input-md-h {
+        --highlight-color: var(--ion-color-tertiary) !important;
+    }
+
+    .ion-invalid.sc-ion-input-md-h {
+        --highlight-color: var(--ion-color-danger) !important;
+    }
+
+    .sc-ion-input-md-h {
+        --highlight-color: var(--ion-color-tertiary) !important;
+    }
+
+    .sc-ion-textarea-md-h {
+        --highlight-color: var(--ion-color-tertiary) !important;
+    }
+    
+    ion-datetime {
+        --ion-color-primary: var(--ion-color-tertiary) !important;
+    }
 }

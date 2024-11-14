@@ -35,7 +35,7 @@ export class MiRutaPage implements OnInit {
 
   constructor(
     private geo: GeoService, 
-    private http: HttpClient,
+    private http: HttpClient
   ) {
     addIcons({ business, pin, navigate });
   }

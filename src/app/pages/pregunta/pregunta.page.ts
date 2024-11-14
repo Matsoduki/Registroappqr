@@ -6,7 +6,6 @@ import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import { LanguageComponent } from 'src/app/components/language/language.component';
 import { Router } from '@angular/router';
 import { ToastController } from '@ionic/angular';
-import { AnimationController } from '@ionic/angular';
 import { DatabaseService } from 'src/app/services/database.service';
 import { Usuario } from 'src/app/model/usuario';
 
@@ -32,8 +31,6 @@ export class PreguntaPage {
   nombre: string = '';
   apellido: string = '';
   fraseSecreta: string = '';
-
-  @ViewChild('ingresar', { read: ElementRef }) itemIngresar!: ElementRef;
 
   constructor(
     private router: Router, 

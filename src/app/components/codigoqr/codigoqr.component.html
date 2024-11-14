@@ -1,30 +1,26 @@
 <ion-content [fullscreen]="true" class="ion-padding-horizontal ion-text-center">
+    <h3>
+      {{ 'QR.Message.Part1' | translate }} {{ usuario.nombre }} {{ usuario.apellido }}!
+    </h3>
     <p>
-      ¡Bienvenido/a, {{ user.nombre }} {{ user.apellido }}!
-    </p>
-    <p>
-      Escanea el código QR para registrar tu asistencia a clases
+      {{ 'QR.Message.Help' | translate }}
     </p>
 
-    <div *ngIf="escaneando">
-      <video #video autoplay class="video-frame"></video>
-      <canvas #canvas style="display: none;"></canvas>
+    <br>
+    
+    <div>
+      <video *ngIf="scanning == true" #video class="video-frame"></video>
+      <img *ngIf="scanning == false" src="../../../assets/img/noCamera.png" class="video-frame">
     </div>
 
-    <div *ngIf="!escaneando">
-      <img src="../../../assets/img/noCamera.png" class="video-frame">
-    </div>
+    <canvas #canvas hidden></canvas>
 
-    <ion-button *ngIf="!escaneando" expand="full" (click)="comenzarEscaneo()" class="button1">
-      <ion-label>Escanear QR</ion-label>
+    <ion-button *ngIf="scanning == true" (click)="stopQrScanning()">
+      <ion-label>{{ 'QR.Button.DetenerScan' | translate }}</ion-label>
     </ion-button>
 
-    <ion-button *ngIf="escaneando" expand="full" (click)="detenerEscaneo()" class="button1">
-      <ion-label>Detener Escaneo</ion-label>
+    <ion-button *ngIf="scanning == false" (click)="resumeQrScanning()">
+      <ion-label>{{ 'QR.Button.ComenzarScan' | translate }}</ion-label>
     </ion-button>
 
-    <!-- Separación para el botón de cerrar sesión -->
-    <ion-button (click)="cerrarSesion()" fill="clear">
-      Cerrar Sesión
-    </ion-button>
 </ion-content>

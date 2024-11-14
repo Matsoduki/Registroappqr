@@ -1,12 +1,12 @@
 export interface Asistencia {
-  bloqueInicio: number;
-  bloqueTermino: number;
-  dia: string;
-  horaFin: string;
-  horaInicio: string;
+  sede: string;
   idAsignatura: string;
+  seccion: string;
   nombreAsignatura: string;
   nombreProfesor: string;
-  seccion: string;
-  sede: string;
+  dia: string;
+  bloqueInicio: string;
+  bloqueTermino: string;
+  horaInicio: string;
+  horaFin: string;
 }

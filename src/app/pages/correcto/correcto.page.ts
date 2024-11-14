@@ -1,11 +1,10 @@
-import { AfterViewInit, Component, ElementRef, ViewChild } from '@angular/core';
+import { Component, ElementRef, ViewChild } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import { LanguageComponent } from 'src/app/components/language/language.component';
 import { Router } from '@angular/router';
-import { AnimationController } from '@ionic/angular';
 import { Usuario } from 'src/app/model/usuario';
 import { DatabaseService } from 'src/app/services/database.service';
 
@@ -22,16 +21,13 @@ import { DatabaseService } from 'src/app/services/database.service';
     LanguageComponent
   ]
 })
-export class CorrectoPage implements AfterViewInit {
+export class CorrectoPage {
   password: string = '';  // Aquí se mostrará la contraseña del usuario
   username: string = '';  // Variable para capturar el username que viene en el state
   errorMessage: string | null = null;
 
-  @ViewChild('ingresar', { read: ElementRef }) itemIngresar!: ElementRef;
-
   constructor(
     private router: Router,
-    private animationCtrl: AnimationController,
     private databaseService: DatabaseService
 
   ) {
@@ -41,10 +37,6 @@ export class CorrectoPage implements AfterViewInit {
     }
 
     this.cargarDatosUsuario();
-  }
-
-  ngAfterViewInit() {
-    this.animIngresarCont();
   }
 
   async cargarDatosUsuario() {
@@ -60,21 +52,6 @@ export class CorrectoPage implements AfterViewInit {
       this.errorMessage = 'Error al cargar datos del usuario.';
       console.error('Error cargando el usuario:', error);
     }
-  }
-
-  animIngresarCont() {
-    this.animationCtrl
-      .create()
-      .addElement(this.itemIngresar.nativeElement)
-      .iterations(Infinity)
-      .duration(6000)
-      .keyframes([
-        { offset: 0, transform: 'scaleX(1)' },
-        { offset: 0.5, transform: 'scaleX(1.05)' },
-        { offset: 1, transform: 'scaleX(1)' }
-      ])
-      .easing('ease-in-out')
-      .play();
   }
 
   ingreso() {

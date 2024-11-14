@@ -3,12 +3,13 @@
     "@ionic/angular/common",
     "@ionic/angular"
   ],
-  "java.import.gradle.java.home": "/usr/lib/jvm/jdk-22.0.2-oracle-x64",
+  "java.import.gradle.java.home": "C:\\Program Files\\Java\\jdk-22",
   "java.configuration.updateBuildConfiguration": "interactive",
-  "android-webview-debug.adbPath": "/home/cgomezvega/Android/Sdk/platform-tools/adb",
+  "android-webview-debug.adbPath": "C:\\Users\\cgome\\AppData\\Local\\Android\\Sdk\\platform-tools\\adb.exe",
   "terminal.integrated.defaultProfile.windows": "Command Prompt",
   "files.autoSave": "afterDelay", 
   "editor.tabSize": 2, 
   "editor.mouseWheelZoom": true, 
-  "editor.minimap.enabled": false
+  "editor.minimap.enabled": false,
+  "ionic.autoImportIcons": "yes"
 }

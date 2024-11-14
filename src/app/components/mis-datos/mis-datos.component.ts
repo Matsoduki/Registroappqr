@@ -7,6 +7,7 @@ import { DatabaseService } from 'src/app/services/database.service';
 import { AuthService } from 'src/app/services/auth.service';
 import { NivelEducacional } from 'src/app/model/nivel-educacional'; 
 import { showToast } from 'src/app/tools/message-functions';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-mis-datos',
@@ -16,6 +17,7 @@ import { showToast } from 'src/app/tools/message-functions';
   imports: [
     CommonModule,
     FormsModule,
+    TranslateModule,
     IonCard,
     IonCardHeader,
     IonCardContent,

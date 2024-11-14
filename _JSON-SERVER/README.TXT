@@ -6,5 +6,5 @@ npm install -g json-server
 
 json-server --watch _JSON-SERVER/publicaciones.json
 
-json-server --watch _JSON-SERVER/publicaciones.json --host 192.168.179.91 --port 8105
+json-server --watch _JSON-SERVER/publicaciones.json --host 192.168.154.128 --port 8105
 

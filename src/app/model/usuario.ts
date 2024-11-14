@@ -46,26 +46,6 @@ export class Usuario extends Persona {
     return usuario;
   }
 
-  // async findUser(username: string, password: string): Promise<Usuario | undefined> {
-  //   return await this.db.findUser(username, password);
-  // }
-
-  // async findByUsername(username: string): Promise<Usuario | undefined>  {
-  //   return await this.db.findUserByUsername(username);
-  // }
-
-  // async findUserByCorreo(correo: string): Promise<Usuario | undefined>  {
-  //   return await this.db.findUserByCorreo(correo);
-  // }
-
-  // async save(): Promise<void> {
-  //   this.db.saveUser(this);
-  // }
-
-  // async delete(username: string): Promise<void>  {
-  //   this.db.deleteByUsername(username);
-  // }
-
   override toString(): string {
     return `\n
         Nombre de Usuario: ${this.username}\n

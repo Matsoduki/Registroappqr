@@ -3,10 +3,16 @@
   <div class="centrar">
     <div>
       <img src="../../assets/img/logoBlanco.png" style="width: 75%;">
-      <h1 class="ion-padding-bottom">Sistema de Asistencia DUOC</h1>
+      <h1 class="ion-padding-bottom">{{ 'AppName' | translate }}</h1>
       <ion-card>
         <ion-card-header style="color: white;">
-          <span class="image-text">¡Lo sentimos pero <br> los datos ingresados <br> no son correctos!</span>
+          <span class="image-text">
+            {{ 'Incorrecto.Message.Part1' | translate }}
+            <br>
+            {{ 'Incorrecto.Message.Part2' | translate }}
+            <br>
+            {{ 'Incorrecto.Message.Part3' | translate }}
+          </span>
         </ion-card-header>
         <ion-card-content class="ion-padding-bottom">
           <img src="../../assets/img/incorrecto.png" class="rounded-image">
@@ -14,7 +20,7 @@
       </ion-card>
       <ion-row>
         <ion-col>
-          <ion-button #ingresar fill="clear" class="link1 link-box" (click)="ingreso()">Iniciar Sesión</ion-button>
+          <ion-nav-link (click)="ingreso()">{{ 'Ingreso.Button.IniciarSesion' | translate }}</ion-nav-link>
         </ion-col>
       </ion-row>
     </div>

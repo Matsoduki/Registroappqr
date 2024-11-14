@@ -1,31 +1,32 @@
-<app-header (headerClick)="headerClick($event)"></app-header>
+<app-header
+  (clickQrTest)="qrTest()">
+</app-header>
 
 <ion-content [fullscreen]="true">
-  <ng-container [ngSwitch]="selectedComponent">
-    <!-- Componente para escanear códigos QR -->
-    <app-codigoqr 
-      *ngSwitchCase="'codigoqr'" 
-      (scanned)="webQrScanned($event)"
-      (stopped)="webQrStopped()">
-    </app-codigoqr>
 
-    <!-- Componente del foro -->
-    <app-forum 
-      *ngSwitchCase="'forum'">
-    </app-forum>
+  <!-- Componente para escanear códigos QR -->
+  <app-codigoqr 
+    *ngIf="selectedComponent === 'codigoqr'"
+    (scanned)="webQrScanned($event)"
+    (stopped)="webQrStopped()">
+  </app-codigoqr>
 
-    <!-- Componente para mostrar datos del usuario -->
-    <app-mis-datos 
-      *ngSwitchCase="'mis-datos'"> 
-    </app-mis-datos>
+  <!-- Componente para mostrar detalles de asistencia -->
+  <app-mi-clase 
+    *ngIf="selectedComponent === 'mi-clase'">
+  </app-mi-clase>
 
-    <!-- Componente para mostrar detalles de asistencia -->
-    <app-mi-clase 
-      *ngSwitchCase="'mi-clase'" 
-      [asistencia]="asistencia">
-    </app-mi-clase>
-  </ng-container>
+  <!-- Componente del foro -->
+  <app-foro 
+    *ngIf="selectedComponent === 'foro'">
+  </app-foro>
+
+  <!-- Componente para mostrar datos del usuario -->
+  <app-mis-datos 
+    *ngIf="selectedComponent === 'mis-datos'"> 
+  </app-mis-datos>
+
 </ion-content>
 
 <!-- Componente del pie de página -->
-<app-footer (footerClick)="footerClick($event)"></app-footer>
+<app-footer></app-footer>

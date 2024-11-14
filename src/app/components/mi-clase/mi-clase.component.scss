@@ -58,7 +58,7 @@ ion-content {
   /* Cambiar el texto de la segunda columna a blanco con fondo #F1B634 */
   td:nth-child(2) {
     color: #fff; /* Texto blanco en la segunda columna */
-    background-color: #F1B634; /* Fondo amarillo */
+    background-color: var(--ion-color-tertiary); /* Fondo amarillo */
   }
 
   /* Estilos adicionales para dispositivos pequeños */

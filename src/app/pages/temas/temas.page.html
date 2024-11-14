@@ -1,27 +1,27 @@
 <ion-header>
   <ion-toolbar color="primary" class="padding-6">
-    <h5 slot="start" class="margin-top-6">
+    <h5 class="margin-top-6 centrar" style="width: 80% !important; margin-left: 35px;">
       <ion-select 
-          label="{{ 'ThemePage.Label.ColorTheme' | translate }}" 
+          label="{{ 'Temas.Label.ColorTheme' | translate }}" 
           (ionChange)="changeTheme($event)"
           [(ngModel)]="colorTheme">
         <ion-select-option value="dark">
-          Por defecto
+          {{ 'Temas.Color.PorDefecto' | translate }}
         </ion-select-option>
         <ion-select-option value="EscAdmin">
-          Escuela de Administración
+          {{ 'Temas.Color.EscAdmin' | translate }}
         </ion-select-option>
         <ion-select-option value="EscComm">
-          Escuela de Comunicaciones
+          {{ 'Temas.Color.EscComm' | translate }}
         </ion-select-option>
         <ion-select-option value="EscInf">
-          Escuela de Informática
+          {{ 'Temas.Color.EscInf' | translate }}
         </ion-select-option>
         <ion-select-option value="EscMA">
-          Escuela de Medio Ambiente
+          {{ 'Temas.Color.EscMA' | translate }}
         </ion-select-option>
         <ion-select-option value="EscTrm">
-          Escuela de Turismo
+          {{ 'Temas.Color.EscTrm' | translate }}
         </ion-select-option>
       </ion-select>
     </h5>
@@ -31,38 +31,36 @@
 <ion-content [fullscreen]="true" class="ion-padding">
 
   <!-- Botones -->
-    <p>
+    <p style="align-items: center; text-align: center; justify-content: center;">
     <ion-button shape="round" size="small" color="primary">
-      {{ 'ThemePage.Button.Primary' | translate }}
+      {{ 'Temas.Button.Primary' | translate }}
     </ion-button>
     <ion-button shape="round" size="small" color="secondary">
-      {{ 'ThemePage.Button.Secondary' | translate }}
+      {{ 'Temas.Button.Secondary' | translate }}
     </ion-button>
     <ion-button shape="round" size="small" color="tertiary">
-      {{ 'ThemePage.Button.Tertiary' | translate }}
+      {{ 'Temas.Button.Tertiary' | translate }}
     </ion-button>
     <ion-button shape="round" size="small" color="success">
-      {{ 'ThemePage.Button.Success' | translate }}
+      {{ 'Temas.Button.Success' | translate }}
     </ion-button>
     <ion-button shape="round" size="small" color="warning">
-      {{ 'ThemePage.Button.Warning' | translate }}
+      {{ 'Temas.Button.Warning' | translate }}
     </ion-button>
     <ion-button shape="round" size="small" color="danger">
-      {{ 'ThemePage.Button.Danger' | translate }}
+      {{ 'Temas.Button.Danger' | translate }}
     </ion-button>
     <ion-button shape="round" size="small" color="light">
-      {{ 'ThemePage.Button.Light' | translate }}
+      {{ 'Temas.Button.Light' | translate }}
     </ion-button>
     <ion-button shape="round" size="small" color="dark">
-      {{ 'ThemePage.Button.Dark' | translate }}
+      {{ 'Temas.Button.Dark' | translate }}
     </ion-button>
     <ion-button shape="round" size="small" color="primary">
-      <ion-icon slot="start" name="home-outline" size="small"></ion-icon>
-      {{ 'ThemePage.Button.Home' | translate }}
+      <ion-icon name="home-outline" size="small"></ion-icon>
     </ion-button>
     <ion-button shape="round" size="small" color="primary">
-      <ion-icon slot="start" name="log-out-outline" size="small"></ion-icon>
-      {{ 'ThemePage.Button.Logout' | translate }}
+      <ion-icon name="log-out-outline" size="small"></ion-icon>
     </ion-button>
   </p>
 
@@ -71,71 +69,81 @@
     <ion-card class="picture-frame">
       <ion-card-header>
         <ion-card-title>
-          {{ 'ThemePage.Card.Title' | translate }}
+          {{ 'Temas.Card.Title' | translate }}
         </ion-card-title>
         <ion-card-subtitle>
-          {{ 'ThemePage.Card.Subtitle' | translate }}
+          {{ 'Temas.Card.Subtitle' | translate }}
         </ion-card-subtitle>
       </ion-card-header>
       <ion-card-content>
-        {{ 'ThemePage.Card.Content' | translate }}
+        {{ 'Temas.Card.Content' | translate }}
       </ion-card-content>
     </ion-card>
   </p>
   
+  <br>
+
   <!-- Listas -->
-  <p>
-    <ion-title> {{ 'ThemePage.List.Title' | translate }} </ion-title>
-    <ion-list>
-      <ion-item>
-        <ion-label> {{ 'ThemePage.List.Item1' | translate }} </ion-label>
-      </ion-item>
-      <ion-item>
-        <ion-label> {{ 'ThemePage.List.Item2' | translate }} </ion-label>
-      </ion-item>
-      <ion-item>
-        <ion-label> {{ 'ThemePage.List.Item3' | translate }} </ion-label>
-      </ion-item>
-    </ion-list>
-  </p>
+  <h3 style="text-align: center;"> {{ 'Temas.List.Title' | translate }} </h3>
+  <ion-list>
+    <ion-item>
+      <ion-label> {{ 'Temas.List.Item1' | translate }} </ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-label> {{ 'Temas.List.Item2' | translate }} </ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-label> {{ 'Temas.List.Item3' | translate }} </ion-label>
+    </ion-item>
+  </ion-list>
   
+  <br>
+
   <!-- Calendarios -->
-  <p>
-    <ion-title> {{ 'ThemePage.Calendar.Title' | translate }} </ion-title>
-    <br>
-    <ion-datetime 
-        size="small"
-        class="ion-text-right picture-frame" 
-        presentation="date" 
-        [preferWheel]="true"
-        displayFormat="DD/MM/YYYY"
-        placeholder="dd/mm/yyyy">
-    </ion-datetime>
-  </p>
+  <h3 style="text-align: center;"> {{ 'Temas.Calendar.Title' | translate }} </h3>
+  <ion-datetime 
+      size="small"
+      class="ion-text-right picture-frame" 
+      presentation="date"
+      displayFormat="DD/MM/YYYY"
+      placeholder="dd/mm/yyyy">
+  </ion-datetime>
 
+  <br>
+  <h3 style="text-align: center;"> {{ 'Temas.Form.Title' | translate }} </h3>
   <!-- Ingreso de datos -->
-  <p>
-    <ion-title> {{ 'ThemePage.Form.Title' | translate }} </ion-title>
-    <ion-item>
-      <ion-input label="{{ 'ThemePage.Form.NameLabel' | translate }}" labelPlacement="floating" 
-          placeholder="{{ 'ThemePage.Form.NamePlaceholder' | translate }}"></ion-input>
-    </ion-item>
-
-    <ion-item>
-      <ion-textarea label="{{ 'ThemePage.Form.DescriptionLabel' | translate }}" labelPlacement="floating" 
-          placeholder="{{ 'ThemePage.Form.DescriptionPlaceholder' | translate }}"></ion-textarea>
-    </ion-item>
-    
-    <ion-item>
-      <ion-label>{{ 'ThemePage.Form.ToggleLabel' | translate }}</ion-label>
-      <ion-toggle checked="true"></ion-toggle>
-    </ion-item>
-    
-    <ion-item>
-      <ion-label>{{ 'ThemePage.Form.CheckboxLabel' | translate }}</ion-label>
-      <ion-checkbox slot="start"></ion-checkbox>
-    </ion-item>
-  </p>
+  <ion-card>
+    <ion-card-content>
+      <ion-item>
+        <ion-input
+          label="{{ 'Temas.Form.NameLabel' | translate }}"
+          labelPlacement="floating" 
+          placeholder="{{ 'Temas.Form.NamePlaceholder' | translate }}"
+          fill="outline">
+        </ion-input>
+      </ion-item>
+  
+      <ion-item>
+        <ion-textarea
+          label="{{ 'Temas.Form.DescriptionLabel' | translate }}"
+          labelPlacement="floating" 
+          placeholder="{{ 'Temas.Form.DescriptionPlaceholder' | translate }}"
+          fill="outline"
+          rows="5">
+        </ion-textarea>
+      </ion-item>
+      
+      <ion-item>
+        <ion-label>&nbsp; {{ 'Temas.Form.ToggleLabel' | translate }}</ion-label>
+        <ion-toggle slot="start" checked="true"></ion-toggle>
+      </ion-item>
+      
+      <ion-item>
+        <ion-label>{{ 'Temas.Form.CheckboxLabel' | translate }}</ion-label>
+        <ion-checkbox slot="start"></ion-checkbox>
+      </ion-item>
+    </ion-card-content>
+  </ion-card>
 
 </ion-content>
 
@@ -143,7 +151,7 @@
   <ion-toolbar color="primary" class="padding-6">
     <div class="centrar">
       <ion-button (click)="goBack()">
-        VOLVER
+        {{ 'Temas.Button.Volver' | translate }}
       </ion-button>
     </div>
   </ion-toolbar>

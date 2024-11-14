@@ -30,40 +30,18 @@ export class Asistencia {
       "horaFin": ""
     }`;
 
-  sede: string;
-  idAsignatura: string;
-  seccion: string;
-  nombreAsignatura: string;
-  nombreProfesor: string;
-  dia: string;
-  bloqueInicio: number;
-  bloqueTermino: number;
-  horaInicio: string;
-  horaFin: string;
+  sede = '';
+  idAsignatura = '';
+  seccion = '';
+  nombreAsignatura = '';
+  nombreProfesor = '';
+  dia = '';
+  bloqueInicio = '';
+  bloqueTermino = '';
+  horaInicio = '';
+  horaFin = '';
 
-  constructor(
-    sede: string = '',
-    idAsignatura: string = '',
-    seccion: string = '',
-    nombreAsignatura: string = '',
-    nombreProfesor: string = '',
-    dia: string = '',
-    bloqueInicio: number = 0,
-    bloqueTermino: number = 0,
-    horaInicio: string = '',
-    horaFin: string = ''
-  ) {
-    this.sede = sede;
-    this.idAsignatura = idAsignatura;
-    this.seccion = seccion;
-    this.nombreAsignatura = nombreAsignatura;
-    this.nombreProfesor = nombreProfesor;
-    this.dia = dia;
-    this.bloqueInicio = bloqueInicio;
-    this.bloqueTermino = bloqueTermino;
-    this.horaInicio = horaInicio;
-    this.horaFin = horaFin;
-  }
+  constructor() {}
 
   public static getNewAsistencia(
     sede: string,
@@ -72,29 +50,49 @@ export class Asistencia {
     nombreAsignatura: string,
     nombreProfesor: string,
     dia: string,
-    bloqueInicio: number,
-    bloqueTermino: number,
+    bloqueInicio: string,
+    bloqueTermino: string,
     horaInicio: string,
     horaFin: string
-  ): Asistencia {
-    return new Asistencia(sede, idAsignatura, seccion, nombreAsignatura, nombreProfesor, dia, bloqueInicio, bloqueTermino, horaInicio, horaFin);
+  ) {
+    const asis = new Asistencia();
+    asis.sede = sede;
+    asis.idAsignatura = idAsignatura;
+    asis.seccion = seccion;
+    asis.nombreAsignatura = nombreAsignatura;
+    asis.nombreProfesor = nombreProfesor;
+    asis.dia = dia;
+    asis.bloqueInicio = bloqueInicio;
+    asis.bloqueTermino = bloqueTermino;
+    asis.horaInicio = horaInicio;
+    asis.horaFin = horaFin;
   }
 
   // Valida si el QR contiene los datos necesarios para una asistencia
-  static isValidAsistenciaQrCode(qr: string): boolean {
-    if (qr === '') return false;
+  static isValidAsistenciaQrCode(datosQR: string, showError: boolean = false) {
+    if (datosQR !== '') {
 
-    try {
-      const json = JSON.parse(qr);
+      try {
+        const json = JSON.parse(datosQR);
 
-      if (json.sede && json.idAsignatura && json.seccion && json.nombreAsignatura &&
-          json.nombreProfesor && json.dia && json.bloqueInicio !== undefined &&
-          json.bloqueTermino !== undefined && json.horaInicio && json.horaFin) {
-        return true;
-      }
-    } catch (error) { }
-
-    showAlert('El código QR escaneado no corresponde a una asistencia válida');
+        if (json.sede !== undefined
+          && json.idAsignatura !== undefined
+          && json.seccion !== undefined
+          && json.nombreAsignatura !== undefined
+          && json.nombreProfesor !== undefined
+          && json.dia !== undefined
+          && json.bloqueInicio !== undefined
+          && json.bloqueTermino !== undefined
+          && json.horaInicio !== undefined
+          && json.horaFin !== undefined
+          ) {
+          return true;
+        }
+      } catch (error: any) {}
+    }
+    if (showError) {
+      showAlert('El código QR escaneado no corresponde a una asistencia válida');
+    }
     return false;
   }
 }

@@ -37,9 +37,15 @@ export const showToast =
   async (message:string, duration?: number) => {
     const controler = new ToastController();
     const toast = await controler.create({ 
-      message:message, 
-      duration: duration?duration:2000,
-      position: 'top'
+      message: message, 
+      duration: duration?duration:5000,
+      position: 'bottom',
+      buttons: [
+        {
+            text: 'X',
+            role: 'cancel'
+        }
+    ]
     });
     await toast.present();
   }

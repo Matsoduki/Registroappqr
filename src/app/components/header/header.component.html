@@ -1,17 +1,19 @@
-<ion-header>
+<ion-header> 
   <ion-toolbar>
-
     <img src="../../assets/img/logoHeader.png" class="logoHeader">
-
     <ion-title #titulo>
       <h5>{{ 'AppName' | translate }}</h5>
     </ion-title>
 
-    <div slot="end">
+    <!-- Contenedor de los botones centrado -->
+    <div slot="end" class="button-container">
+      <ion-button size="small" (click)="showTest()">
+        QR
+      </ion-button>
+
       <ion-nav-link (click)="logout()">
-        <ion-icon name="log-out-outline" size="large" style="padding-top: 5px;"></ion-icon>
+        <ion-icon name="log-out-outline" size="small" style="padding-top: 5px;"></ion-icon>
       </ion-nav-link>
     </div>
-
   </ion-toolbar>
 </ion-header>

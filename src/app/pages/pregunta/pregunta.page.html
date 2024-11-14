@@ -3,25 +3,25 @@
   <div class="centrar">
     <div>
       <img src="../../assets/img/logoBlanco.png" style="width: 75%;">
-      <h1 class="ion-padding-bottom">Sistema de Asistencia DUOC</h1>
+      <h1 class="ion-padding-bottom">{{ 'AppName' | translate }}</h1>
       <ion-card>
         <ion-card-header style="color: white;">
-          <h3>Recuperar Contraseña</h3>
-          <h5>Paso 2: Responde la pregunta secreta</h5>
+          <h3>{{ 'Pregunta.Title.RecuperarContraseña' | translate }}</h3>
+          <h5>{{ 'Pregunta.Label.Paso2' | translate }}</h5>
           <br>
           <h5>{{ nombre }}  {{ apellido }}</h5>
         </ion-card-header>
         <ion-card-content class="ion-padding-vertical">
           <ion-item>
-            <ion-input [(ngModel)]="respuestaSecreta" type="text" label="{{ fraseSecreta }}" labelPlacement="floating" fill="outline" placeholder="Escribe aquí tu respuesta" required></ion-input>
+            <ion-input [(ngModel)]="respuestaSecreta" type="text" label="{{ fraseSecreta }}" labelPlacement="floating" fill="outline" placeholder="{{ 'Pregunta.Placeholder.Pregunta' | translate }}" required></ion-input>
           </ion-item>
         </ion-card-content>
   
-        <ion-button type="submit" class="ion-padding-vertical button1" (click)="verificarRespuesta()">Recuperar contraseña</ion-button>
+        <ion-button type="submit" class="ion-padding-vertical button1" (click)="verificarRespuesta()">{{ 'Pregunta.Button.RecuperarContraseña' | translate }}</ion-button>
       </ion-card>
       <ion-row>
         <ion-col>
-          <ion-button #ingresar fill="clear" class="link1 link-box" (click)="ingreso()">Iniciar Sesión</ion-button>
+          <ion-nav-link (click)="ingreso()">{{ 'Ingreso.Button.IniciarSesion' | translate }}</ion-nav-link>
         </ion-col>
       </ion-row>
     </div>

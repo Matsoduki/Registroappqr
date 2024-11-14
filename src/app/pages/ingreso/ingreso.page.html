@@ -6,7 +6,7 @@
     <div slot="end" class="ion-margin" style="margin: 0;">
       <ion-nav-link (click)="navigateTheme()">
         <ion-icon name="color-wand-outline"></ion-icon>
-        {{ 'Login.Button.Theme' | translate }}
+        {{ 'Ingreso.Button.Theme' | translate }}
       </ion-nav-link>
     </div>
    </ion-toolbar>
@@ -26,34 +26,34 @@
           <ion-item>
             <ion-input
               [(ngModel)]="correo"
-              label="{{ 'Login.Label.Email' | translate }}" 
+              label="{{ 'Ingreso.Label.Email' | translate }}" 
               labelPlacement="floating"
               fill="outline"
-              placeholder="{{ 'Login.Placeholder.Email' | translate }}">
+              placeholder="{{ 'Ingreso.Placeholder.Email' | translate }}">
             </ion-input>
           </ion-item>
 
           <ion-item>
             <ion-input
               [(ngModel)]="password"
-              label="{{ 'Login.Label.Password' | translate }}"
+              label="{{ 'Ingreso.Label.Password' | translate }}"
               labelPlacement="floating"
               fill="outline"
-              placeholder="{{ 'Login.Placeholder.Password' | translate }}"
+              placeholder="{{ 'Ingreso.Placeholder.Password' | translate }}"
               type="password">
             </ion-input>
           </ion-item>
         </ion-card-content>
     
-          <ion-button class="ion-padding-vertical" (click)="login()">{{ 'Login.Button.Login' | translate }}</ion-button>
+          <ion-button class="ion-padding-vertical" (click)="login()">{{ 'Ingreso.Button.Login' | translate }}</ion-button>
         </ion-card>
     
       <ion-col>
         <ion-row class="centrar">
-          <ion-nav-link (click)="passwordRecovery()">{{ 'Login.Button.ForgotPassword' | translate }}</ion-nav-link>
+          <ion-nav-link (click)="passwordRecovery()">{{ 'Ingreso.Button.RecoverPassword' | translate }}</ion-nav-link>
         </ion-row>
         <ion-row class="centrar">
-          <ion-nav-link (click)="miruta()">{{ 'Login.Button.Map' | translate }}</ion-nav-link>
+          <ion-nav-link (click)="miruta()">{{ 'Ingreso.Button.Map' | translate }}</ion-nav-link>
         </ion-row>
       </ion-col>
     </div>

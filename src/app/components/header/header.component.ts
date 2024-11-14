@@ -24,7 +24,7 @@ import { AnimationController } from '@ionic/angular';
 export class HeaderComponent implements AfterViewInit {
   
   @ViewChild('titulo', { read: ElementRef }) itemTitulo!: ElementRef;
-  @Output() headerClick = new EventEmitter<string>();
+  @Output() clickQrTest: EventEmitter<void> = new EventEmitter<void>();
 
   constructor(
     private navCtrl: NavController,
@@ -43,14 +43,14 @@ export class HeaderComponent implements AfterViewInit {
       .create()
       .addElement(this.itemTitulo.nativeElement)
       .iterations(Infinity)
-      .duration(8000) // Cambia la duración a 6000 milisegundos para que sea más rápida
-      .fromTo('transform', 'translate(-500%)', 'translate(1000%)') // Cambia a -100% para que empiece desde fuera de la pantalla
+      .duration(12000) // Cambia la duración a 6000 milisegundos para que sea más rápida
+      .fromTo('transform', 'translate(-75%)', 'translate(100%)') // Cambia a -100% para que empiece desde fuera de la pantalla
       .fromTo('opacity', 1, 0)
       .play();
   }
 
-  sendClickEvent(buttonName: string) {
-    this.headerClick.emit(buttonName);
+  showTest() {
+    this.clickQrTest.emit();
   }
 
   logout() {

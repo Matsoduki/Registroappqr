@@ -3,23 +3,23 @@
   <div class="centrar">
     <div>
       <img src="../../assets/img/logoBlanco.png" style="width: 75%;">
-      <h2 class="ion-padding-bottom">Sistema de Asistencia DUOC</h2>
+      <h2 class="ion-padding-bottom">{{ 'AppName' | translate }}</h2>
       <ion-card>
         <ion-card-header style="color: white;">
-          <h3>Recuperar Contraseña</h3>
-          <h5>Paso 1: Ingresa tu correo</h5>
+          <h3>{{ 'Correo.Title.RecuperarContraseña' | translate }}</h3>
+          <h5>{{ 'Correo.Label.Paso1' | translate }}</h5>
         </ion-card-header>
         <ion-card-content class="ion-padding-vertical">
           <ion-item>
-            <ion-input [(ngModel)]="correo" type="email" label="Correo Electrónico" labelPlacement="floating" fill="outline" placeholder="Ingresa tu correo"></ion-input>
+            <ion-input [(ngModel)]="correo" type="email" label="{{ 'Correo.Label.Email' | translate }}" labelPlacement="floating" fill="outline" placeholder="{{ 'Correo.Placeholder.Email' | translate }}"></ion-input>
           </ion-item>
         </ion-card-content>
   
-        <ion-button type="submit" class="ion-padding-vertical button1" (click)="recuperarPassword()">Recuperar contraseña</ion-button>
+        <ion-button type="submit" class="ion-padding-vertical button1" (click)="recuperarPassword()">{{ 'Correo.Button.RecuperarContraseña' | translate }}</ion-button>
       </ion-card>
       <ion-row>
         <ion-col>
-          <ion-button fill="clear" class="link1 link-box" (click)="ingreso()">Iniciar Sesión</ion-button>
+          <ion-nav-link (click)="ingreso()">{{ 'Ingreso.Button.IniciarSesion' | translate }}</ion-nav-link>
         </ion-col>
       </ion-row>
     </div>

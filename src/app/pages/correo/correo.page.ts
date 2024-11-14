@@ -37,7 +37,7 @@ export class CorreoPage {
   async recuperarPassword() {
     // Validación para verificar si el campo de correo está vacío
     if (!this.correo) {
-        await this.mostrarToast('Por favor, ingresa tu correo electrónico.');
+        this.router.navigate(['/incorrecto']);
         return; // Sale del método si el campo está vacío
     }
 
@@ -63,22 +63,6 @@ export class CorreoPage {
         // Manejo de error: redirigir a la página incorrecto
         this.router.navigate(['/incorrecto']);
     }
-}
-
-// Función auxiliar para mostrar toasts
-private async mostrarToast(mensaje: string) {
-    const toast = await this.toastCtrl.create({
-        message: mensaje,
-        duration: 2000,
-        color: 'danger',
-        buttons: [
-            {
-                text: 'X',
-                role: 'cancel'
-            }
-        ]
-    });
-    await toast.present();
 }
 
   ingreso() {

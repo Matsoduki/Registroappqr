@@ -16,6 +16,7 @@ export class AuthService {
   isFirstLogin = new BehaviorSubject<boolean>(false);
   storageQrCodeKey = 'QR_CODE';
   qrCodeData = new BehaviorSubject<string | null>(null);
+  selectedComponent = new BehaviorSubject<string>('codigoqr');
 
   constructor(private router: Router, private db: DatabaseService, private storage: Storage) { }
 
@@ -85,6 +86,7 @@ export class AuthService {
           showToast(`¡Bienvenid@ ${user.nombre} ${user.apellido}!`);
           await this.saveAuthUser(user);
           this.isFirstLogin.next(true);
+          this.selectedComponent.next('codigoqr');
           await this.router.navigate(['/inicio']);
           return true;
         } else {

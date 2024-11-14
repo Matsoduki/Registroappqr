@@ -9,11 +9,17 @@ ion-toolbar ion-title {
 }
 
 .logoHeader {
-	--border-radius: 0px;
-	height: 40px;
-	width: auto;
-	position: absolute;
-	z-index: 1;
-	top: 10%;
+  --border-radius: 0px;
+  height: 40px;
+  width: auto;
+  position: absolute;
+  z-index: 1;
+  top: 10%;
 }
 
+.button-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px; // Opcional: espacio entre los botones
+}

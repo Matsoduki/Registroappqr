@@ -5,6 +5,7 @@ import { TranslateModule } from '@ngx-translate/core';
 import { IonFooter, IonToolbar, IonSegment, IonSegmentButton, IonIcon } from '@ionic/angular/standalone';
 import { addIcons } from 'ionicons';
 import { homeOutline, pencilOutline, qrCodeOutline, personOutline } from 'ionicons/icons';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-footer',
@@ -23,17 +24,14 @@ import { homeOutline, pencilOutline, qrCodeOutline, personOutline } from 'ionico
   ]
 })
 export class FooterComponent {
-  selectedButton = 'codigoqr'; // Cambia esto a tu valor por defecto
-  @Output() footerClick = new EventEmitter<string>();
+  selectedComponent = 'codigoqr';
 
-  constructor() { 
+  constructor(private auth: AuthService) { 
     addIcons({homeOutline,qrCodeOutline,pencilOutline,personOutline});
   }
 
-  // Este método se llama cuando se hace clic en un botón del footer
-  sendClickEvent(event: any) {
-    const button = event.detail.value; // Extrae el valor del botón seleccionado
-    this.selectedButton = button; // Actualiza el botón seleccionado
-    this.footerClick.emit(this.selectedButton); // Emite el evento con el botón seleccionado
+  segmentChanged(selectedComponent: string) {
+    this.selectedComponent = selectedComponent;
+    this.auth.selectedComponent.next(this.selectedComponent);
   }
 }

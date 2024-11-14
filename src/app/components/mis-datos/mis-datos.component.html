@@ -1,79 +1,75 @@
 <form *ngIf="usuario" (ngSubmit)="guardarUsuario()">
   <ion-card>
     <ion-card-header style="color: white; display: flex; align-items: center; justify-content: space-between;">
-      <h1 style="margin: 0; font-size: 30px !important;">Mis Datos Personales</h1>
-      <div class="photo-container" (click)="fileInput.click()">
-        <img *ngIf="selectedImage && selectedImage !== 'assets/img/noPhoto.png'; else defaultImage" [src]="selectedImage" alt="Foto de Perfil" class="profile-image" />
-        <ng-template #defaultImage>
-          <img src="assets/img/noPhoto.png" alt="Foto de Perfil" class="profile-image" />
-        </ng-template>
-        <input type="file" #fileInput (change)="onFileSelected($event)" accept="image/*" style="display: none;" />
-      </div>
+      <h2 style="margin: 0; font-size: 30px !important;">{{ 'MisDatos.Title' | translate }}</h2>
     </ion-card-header>
     <ion-card-content>
 
       <ion-item>
-        <ion-input label="Usuario" labelPlacement="floating" [(ngModel)]="usuario.username" name="username" required readonly></ion-input>
+        <ion-input label="{{ 'MisDatos.Label.Usuario' | translate }}" labelPlacement="floating" [(ngModel)]="usuario.username" name="username" required readonly></ion-input>
       </ion-item>
 
       <ion-item>
-        <ion-input label="Nombre" labelPlacement="floating" [(ngModel)]="usuario.nombre" name="nombre" required></ion-input>
+        <ion-input label="{{ 'MisDatos.Label.Nombre' | translate }}" labelPlacement="floating" [(ngModel)]="usuario.nombre" name="nombre" required></ion-input>
       </ion-item>
 
       <ion-item>
-        <ion-input label="Apellido" labelPlacement="floating" [(ngModel)]="usuario.apellido" name="apellido" required></ion-input>
+        <ion-input label="{{ 'MisDatos.Label.Apellido' | translate }}" labelPlacement="floating" [(ngModel)]="usuario.apellido" name="apellido" required></ion-input>
       </ion-item>
 
       <ion-item>
-        <ion-input type="email" label="Correo" labelPlacement="floating" [(ngModel)]="usuario.correo" name="email" required></ion-input>
+        <ion-input type="email" label="{{ 'MisDatos.Label.Correo' | translate }}" labelPlacement="floating" [(ngModel)]="usuario.correo" name="email" required></ion-input>
       </ion-item>
 
       <ion-item>
-        <ion-input label="Pregunta Secreta" labelPlacement="floating" [(ngModel)]="usuario.fraseSecreta" name="pregunta" required></ion-input>
+        <ion-input label="{{ 'MisDatos.Label.PreguntaSecreta' | translate }}" labelPlacement="floating" [(ngModel)]="usuario.fraseSecreta" name="pregunta" required></ion-input>
       </ion-item>
 
       <ion-item>
-        <ion-input label="Respuesta Secreta" labelPlacement="floating" [(ngModel)]="usuario.respuestaSecreta" name="respuesta" required></ion-input>
+        <ion-input label="{{ 'MisDatos.Label.RespuestaSecreta' | translate }}" labelPlacement="floating" [(ngModel)]="usuario.respuestaSecreta" name="respuesta" required></ion-input>
       </ion-item>
 
       <ion-item>
-        <ion-select [(ngModel)]="usuario.nivelEducacional.id" 
-                    (ionChange)="actualizarNivelEducacional($event)" 
-                    label="Nivel Educacional" 
-                    position="floating" name="nivel" required>
-          <ion-select-option *ngFor="let nivelEducacional of listaNivelesEducacionales" 
-                            [value]="nivelEducacional.id">
-            {{ nivelEducacional.nombre }}
+        <ion-select
+          [(ngModel)]="usuario.nivelEducacional.id" 
+          (ionChange)="actualizarNivelEducacional($event)" 
+          label="{{ 'MisDatos.Label.NivelEducacional' | translate }}" 
+          position="floating" name="nivel" required>
+          <ion-select-option
+            *ngFor="let nivelEducacional of listaNivelesEducacionales" 
+            [value]="nivelEducacional.id">
+              {{ nivelEducacional.nombre }}
           </ion-select-option>
         </ion-select>
       </ion-item>
 
       <ion-item class="date-item">
-        <ion-label position="floating">Fecha de Nacimiento</ion-label>
         <ion-input 
           type="date" 
           [(ngModel)]="fechaNacimientoString" 
           (ionChange)="onFechaNacimientoChange($event)" 
           name="fechaNacimiento"
+          label="{{ 'MisDatos.Label.FechaNacimiento' | translate }}"
+          labelPlacement="floating"
           class="date-input">
         </ion-input>
       </ion-item>
       
 
       <ion-item>
-        <ion-input label="Dirección" labelPlacement="floating" [(ngModel)]="usuario.direccion" name="direccion"></ion-input>
+        <ion-input label="{{ 'MisDatos.Label.Direccion' | translate }}" labelPlacement="floating" [(ngModel)]="usuario.direccion" name="direccion"></ion-input>
       </ion-item>
 
       <ion-item>
-        <ion-input label="Contraseña" type="password" labelPlacement="floating" [(ngModel)]="usuario.password" name="password" required></ion-input>
+        <ion-input label="{{ 'MisDatos.Label.Contraseña' | translate }}" type="password" labelPlacement="floating" [(ngModel)]="usuario.password" name="password" required></ion-input>
       </ion-item>
 
       <ion-item>
-        <ion-input label="Repetir Contraseña" type="password" labelPlacement="floating" [(ngModel)]="repetirPassword" name="repetirPassword" required></ion-input>
+        <ion-input label="{{ 'MisDatos.Label.RepetirContraseña' | translate }}" type="password" labelPlacement="floating" [(ngModel)]="repetirPassword" name="repetirPassword" required></ion-input>
       </ion-item>
 
     </ion-card-content>
     
-    <ion-button expand="full" type="submit" class="ion-padding-vertical">Actualizar</ion-button>
+    <ion-button expand="full" type="submit" class="ion-padding-vertical">{{ 'MisDatos.Button.GuardarCambios' | translate }}</ion-button>
   </ion-card>
 </form>
