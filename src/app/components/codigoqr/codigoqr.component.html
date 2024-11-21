@@ -1,4 +1,5 @@
 <ion-content [fullscreen]="true" class="ion-padding-horizontal ion-text-center">
+  <div>
     <h3>
       {{ 'QR.Message.Part1' | translate }} {{ usuario.nombre }} {{ usuario.apellido }}!
     </h3>
@@ -9,18 +10,18 @@
     <br>
     
     <div>
-      <video *ngIf="scanning == true" #video class="video-frame"></video>
-      <img *ngIf="scanning == false" src="../../../assets/img/noCamera.png" class="video-frame">
+      <video *ngIf="scanning === true" #video class="video-frame"></video>
+      <img *ngIf="scanning === false" src="../../../assets/img/noCamera.png" class="video-frame">
     </div>
 
     <canvas #canvas hidden></canvas>
 
-    <ion-button *ngIf="scanning == true" (click)="stopQrScanning()">
+    <ion-button *ngIf="scanning === true" (click)="stopQrScanning()">
       <ion-label>{{ 'QR.Button.DetenerScan' | translate }}</ion-label>
     </ion-button>
 
-    <ion-button *ngIf="scanning == false" (click)="resumeQrScanning()">
+    <ion-button *ngIf="scanning === false" (click)="resumeQrScanning()">
       <ion-label>{{ 'QR.Button.ComenzarScan' | translate }}</ion-label>
     </ion-button>
-
+  </div>
 </ion-content>

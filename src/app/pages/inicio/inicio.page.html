@@ -1,30 +1,42 @@
-<app-header
-  (clickQrTest)="qrTest()">
-</app-header>
+<app-header (clickQrTest)="qrTest()"></app-header>
 
 <ion-content [fullscreen]="true">
 
   <!-- Componente para escanear códigos QR -->
   <app-codigoqr 
-    *ngIf="selectedComponent === 'codigoqr'"
+    *ngIf="selectedComponent === 'qrwebscanner'; else startScanBlock"
     (scanned)="webQrScanned($event)"
     (stopped)="webQrStopped()">
   </app-codigoqr>
 
   <!-- Componente para mostrar detalles de asistencia -->
-  <app-mi-clase 
-    *ngIf="selectedComponent === 'mi-clase'">
-  </app-mi-clase>
+  <app-mi-clase *ngIf="selectedComponent === 'mi-clase'"></app-mi-clase>
 
   <!-- Componente del foro -->
-  <app-foro 
-    *ngIf="selectedComponent === 'foro'">
-  </app-foro>
+  <app-foro *ngIf="selectedComponent === 'foro'"></app-foro>
 
   <!-- Componente para mostrar datos del usuario -->
-  <app-mis-datos 
-    *ngIf="selectedComponent === 'mis-datos'"> 
-  </app-mis-datos>
+  <app-mis-datos *ngIf="selectedComponent === 'mis-datos'"></app-mis-datos>
+
+  <!-- Este bloque se activará cuando el componente no sea qrwebscanner -->
+  <ng-template #startScanBlock>
+    <div *ngIf="selectedComponent !== 'qrwebscanner' && selectedComponent !== 'mis-datos' && selectedComponent !== 'foro' && selectedComponent !== 'mi-clase'" class="ion-padding-horizontal ion-text-center">
+      <br>
+      <h3>
+        {{ 'QR.Message.Help' | translate }}
+      </h3>
+      
+      <br>
+
+      <div>
+        <img src="../../../assets/img/noCamera.png" class="video-frame">
+      </div>
+
+      <ion-button (click)="startQrScan()">
+        <ion-label>{{ 'QR.Button.ComenzarScan' | translate }}</ion-label>
+      </ion-button>
+    </div>
+  </ng-template>
 
 </ion-content>
 

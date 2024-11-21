@@ -44,17 +44,9 @@
       "id": "6",
       "title": "Innovación y Emprendimiento en el Instituto Duoc",
       "body": "El Instituto Duoc fomenta la innovación y el espíritu emprendedor entre sus estudiantes. Muchos de sus graduados han creado empresas exitosas.",
-      "author": "Ana Torres",
+      "author": "Alberto Valenzuela Nuñez",
       "date": "27/10/2024",
       "authorImage": "https://example.com/images/ana_torres.jpg"
-    },
-    {
-      "id": "7",
-      "title": "Instituto Duoc: Comprometido con la Educación de Calidad",
-      "body": "El Instituto Duoc se enorgullece de ofrecer una educación de calidad que prepara a los estudiantes para enfrentar los desafíos del mundo actual.",
-      "author": "Juan Pérez",
-      "date": "27/10/2024",
-      "authorImage": "https://example.com/images/juan_perez.jpg"
     },
     {
       "id": "8",
@@ -65,20 +57,12 @@
       "authorImage": "https://example.com/images/carla_mujica.jpg"
     },
     {
-      "id": "9",
-      "title": "Estudiar en el Instituto Duoc: Una Experiencia Transformadora",
-      "body": "La experiencia de estudiar en el Instituto Duoc puede transformar tu vida y brindarte las herramientas necesarias para alcanzar tus metas profesionales.",
-      "author": "Ana Torres",
-      "date": "27/10/2024",
-      "authorImage": "https://example.com/images/ana_torres.jpg"
-    },
-    {
-      "id": "10",
-      "title": "Instituto Duoc: Compromiso con la Excelencia Académica",
-      "body": "La excelencia académica es una prioridad en el Instituto Duoc. Sus programas están diseñados para brindar una formación de alto nivel.",
+      "id": "34b1",
+      "title": "testeo",
+      "body": "ss",
       "author": "Ana Torres Leiva",
-      "date": "27/10/2024",
-      "authorImage": "https://example.com/images/juan_perez.jpg"
+      "date": "",
+      "authorImage": ""
     }
   ]
 }

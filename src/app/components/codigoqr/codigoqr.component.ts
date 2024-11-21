@@ -8,6 +8,7 @@ import { AuthService } from 'src/app/services/auth.service';
 import { Usuario } from 'src/app/model/usuario';
 import { Subscription } from 'rxjs';
 import { TranslateModule } from '@ngx-translate/core';
+import { Capacitor } from '@capacitor/core';
 
 @Component({
   selector: 'app-codigoqr',
@@ -30,31 +31,22 @@ export class CodigoqrComponent implements OnInit, OnDestroy {
   usuario = new Usuario();
   private authUserSubs!: Subscription;
 
-  constructor(private auth: AuthService) {}
+  constructor(private auth: AuthService) {
+    this.startQrScanningForWeb()
+  }
 
   ngOnInit() {
     this.authUserSubs = this.auth.authUser.subscribe(usuario => this.usuario = usuario ?? new Usuario());
-    this.startQrScanningForWeb(); // Llama a la función aquí
   }
-
   
   async startQrScanningForWeb() {
-    if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
-      try {
-        this.mediaStream = await navigator.mediaDevices.getUserMedia({
-          video: { facingMode: 'environment' }
-        });
-        this.video.nativeElement.srcObject = this.mediaStream;
-        this.video.nativeElement.setAttribute('playsinline', 'true');
-        this.video.nativeElement.play();
-        requestAnimationFrame(this.verifyVideo.bind(this));
-        this.scanning = true;
-      } catch (error) {
-        console.error("Error accessing camera: ", error);
-      }
-    } else {
-      console.error("getUserMedia not supported on this browser.");
-    }
+    this.mediaStream = await navigator.mediaDevices.getUserMedia({
+      video: { facingMode: 'environment' }
+    });
+    this.video.nativeElement.srcObject = this.mediaStream;
+    this.video.nativeElement.setAttribute('playsinline', 'true');
+    this.video.nativeElement.play();
+    requestAnimationFrame(this.verifyVideo.bind(this));
   }
   
 
@@ -101,7 +93,6 @@ export class CodigoqrComponent implements OnInit, OnDestroy {
     this.scanning = false;
   }
 
-
   async resumeQrScanning() {
     location.reload();
   }
@@ -117,5 +108,4 @@ export class CodigoqrComponent implements OnInit, OnDestroy {
       this.mediaStream = null; // Limpia el flujo de medios
     }
   }
-
 }
