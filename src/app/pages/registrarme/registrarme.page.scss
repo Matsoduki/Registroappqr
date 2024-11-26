@@ -1,0 +1,119 @@
+ion-toolbar {
+  --background: #1A1A1A;
+  overflow: visible;
+  position: relative;
+}
+
+ion-toolbar ion-title {
+  color: white;
+  position: absolute;
+  top: 30%;
+}
+
+ion-footer {
+  --background: #1A1A1A;
+}
+
+
+ion-content {
+  display: flex;
+  flex-direction: column; /* Mantener los elementos en columna */
+  justify-content: flex-start; /* Alinea al inicio */
+  align-items: center; /* Centra horizontalmente */
+  height: 100%; /* Asegura que ocupe todo el espacio */
+  padding: 16px; /* Añadir un poco de padding alrededor */
+}
+
+.cerrar-sesion {
+  margin-top: 30px; /* Añade espacio adicional arriba del botón de "Cerrar Sesión" */
+}
+
+ion-item {
+  --padding-start: 5px;
+  --padding-end: 5px; /* Asegúrate de que este padding exista */
+  --padding-top: 5px;
+  --padding-bottom: 5px; /* Consistencia en el padding */
+  margin-bottom: 10px; /* Espacio entre los ion-items */
+  min-height: 70px; /* Asegura espacio para el label flotante */
+  overflow: visible; /* Asegura que el contenido no se corte */
+}
+
+ion-input {
+  --inner-padding-start: 12px;
+  overflow: visible; /* Asegura que el label no se corte */
+}
+
+ion-textarea {
+  width: 100%; /* O cualquier valor que desees */
+  height: 200px; /* Ajusta la altura según tus necesidades */
+  font-size: 16px; /* Cambia el tamaño de la fuente si es necesario */
+}
+
+ion-label {
+  color: var(--ion-color-medium);
+  font-size: 14px;
+  font-weight: 500;
+  white-space: nowrap;
+  overflow: visible; /* Asegura que no se corte si flota */
+}
+
+.custom-input {
+  padding: 10px;
+  border: 1px solid var(--ion-color-light-shade);
+  border-radius: 5px;
+  font-size: 16px;
+  width: 100%;
+  box-sizing: border-box;
+  outline: none;
+}
+
+.custom-input:focus {
+  border-color: var(--ion-color-primary); /* Color del borde cuando está en foco */
+  box-shadow: 0 0 0 2px rgba(66, 133, 244, 0.2); /* Simula el efecto de enfoque de Ionic */
+}
+
+ion-item {
+  --inner-padding-end: 8px; /* Ajustar el padding para que los íconos se alineen mejor */
+  --highlight-color-focused: var(--ion-color-primary);
+}
+
+.photo-container {
+  width: 100px; /* Ajusta el tamaño según lo necesites */
+  height: 100px; /* Ajusta el tamaño según lo necesites */
+  border-radius: 80%; /* Hace que la imagen sea circular */
+  overflow: hidden; /* Oculta el desbordamiento */
+  border: 2px solid #fff; /* Color del borde */
+  background-color: #f0f0f0; /* Color de fondo por defecto */
+  cursor: pointer; /* Cambia el cursor al pasar por encima */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.profile-image {
+  width: 100%;
+  height: auto;
+}
+
+.photo-container img {
+  width: 100%; /* Ajusta la imagen al tamaño del contenedor */
+  height: 100%; /* Asegura que la altura también se ajuste */
+  object-fit: cover; /* Mantiene la proporción de la imagen */
+}
+
+.date-item {
+  --highlight-color: #c2c2c2; /* Set a subtle color for labels */
+  --padding-start: 0px;
+  margin-bottom: 16px;
+}
+
+.date-item ion-label {
+  color: var(--highlight-color);
+  font-weight: 500;
+}
+
+.date-input {
+  color: #c7c7c7; /* Set color for date text */
+  font-size: 16px;
+  padding-top: 12px;
+}

@@ -1,0 +1,77 @@
+<app-header></app-header>
+
+<ion-content [fullscreen]="true">
+  <form *ngIf="usuario" (ngSubmit)="registrarUsuario()">
+    <ion-card>
+      <ion-card-header style="color: white; display: flex; align-items: center; justify-content: space-between;">
+        <h2 style="margin: 0; font-size: 30px !important;">{{ 'Registro.Title' | translate }}</h2>
+      </ion-card-header>
+      <ion-card-content>
+
+        <ion-item>
+          <ion-input label="{{ 'Registro.Label.Usuario' | translate }}" labelPlacement="floating" [(ngModel)]="usuario.username" name="username" required></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-input label="{{ 'Registro.Label.Nombre' | translate }}" labelPlacement="floating" [(ngModel)]="usuario.nombre" name="nombre" required></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-input label="{{ 'Registro.Label.Apellido' | translate }}" labelPlacement="floating" [(ngModel)]="usuario.apellido" name="apellido" required></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-input type="email" label="{{ 'Registro.Label.Correo' | translate }}" labelPlacement="floating" [(ngModel)]="usuario.correo" name="email" required></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-input label="{{ 'Registro.Label.Direccion' | translate }}" labelPlacement="floating" [(ngModel)]="usuario.direccion" name="direccion"></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-input label="{{ 'Registro.Label.PreguntaSecreta' | translate }}" labelPlacement="floating" [(ngModel)]="usuario.fraseSecreta" name="pregunta" required></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-input label="{{ 'Registro.Label.RespuestaSecreta' | translate }}" labelPlacement="floating" [(ngModel)]="usuario.respuestaSecreta" name="respuesta" required></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-select
+            [(ngModel)]="usuario.nivelEducacional.id" 
+            (ionChange)="actualizarNivelEducacional($event)" 
+            label="{{ 'Registro.Label.NivelEducacional' | translate }}" 
+            position="floating" name="nivel" required>
+            <ion-select-option
+              *ngFor="let nivelEducacional of listaNivelesEducacionales" 
+              [value]="nivelEducacional.id">
+                {{ nivelEducacional.nombre }}
+            </ion-select-option>
+          </ion-select>
+        </ion-item>
+
+        <ion-item class="date-item">
+          <ion-input 
+            type="date" 
+            [(ngModel)]="fechaNacimientoString" 
+            name="fechaNacimiento"
+            label="{{ 'Registro.Label.FechaNacimiento' | translate }}"
+            labelPlacement="floating"
+            class="date-input">
+          </ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-input label="{{ 'Registro.Label.Contraseña' | translate }}" type="password" labelPlacement="floating" [(ngModel)]="usuario.password" name="password" required></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-input label="{{ 'Registro.Label.RepetirContraseña' | translate }}" type="password" labelPlacement="floating" [(ngModel)]="repetirPassword" name="repetirPassword" required></ion-input>
+        </ion-item>
+
+      </ion-card-content>
+      
+      <ion-button expand="full" type="submit" class="ion-padding-vertical">{{ 'Registro.Button.CrearCuenta' | translate }}</ion-button>
+    </ion-card>
+  </form>
+</ion-content>

@@ -43,6 +43,9 @@
               type="password">
             </ion-input>
           </ion-item>
+
+          <br>
+          <ion-nav-link (click)="passwordRecovery()">{{ 'Ingreso.Button.RecoverPassword' | translate }}</ion-nav-link>
         </ion-card-content>
     
           <ion-button class="ion-padding-vertical" (click)="login()">{{ 'Ingreso.Button.Login' | translate }}</ion-button>
@@ -50,11 +53,12 @@
     
       <ion-col>
         <ion-row class="centrar">
-          <ion-nav-link (click)="passwordRecovery()">{{ 'Ingreso.Button.RecoverPassword' | translate }}</ion-nav-link>
-        </ion-row>
-        <ion-row class="centrar">
           <ion-nav-link (click)="miruta()">{{ 'Ingreso.Button.Map' | translate }}</ion-nav-link>
         </ion-row>
+        <ion-row class="centrar">
+          <ion-nav-link (click)="registro()">{{ 'Ingreso.Button.Register' | translate }}</ion-nav-link>
+        </ion-row>
+
       </ion-col>
     </div>
   </div>

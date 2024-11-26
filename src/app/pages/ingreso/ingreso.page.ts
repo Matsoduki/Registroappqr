@@ -80,6 +80,10 @@ export class IngresoPage implements ViewWillEnter {
     this.router.navigate(['/miruta']);
   }
 
+  registro() {
+    this.router.navigate(['/registrarme']);
+  }
+
   private async showToast(message: string) {
     const toast = await this.toastController.create({
       message: message,
