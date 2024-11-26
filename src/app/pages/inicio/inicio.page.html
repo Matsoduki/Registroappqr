@@ -18,9 +18,12 @@
   <!-- Componente para mostrar datos del usuario -->
   <app-mis-datos *ngIf="selectedComponent === 'mis-datos'"></app-mis-datos>
 
+  <!-- Componente para mostrar datos del usuario -->
+  <app-usuarios *ngIf="selectedComponent === 'usuarios'"></app-usuarios>
+
   <!-- Este bloque se activará cuando el componente no sea qrwebscanner -->
   <ng-template #startScanBlock>
-    <div *ngIf="selectedComponent !== 'qrwebscanner' && selectedComponent !== 'mis-datos' && selectedComponent !== 'foro' && selectedComponent !== 'mi-clase'" class="ion-padding-horizontal ion-text-center">
+    <div *ngIf="selectedComponent !== 'qrwebscanner' && selectedComponent !== 'mis-datos' && selectedComponent !== 'foro' && selectedComponent !== 'mi-clase' && selectedComponent !== 'usuarios'" class="ion-padding-horizontal ion-text-center">
       <br>
       <h3>
         {{ 'QR.Message.Help' | translate }}

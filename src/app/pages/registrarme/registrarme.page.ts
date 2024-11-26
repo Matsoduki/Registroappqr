@@ -88,4 +88,9 @@ export class RegistrarmePage implements OnInit {
     const nivelId = event.detail.value;
     this.usuario.nivelEducacional = NivelEducacional.buscarNivel(nivelId)!; 
   }
+
+
+  async test1 () {
+   this.bd.resetDatabase();
+  }
 }

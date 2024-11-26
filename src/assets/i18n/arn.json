@@ -12,11 +12,29 @@
     "Ingreso.Placeholder.Password": "Inaymi tüfachi wirin",
     "Ingreso.Button.Login": "Inay",
     "Ingreso.Button.RecoverPassword": "Wirin Ñamümün",
+    "Ingreso.Button.Register": "Ñamü",
     "Ingreso.Button.Map": "Ñi Püram DuocUC",
     "Ingreso.Button.IniciarSesion": "Tayü Tañi Sesión",
 
     "MiRuta.Button.MiUbicacion": "Ñi Weküm",
     "MiRuta.Button.Ruta": "Püram",
+
+    "Registro.Title": "Ñamkulün Füngechiñ",
+    "Registro.Label.Usuario": "Ñamkulün",
+    "Registro.Label.Nombre": "Ñamün",
+    "Registro.Label.Apellido": "Ñamün Piñen",
+    "Registro.Label.Correo": "Püleñ",
+    "Registro.Label.PreguntaSecreta": "Ñamün Ülpan",
+    "Registro.Label.RespuestaSecreta": "Ñamün Ülpan Külün",
+    "Registro.Label.NivelEducacional": "Ñamün Pewma",
+    "Registro.Label.FechaNacimiento": "Ñamün Fvta",
+    "Registro.Label.Direccion": "Fvta Küme",
+    "Registro.Label.Contraseña": "Küme Püleñ",
+    "Registro.Label.RepetirContraseña": "Küme Püleñ Ñi Püleñ",
+    "Registro.Button.CrearCuenta": "Ñamkulün Ñi Küme",
+    
+    "Usuarios.Title.Admin": "Ñamkulün Ñamün Mapu",
+    "Usuarios.Title.NoEncontrado": "Ñamün Mapu Ñi Ñamkulün",
 
     "Correo.Title.RecuperarContraseña": "Wirin Ñamümün",
     "Correo.Label.Paso1": "Paso 1: Inaymi e-mail",
@@ -40,6 +58,7 @@
     "Inicio.Footer.Button.MiClase": "Ñi Clase",
     "Inicio.Footer.Button.Foro": "Foro",
     "Inicio.Footer.Button.MisDatos": "Ñi Küyen",
+    "Inicio.Footer.Button.Usuarios": "Ñamkulün",
 
     "QR.Message.Part1": "¡Küme Pewkale,",
     "QR.Message.Help": "Escanea el QR kiñé ñi asistensia clase mew.",

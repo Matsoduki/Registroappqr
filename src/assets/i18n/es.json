@@ -33,6 +33,9 @@
     "Registro.Label.RepetirContraseña": "Repetir Contraseña",
     "Registro.Button.CrearCuenta": "Crear mi cuenta nueva",
 
+    "Usuarios.Title.Admin": "Administrar Usuarios",
+    "Usuarios.Title.NoEncontrado": "No se han encontrado usuarios",
+
     "Correo.Title.RecuperarContraseña": "Recuperar Contraseña",
     "Correo.Label.Paso1": "Paso 1: Ingresa tu correo",
     "Correo.Label.Email": "Correo Electrónico",
@@ -55,6 +58,7 @@
     "Inicio.Footer.Button.MiClase": "Mi Clase",
     "Inicio.Footer.Button.Foro": "Foro",
     "Inicio.Footer.Button.MisDatos": "Mis Datos",
+    "Inicio.Footer.Button.Usuarios": "Usuarios",
 
     "QR.Message.Part1": "¡Bienvenido/a,",
     "QR.Message.Help": "Escanea el código QR para registrar tu asistencia a clases.",

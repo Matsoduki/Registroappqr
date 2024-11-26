@@ -1,3 +1,30 @@
-<p>
-  usuarios works!
-</p>
+<ion-content>
+  <div *ngIf="users.length > 0" style="align-items: center;">
+    <br>
+    <h3 style="text-align: center; color: white;">{{ 'Usuarios.Title.Admin' | translate }}</h3>
+
+    <ion-grid>
+      <ion-row>
+        <ion-col size="12" *ngFor="let user of users;">
+          <ion-card>
+            <ion-card-content>
+              <h4 style="font-size: smaller; color: var(--ion-color-tertiary);">
+                {{ user.username === 'admin' ? 'Administrador del Sistema' : user.nombre + ' ' + user.apellido }}
+              </h4>
+              <h5 style="color: white; line-height: 1.2;">{{ user.correo }}</h5>
+              <div *ngIf="user.username !== 'admin'" style="display: flex; justify-content: flex-end;">
+                <ion-button size="small" color="danger" (click)="deleteUser(user.username)">
+                  <ion-icon name="trash-outline"></ion-icon>
+                </ion-button>
+              </div>
+            </ion-card-content>
+          </ion-card>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+
+  <div *ngIf="users.length === 0" style="align-items: center;">
+    <h4 style="text-align: center; color: white;">{{ 'Usuarios.Title.NoEncontrado' | translate }}</h4>
+  </div>
+</ion-content>

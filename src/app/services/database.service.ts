@@ -6,7 +6,6 @@ import { BehaviorSubject } from 'rxjs';
 import { NivelEducacional } from '../model/nivel-educacional';
 import { showAlertError } from '../tools/message-functions';
 import { convertDateToString, convertStringToDate } from '../tools/date-functions';
-import { Asistencia } from '../model/asistencia';
 
 @Injectable({
   providedIn: 'root'
@@ -14,6 +13,20 @@ import { Asistencia } from '../model/asistencia';
 export class DatabaseService {
 
   testUser1 = Usuario.getNewUsuario(
+    'admin', 
+    'admin@duocuc.cl', 
+    'admin', 
+    '¿Es esta una pregunta?', 
+    'si',
+    'usuario', 
+    'admin', 
+    NivelEducacional.buscarNivel(6)!,
+    new Date(2000, 0, 5),
+    'sin especificar',
+    'default-image.jpg'
+  );
+
+  testUser2 = Usuario.getNewUsuario(
     'atorres', 
     'atorres@duocuc.cl', 
     '1234', 
@@ -27,7 +40,7 @@ export class DatabaseService {
     'default-image.jpg'
   );
 
-  testUser2 = Usuario.getNewUsuario(
+  testUser3 = Usuario.getNewUsuario(
     'avalenzuela', 
     'avalenzuela@duocuc.cl', 
     'qwer', 
@@ -41,7 +54,7 @@ export class DatabaseService {
     'default-image.jpg'
   );
 
-  testUser3 = Usuario.getNewUsuario(
+  testUser4 = Usuario.getNewUsuario(
     'cfuentes', 
     'cfuentes@duocuc.cl', 
     'asdf', 
@@ -134,7 +147,7 @@ export class DatabaseService {
 
   async createTestUsers() {
     try {
-      const testUsers = [this.testUser1, this.testUser2, this.testUser3];
+      const testUsers = [this.testUser1, this.testUser2, this.testUser3, this.testUser4];
   
       for (const user of testUsers) {
         const existingUser = await this.readUser(user.username);
@@ -333,6 +346,34 @@ export class DatabaseService {
     } catch (error) {
       showAlertError('DataBaseService.rowToUser', error);
       return new Usuario();
+    }
+  }
+
+  async resetDatabase(): Promise<void> {
+    try {
+      await this.sqliteService.deleteDataBase(this.dataBaseName);
+
+      await this.sqliteService.createDataBase({
+        database: this.dataBaseName,
+        upgrade: this.userUpgrades
+      });
+      // Cambia la versión de 1 a 2
+      this.db = await this.sqliteService.open(this.dataBaseName, false, 'no-encryption', 2, false);
+      await this.createTestUsers();
+      await this.readUsers();
+
+      this.verifyDatabase();
+    } catch (error) {
+      showAlertError('DataBaseService.initializeDataBase', error);
+    }
+  }
+  
+  async verifyDatabase(): Promise<void> {
+    try {
+      const rows = await this.db.query('SELECT * FROM USUARIO;');
+      console.log('Contenido de la base de datos después del reinicio:', rows.values);
+    } catch (error) {
+      console.error('Error al verificar la base de datos:', error);
     }
   }
 }

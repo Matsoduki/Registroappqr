@@ -14,6 +14,7 @@ import { Router } from '@angular/router';
 import { Asistencia } from 'src/app/model/asistencia';
 import { ScannerService } from 'src/app/services/scanner.service';
 import { Capacitor } from '@capacitor/core';
+import { UsuariosComponent } from 'src/app/components/usuarios/usuarios.component';
 
 @Component({
   selector: 'app-inicio',
@@ -30,6 +31,7 @@ import { Capacitor } from '@capacitor/core';
     CodigoqrComponent,
     ForoComponent,
     MisDatosComponent,
+    UsuariosComponent,
     MiClaseComponent // Asegúrate de que esté aquí
   ]
 })
