@@ -4,7 +4,7 @@
 
   <!-- Componente para escanear códigos QR -->
   <app-codigoqr 
-    *ngIf="selectedComponent === 'qrwebscanner'; else startScanBlock"
+    *ngIf="selectedComponent === 'codigoqr'; else startScanBlock"
     (scanned)="webQrScanned($event)"
     (stopped)="webQrStopped()">
   </app-codigoqr>
@@ -23,7 +23,7 @@
 
   <!-- Este bloque se activará cuando el componente no sea qrwebscanner -->
   <ng-template #startScanBlock>
-    <div *ngIf="selectedComponent !== 'qrwebscanner' && selectedComponent !== 'mis-datos' && selectedComponent !== 'foro' && selectedComponent !== 'mi-clase' && selectedComponent !== 'usuarios'" class="ion-padding-horizontal ion-text-center">
+    <div *ngIf="selectedComponent !== 'codigoqr' && selectedComponent !== 'mis-datos' && selectedComponent !== 'foro' && selectedComponent !== 'mi-clase' && selectedComponent !== 'usuarios'" class="ion-padding-horizontal ion-text-center">
       <br>
       <h3>
         {{ 'QR.Message.Help' | translate }}

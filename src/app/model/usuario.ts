@@ -11,7 +11,6 @@ export class Usuario extends Persona {
   password = '';
   fraseSecreta = '';
   respuestaSecreta = '';
-  // db = inject(DatabaseService);
   foto = '';
 
   constructor() {
@@ -62,4 +61,53 @@ export class Usuario extends Persona {
       `;
   }
 
+  // Método para validar el correo
+  public validarCorreo(): string {
+    if (this.correo.trim() === '') {
+      return 'Para ingresar al sistema debe ingresar un correo electrónico.';
+    }
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(this.correo)) {
+      return 'El correo ingresado no tiene un formato válido.';
+    }
+    return '';
+  }
+
+  // Método para validar la contraseña
+  public validarPassword(): string {
+    if (this.password.trim() === '') {
+      return 'Para entrar al sistema debe ingresar la contraseña.';
+    }
+    if (this.password.length < 4) {
+      return 'La contraseña debe tener al menos 4 caracteres.';
+    }
+    return '';
+  }
+
+  // Método para validar el nombre de usuario
+  public validarUsername(): string {
+    if (this.username.trim() === '') {
+      return 'El nombre de usuario no puede estar vacío.';
+    }
+    if (this.username.length < 4) {
+      return 'El nombre de usuario debe tener al menos 4 caracteres.';
+    }
+    return '';
+  }
+
+  // Método para validar que nombre y apellido no estén vacíos
+  public validarNombreYApellido(): string {
+    if (this.nombre.trim() === '' || this.apellido.trim() === '') {
+      return 'El nombre y el apellido no pueden estar vacíos.';
+    }
+    return '';
+  }
+
+  // Método para validar la frase y respuesta secreta
+  public validarFraseYRespuestaSecreta(): string {
+    if (this.fraseSecreta.trim() === '' || this.respuestaSecreta.trim() === '') {
+      return 'La frase secreta y la respuesta no pueden estar vacías.';
+    }
+    return '';
+  }
 }

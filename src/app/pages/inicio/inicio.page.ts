@@ -15,6 +15,8 @@ import { Asistencia } from 'src/app/model/asistencia';
 import { ScannerService } from 'src/app/services/scanner.service';
 import { Capacitor } from '@capacitor/core';
 import { UsuariosComponent } from 'src/app/components/usuarios/usuarios.component';
+import { Usuario } from 'src/app/model/usuario';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-inicio',
@@ -39,22 +41,51 @@ import { UsuariosComponent } from 'src/app/components/usuarios/usuarios.componen
 export class InicioPage implements OnInit {
   @Input() startScan: boolean = false;
   @ViewChild(FooterComponent) footer!: FooterComponent;
-  selectedComponent = 'qrwebscanner';  // Inicialmente, se establece en 'qrwebscanner'
+  selectedComponent: string | null = null; // Sin valor inicial fijo
   asistencia: Asistencia | null = null;
+  initialCheck = false;
+
+  usuario = new Usuario();
+  private authUserSubs!: Subscription;
 
   constructor(private auth: AuthService, private scanner: ScannerService) {
     this.auth.selectedComponent.subscribe((selectedComponent) => {
-      this.selectedComponent = selectedComponent;
+      if (this.selectedComponent === null) {
+        this.selectedComponent = selectedComponent;
+      }
     });
   }
 
   ngOnInit() {
     this.startQrScan();
+    this.authUserSubs = this.auth.authUser.subscribe(usuario => {
+        this.usuario = usuario ?? new Usuario();
+    });
+
+    // Verifica si initialCheck es falso antes de ejecutar checkUserType
+    if (!this.initialCheck) {
+      this.checkUserType();
+    }
+    
+    this.auth.selectedComponent.subscribe((selectedComponent) => {
+      this.selectedComponent = selectedComponent;
+    });
   }
-  
+
+  checkUserType() {
+    if (this.usuario.username === 'admin') {
+      this.auth.selectedComponent.next('usuarios'); // Admin comienza en 'usuarios'
+    } else {
+      this.auth.selectedComponent.next('codigoqr'); // Otros comienzan en 'codigoqr'
+    }
+    this.initialCheck = true;
+  }
+
   async startQrScan() {
     if (Capacitor.getPlatform() === 'web') {
-      this.selectedComponent = 'qrwebscanner';
+      if (this.selectedComponent === null) {
+        this.selectedComponent = 'codigoqr';
+      }
     } else {
       const qrResult = await this.scanner.scan();
       this.showMiClaseComponent(qrResult);

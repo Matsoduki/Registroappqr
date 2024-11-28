@@ -6,12 +6,12 @@
       [(ngModel)]="selectedComponent"
       scrollable
     >
-      <ion-segment-button value="codigoqr">
+      <ion-segment-button *ngIf="usuario.username !== 'admin'" value="codigoqr">
         <ion-icon name="qr-code-outline"></ion-icon>
         {{ 'Inicio.Footer.Button.QR' | translate }}
       </ion-segment-button>
       
-      <ion-segment-button value="mi-clase">
+      <ion-segment-button *ngIf="usuario.username !== 'admin'" value="mi-clase">
         <ion-icon name="home-outline"></ion-icon>
         {{ 'Inicio.Footer.Button.MiClase' | translate }}
       </ion-segment-button>
