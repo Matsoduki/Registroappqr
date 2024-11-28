@@ -6,8 +6,8 @@
     "Language.Mapudungun": "Mapudungun",
 
     "Ingreso.Button.Theme": "Tema",
-    "Ingreso.Label.Email": "Correo",
-    "Ingreso.Placeholder.Email": "Ingresa aquí tu correo",
+    "Ingreso.Label.Cuenta": "Usuario",
+    "Ingreso.Placeholder.Cuenta": "Ingresa aquí tu usuario",
     "Ingreso.Label.Password": "Contraseña",
     "Ingreso.Placeholder.Password": "Ingresa aquí tu contraseña",
     "Ingreso.Button.Login": "Ingresar",

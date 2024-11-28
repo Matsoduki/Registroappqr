@@ -19,6 +19,7 @@
     "target": "es2022",
     "module": "es2020",
     "lib": ["es2018", "dom"],
+    "types": ["cypress"],
     "useDefineForClassFields": false
   },
   "angularCompilerOptions": {
@@ -26,5 +27,7 @@
     "strictInjectionParameters": true,
     "strictInputAccessModifiers": true,
     "strictTemplates": true
-  }
+  },
+  "exclude": ["cypress.config.ts"],
+  "files": ["cypress.config.ts"]
 }

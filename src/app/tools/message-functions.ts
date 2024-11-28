@@ -45,7 +45,8 @@ export const showToast =
             text: 'X',
             role: 'cancel'
         }
-    ]
+      ],
+      id: 'toast-id'
     });
     await toast.present();
   }

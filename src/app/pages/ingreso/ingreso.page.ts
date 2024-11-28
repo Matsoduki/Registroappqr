@@ -10,6 +10,7 @@ import { colorWandOutline } from 'ionicons/icons';
 import { addIcons } from 'ionicons';
 import { AuthService } from 'src/app/services/auth.service';
 import { ToastController } from '@ionic/angular'; // Importar para mostrar mensajes
+import { showToast } from 'src/app/tools/message-functions';
 
 @Component({
   selector: 'app-ingreso',
@@ -28,7 +29,7 @@ export class IngresoPage implements ViewWillEnter {
 
   @ViewChild('selectLanguage') selectLanguage!: LanguageComponent;
 
-  correo: string;
+  cuenta: string;
   password: string;
 
   constructor(
@@ -37,7 +38,7 @@ export class IngresoPage implements ViewWillEnter {
     private authService: AuthService,
     private toastController: ToastController // Inyectar ToastController
   ) {
-    this.correo = '';
+    this.cuenta = '';
     this.password = '';
     addIcons({ colorWandOutline });
   }
@@ -51,24 +52,24 @@ export class IngresoPage implements ViewWillEnter {
   }
 
   async login() {
-    if (this.correo && this.password) {
+    if (this.cuenta && this.password) {
       try {
-        const result = await this.authService.login(this.correo, this.password);
+        const result = await this.authService.login(this.cuenta, this.password);
         if (result) {
           // Redirigir a la página principal o dashboard
           this.router.navigate(['/inicio']);
         }
       } catch (error) {
         if (error instanceof TypeError) {
-          this.showToast('Error de tipo. Revisa tu conexión o datos.');
+          showToast('Error de tipo. Revisa tu conexión o datos.');
         } else if (error instanceof RangeError) {
-          this.showToast('Error de rango. Intenta con otros datos.');
+          showToast('Error de rango. Intenta con otros datos.');
         } else {
-          this.showToast('Error al iniciar sesión. Intenta de nuevo más tarde.');
+          showToast('Error al iniciar sesión. Intenta de nuevo más tarde.');
         }
       }
     } else {
-      this.showToast('Por favor, completa todos los campos.');
+      showToast('Por favor, completa todos los campos.');
     }
   }
 
@@ -82,14 +83,5 @@ export class IngresoPage implements ViewWillEnter {
 
   registro() {
     this.router.navigate(['/registrarme']);
-  }
-
-  private async showToast(message: string) {
-    const toast = await this.toastController.create({
-      message: message,
-      duration: 2000,
-      position: 'top'
-    });
-    toast.present();
   }
 }

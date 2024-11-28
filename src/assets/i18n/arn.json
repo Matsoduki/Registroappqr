@@ -6,8 +6,8 @@
     "Language.Mapudungun": "Mapudungun",
 
     "Ingreso.Button.Theme": "Müpüll",
-    "Ingreso.Label.Email": "E-mail",
-    "Ingreso.Placeholder.Email": "Inaymi tüfachi e-mail",
+    "Ingreso.Label.Cuenta": "Ñamkulün",
+    "Ingreso.Placeholder.Cuenta": "Inaymi tüfachi ñamkulün",
     "Ingreso.Label.Password": "Wirin",
     "Ingreso.Placeholder.Password": "Inaymi tüfachi wirin",
     "Ingreso.Button.Login": "Inay",

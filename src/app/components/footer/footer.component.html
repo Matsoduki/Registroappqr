@@ -11,17 +11,17 @@
         {{ 'Inicio.Footer.Button.QR' | translate }}
       </ion-segment-button>
       
-      <ion-segment-button *ngIf="usuario.username !== 'admin'" value="mi-clase">
+      <ion-segment-button id="mi-clase" *ngIf="usuario.username !== 'admin'" value="mi-clase">
         <ion-icon name="home-outline"></ion-icon>
         {{ 'Inicio.Footer.Button.MiClase' | translate }}
       </ion-segment-button>
       
-      <ion-segment-button value="foro">
+      <ion-segment-button id="foro" value="foro">
         <ion-icon name="pencil-outline"></ion-icon>
         {{ 'Inicio.Footer.Button.Foro' | translate }}
       </ion-segment-button>
 
-      <ion-segment-button value="mis-datos">
+      <ion-segment-button id="mis-datos" value="mis-datos">
         <ion-icon name="person-outline"></ion-icon>
         {{ 'Inicio.Footer.Button.MisDatos' | translate }}
       </ion-segment-button>

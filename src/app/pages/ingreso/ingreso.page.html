@@ -25,16 +25,18 @@
         <ion-card-content class="ion-padding-vertical">
           <ion-item>
             <ion-input
-              [(ngModel)]="correo"
-              label="{{ 'Ingreso.Label.Email' | translate }}" 
+              id="cuenta"
+              [(ngModel)]="cuenta"
+              label="{{ 'Ingreso.Label.Cuenta' | translate }}" 
               labelPlacement="floating"
               fill="outline"
-              placeholder="{{ 'Ingreso.Placeholder.Email' | translate }}">
+              placeholder="{{ 'Ingreso.Placeholder.Cuenta' | translate }}">
             </ion-input>
           </ion-item>
 
           <ion-item>
             <ion-input
+              id="password"
               [(ngModel)]="password"
               label="{{ 'Ingreso.Label.Password' | translate }}"
               labelPlacement="floating"
@@ -48,7 +50,7 @@
           <ion-nav-link (click)="passwordRecovery()">{{ 'Ingreso.Button.RecoverPassword' | translate }}</ion-nav-link>
         </ion-card-content>
     
-          <ion-button class="ion-padding-vertical" (click)="login()">{{ 'Ingreso.Button.Login' | translate }}</ion-button>
+          <ion-button id="btn-login" class="ion-padding-vertical" (click)="login()">{{ 'Ingreso.Button.Login' | translate }}</ion-button>
         </ion-card>
     
       <ion-col>
