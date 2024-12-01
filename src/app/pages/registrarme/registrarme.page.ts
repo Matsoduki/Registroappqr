@@ -59,15 +59,58 @@ export class RegistrarmePage implements OnInit {
       return;
     }
   
-    // Validar que el correo no esté vacío
-    if (!this.usuario.correo || this.usuario.correo.trim() === '') {
-      showToast('Debe ingresar un correo válido.');
+    if (this.usuario.nombre.trim() === '' || this.usuario.apellido.trim() === '') {
+      showToast('El nombre y el apellido no pueden estar vacíos.');
       return;
     }
   
-    // Validar que las contraseñas coincidan
+    if (this.usuario.correo.trim() === '') {
+      showToast('Debe ingresar un correo electrónico.');
+      return;
+    }
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(this.usuario.correo)) {
+      showToast( 'El correo ingresado no tiene un formato válido.');
+      return;
+    }
+
+    if (this.usuario.fraseSecreta.trim() === '' || this.usuario.respuestaSecreta.trim() === '') {
+      showToast('La frase secreta y la respuesta no pueden estar vacías.');
+      return;
+    }
+  
+    const fechaHoy = new Date();
+    fechaHoy.setHours(0, 0, 0, 0);
+
+    const [year, month, day] = this.fechaNacimientoString.split('-').map(Number);
+    const fechaSeleccionada = new Date(year, month - 1, day);
+
+    if (!this.fechaNacimientoString) {
+      showToast('Debe ingresar una fecha de nacimiento.');
+      return;
+    }
+
+    if (fechaSeleccionada.getTime() === fechaHoy.getTime()) {
+      showToast('La fecha de nacimiento no puede ser mayor a la fecha actual.');
+      return;
+    }
+
+    if (!this.usuario.direccion || this.usuario.direccion.trim() === '') {
+      showToast('El usuario debe tener una dirección.');
+      return;
+    }
+
+    if (this.usuario.password.trim() === '') {
+      showToast('Debe ingresar la contraseña.');
+      return;
+    }
+    if (this.usuario.password.length < 4) {
+      showToast('La contraseña debe tener al menos 4 caracteres.');
+      return;
+    }
     if (this.usuario.password !== this.repetirPassword) {
-      showToast('Las contraseñas no coinciden.');
+      console.log(this.fechaNacimientoString);
+      showToast('Las contraseñas no coinciden');
       return;
     }
   

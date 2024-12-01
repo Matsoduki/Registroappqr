@@ -8,5 +8,5 @@ json-server --watch _JSON-SERVER/publicaciones.json
 
 json-server --watch _JSON-SERVER/publicaciones.json --host localhost --port 3000
 
-json-server --watch _JSON-SERVER/publicaciones.json --host 192.168.95.100 --port 3000
+json-server --watch _JSON-SERVER/publicaciones.json --host 192.168.95.128 --port 3000
 
