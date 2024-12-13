@@ -1,0 +1,9 @@
+Integrantes:
+  - SEBASTIAN ANDRES ASTUDILLO DIAZ / Sección: 002D
+  - GUSTAVO IGNACIO BERGMANN ORELLANA / Sección: 002D
+  - MATIAS ANDRES CASTILLO GALVEZ / Sección: 002D
+  - BENJAMIN ANDRES GALDAMEZ GALVEZ / Sección: 002D
+  - JOAQUIN ALEJANDRO RODRIGUEZ PEREZ / Sección: 003D
+
+Repositorio de GitHub:
+  https://github.com/Matsoduki/Registroappqr
